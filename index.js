@@ -60,11 +60,8 @@ search.addEventListener('click', () => {
           error404.classList.add('fadein');
           return;
      }
-       //console.log(result); // do something with the parsed data
      })
      .catch(error => console.error(error));
-        // FileReader Object   
-
             priceBox.style.display = '';
             change.style.display = '';
             priceBox.classList.add('fadeIn');
