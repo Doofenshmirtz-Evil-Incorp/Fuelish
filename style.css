@@ -16,20 +16,23 @@ body{
 
 .container{
     position: relative;
-    width: 400px;
+    width: 500px;
     height: 105px;
     background: #fff;
     border-radius: 18px;
-    font-family: Roboto sans-serif;
-    transition: 0.6s ease-out ;
+    font-family: sans-serif;
+    transition: 0.6s ease-out;
 }
 
 .search-box{
-    width: 100%;
+    width: 95%;
     height: min-content;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .search-box input{
@@ -75,26 +78,38 @@ body{
     margin-top: 30px;
 }
 
-.price-box .price-petrol, .price-box .price-diesel{
-    position: relative;
+.price-box .price-petrol{
+    float: left;
     color: #06283d;
-    font-size: 4rem;
+    font-size: 1.5rem;
     font-weight: 800;
     margin-top: 30px;
-    margin-left: -16px;
+    margin-left: 30px;
+}
+
+.price-box .price-diesel{
+    float: right;
+    color: #06283d;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-top: 30px;
+    text-align: right;
+    margin-right: -150px;
 }
 
 .price-box .price-petrol, .price-box .price-diesel span{
     position: absolute;
-    margin-left: 4px;
+    margin-left: 60px;
     font-size: 1.5rem;
+    padding-left: 20px;
+    /* padding-right: ; */
 }
 
 .change{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 .change .petrol-change, .change .diesel-change{
@@ -156,6 +171,11 @@ body{
     opacity: 0;
 }
 
+.state-img img{
+    width: auto;
+    display: none;
+
+}
 
 .fadeIn{
     animation: 0.5s fadeIn forwards;
