@@ -153,6 +153,8 @@ body{
     text-align: center;
     margin-top: 5px;
     display: none;
+    scale:0;
+    opacity:0;
 }
 
 .not-found img{
@@ -177,7 +179,8 @@ body{
     margin-left: auto;
     margin-right: auto;
     display: none;
-
+    scale:0;
+    opacity:0;
 }
 
 .fadeIn{
