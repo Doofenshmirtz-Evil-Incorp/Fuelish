@@ -3,6 +3,7 @@ const search = document.querySelector('.search-box button');
 const priceBox = document.querySelector('.price-box');
 const change = document.querySelector('.change');
 const error404 = document.querySelector('.not-found');
+const st = document.querySelector('.state-img img');
 
 window.onload=()=>{
   fetch('https://raw.githubusercontent.com/Fuelish/FuelishWeb/main/Data.csv')
@@ -19,7 +20,7 @@ window.onload=()=>{
           for (let j = 0; j < headers.length; j++) {
             obj[headers[j]] = row[j];
           }
-          // document.querySelector('.search-box datalist').innerHTML+="<option>"+obj["State"]+"</option>";
+          document.querySelector('.search-box datalist').innerHTML+="<option>"+obj["State"]+"</option>";
           result.push(obj);
         }
       }
@@ -58,31 +59,35 @@ var func=function()
     var found=0;
       for(i=0;i<lent-2;i++)
          { 
-              if(rslt[i]["State"].toLowerCase()==city)
+            if(rslt[i]["State"].toLowerCase()==city)
               {
-                   error404.style.display='none';
-                   console.log(rslt[i]);
-                   console.log(document.getElementById("pp"));
-                   const ele1=document.getElementById("pp");
-                   ele1.innerText=rslt[i]["Price(P)"];
-                   const ele2=document.getElementById("dp");
-                   ele2.innerText=rslt[i]["Price(D)"];
-                   const ele3=document.getElementById("cp");
-                   ele3.innerText=rslt[i]["Change(P)"];
-                   const ele4=document.getElementById("cd");
-                   ele4.innerText=rslt[i]["Change(D)"];
-                   found=1;
-                   break;
+                error404.style.display='none';
+                console.log(rslt[i]);
+                st.src="images/"+city+".jpeg";
+                st.style.display='block';
+                st.classList.add("fadeIn");
+                console.log(document.getElementById("pp"));
+                const ele1=document.getElementById("pp");
+                ele1.innerText=rslt[i]["Price(P)"];
+                const ele2=document.getElementById("dp");
+                ele2.innerText=rslt[i]["Price(D)"];
+                const ele3=document.getElementById("cp");
+                ele3.innerText=rslt[i]["Change(P)"];
+                const ele4=document.getElementById("cd");
+                ele4.innerText=rslt[i]["Change(D)"];
+                found=1;
+                break;
               }
          }
     if(found==0)
     {
+        st.style.display='none';
          console.log(error404);
          container.style.height='400px'
          change.style.display='none';
          priceBox.style.display='none';
          error404.style.display='block';
-         error404.classList.add('fadein');
+         error404.classList.add('fadeIn');
          return;
     }
     })
