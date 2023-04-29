@@ -4,7 +4,11 @@ const priceBox = document.querySelector('.price-box');
 const change = document.querySelector('.change');
 const error404 = document.querySelector('.not-found');
 const st = document.querySelector('.state-img img');
-
+function preloadImage(url)
+{
+    var img=new Image();
+    img.src=url;
+}
 window.onload=()=>{
   fetch('https://raw.githubusercontent.com/Fuelish/FuelishWeb/main/Data.csv')
     .then(response => response.text())
@@ -20,6 +24,7 @@ window.onload=()=>{
           for (let j = 0; j < headers.length; j++) {
             obj[headers[j]] = row[j];
           }
+          preloadImage("images/"+obj["State"]+".jpeg");
           document.querySelector('.search-box datalist').innerHTML+="<option>"+obj["State"]+"</option>";
           result.push(obj);
         }
