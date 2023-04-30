@@ -125,18 +125,22 @@ var func=function()
         {case "asvin":
           {
             window.open('https://github.com/Asvin1', '_blank');
+            break;
           }
           case "aryaman":
           {
             window.open('https://github.com/actuallyaryaman', '_blank');
+            break;
           }
           case "adit":
           {
             window.open('https://www.99acres.com/', '_blank');
+            break;
           }
           case "manul":
           {
             window.open('https://i.ibb.co/xLyHwcX/Whats-App-Image-2023-04-30-at-1-18-21-PM.jpg', '_blank');
+            break;
           }
         }
          console.log(error404);
