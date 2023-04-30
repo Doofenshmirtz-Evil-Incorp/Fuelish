@@ -11,17 +11,19 @@
     <title>Fuelish</title>
 </head>
 <body>
-    
+    <div class="logo">
+        <img src="images/Feulish.png" alt="">
+    </div>
     <div class="container">
         <div class="search-box">
             <i class="fa-solid fa-location-dot"></i>
-            <input type="text" list="state" placeholder="Enter your location">
+            <input class="inputbox" type="text" list="state" placeholder="Enter your location">
             <datalist id="state"></datalist>
             <button class="fa-solid fa-magnifying-glass"></button>
         </div>
 
         <div class="state-img">
-            <img src="images/chd.jpg" alt="">
+            <img src="images/chd.jpg" width="400" height="235" alt="">
         </div>
 
         <div class="not-found">
@@ -30,32 +32,37 @@
         </div>
 
         <div class="price-box">
-            <img src="" alt="">
-            <p class="price-petrol" id="pp">$12</p>
+            <div class="price-petrol">
+                <p>Petrol</p>
+                <p id="pp">$12</p>
+            </div>
             <br style="clear:both"/>
-            <p class="price-diesel" id="dp">$10</p>
+            <div class="price-diesel">
+                <p>Diesel</p>
+                <p id="dp">$10</p>
+            </div>
         </div>
         <div class="change">
             <div class="petrol-change">
-                <i class="fa-solid fa-angle-up"></i>
-                <i class="fa-solid fa-angle-down"></i>
                 <div class="text">
                     <span></span>
-                    <p>Change in Petrol</p>
+                    <p>Change:</p>
                     <ul id="cp">+$12</ul>
                 </div>
             </div>
 
             <div class="diesel-change">
-                <i class="fa-solid fa-angle-up"></i>
-                <i class="fa-solid fa-angle-down"></i>
                 <div class="text">
                     <span></span>
-                    <p>Change in Diesel </p>
+                    <p>Change:</p>
                     <ul id="cd">-$12</ul>
         </div>
     </div>
+</div>
     <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </body>
+<footer>
+    <p>Made with &hearts; in India by <a href="https://www.github.com/actuallyaryaman">Aryaman</a> and <a href="https://www.github.com/asvin1"> Asvin</a></p>
+</footer>
 </html>
