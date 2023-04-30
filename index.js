@@ -4,10 +4,14 @@ const priceBox = document.querySelector('.price-box');
 const change = document.querySelector('.change');
 const error404 = document.querySelector('.not-found');
 const st = document.querySelector('.state-img img');
-function preloadImage(url)
+const stu = document.querySelector('.state-img');
+function preloadImage(url,name)
 {
     var img=new Image();
     img.src=url;
+    img.id=name.toLowerCase();
+    console.log(img);
+    stu.appendChild(img);
 }
 window.onload=()=>{
   fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/Data.csv')
@@ -24,13 +28,12 @@ window.onload=()=>{
           for (let j = 0; j < headers.length; j++) {
             obj[headers[j]] = row[j];
           }
-          preloadImage("images/"+obj["State"]+".jpeg");
+          preloadImage("images/states/"+obj["State"]+".jpeg",obj["State"]);
           document.querySelector('.search-box datalist').innerHTML+="<option>"+obj["State"]+"</option>";
           result.push(obj);
         }
       }
       rslt=result;
-    console.log(rslt);
 })};
 
 var func=function()
@@ -67,18 +70,45 @@ var func=function()
             if(rslt[i]["State"].toLowerCase()==city)
               {
                 error404.style.display='none';
-                console.log(rslt[i]);
-                st.src="images/states/"+city+".jpeg";
-                st.style.display='block';
-                st.classList.add("fadeIn");
+                for(j=0;j<lent-2;j++)
+                {
+                  document.getElementById(rslt[j]["State"].toLowerCase()).style.display='none';
+                  document.getElementById(rslt[j]["State"].toLowerCase()).classList.remove("fadeIn");
+                }
+                document.getElementById(city).style.display='block';
+                document.getElementById(city).classList.add("fadeIn");
                 console.log(document.getElementById("pp"));
                 const ele1=document.getElementById("pp");
                 ele1.innerText=rslt[i]["Price(P)"];
                 const ele2=document.getElementById("dp");
                 ele2.innerText=rslt[i]["Price(D)"];
                 const ele3=document.getElementById("cp");
+                if((rslt[i]["Change(P)"]).charAt(0)==="+")
+                {
+                  ele3.style.color='crimson';
+                }
+                else if((rslt[i]["Change(P)"]).charAt(0)==="-")
+                {
+                  ele3.style.color='green';
+                }
+                else
+                {
+                  ele3.style.color='#06283D';
+                }
                 ele3.innerText=rslt[i]["Change(P)"];
                 const ele4=document.getElementById("cd");
+                if((rslt[i]["Change(D)"]).charAt(0)==="+")
+                {
+                  ele4.style.color='crimson';
+                }
+                else if((rslt[i]["Change(D)"]).charAt(0)==="-")
+                {
+                  ele4.style.color='green';
+                }
+                else
+                {
+                  ele4.style.color='#06283D';
+                }
                 ele4.innerText=rslt[i]["Change(D)"];
                 found=1;
                 break;
@@ -86,7 +116,29 @@ var func=function()
          }
     if(found==0)
     {
-        st.style.display='none';
+      for(j=0;j<lent-2;j++)
+      {
+        document.getElementById(rslt[j]["State"].toLowerCase()).style.display='none';
+        document.getElementById(rslt[j]["State"].toLowerCase()).classList.remove("fadeIn");
+      }
+      switch(city)
+        {case "asvin":
+          {
+            window.open('https://github.com/Asvin1', '_blank');
+          }
+          case "aryaman":
+          {
+            window.open('https://github.com/actuallyaryaman', '_blank');
+          }
+          case "adit":
+          {
+            window.open('https://www.99acres.com/', '_blank');
+          }
+          case "manul":
+          {
+            window.open('https://i.ibb.co/xLyHwcX/Whats-App-Image-2023-04-30-at-1-18-21-PM.jpg', '_blank');
+          }
+        }
          console.log(error404);
          container.style.height='400px'
          change.style.display='none';
