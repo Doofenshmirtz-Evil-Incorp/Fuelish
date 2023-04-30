@@ -10,7 +10,7 @@ function preloadImage(url)
     img.src=url;
 }
 window.onload=()=>{
-  fetch('https://raw.githubusercontent.com/Fuelish/FuelishWeb/main/Data.csv')
+  fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/Data.csv')
     .then(response => response.text())
     .then(data => {
       const rows = data.split('\r\n');
@@ -42,7 +42,7 @@ var func=function()
     city=city.toLowerCase();
     var lent=0;
     var rslt;
-    fetch('https://raw.githubusercontent.com/Fuelish/FuelishWeb/main/Data.csv')
+    fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/Data.csv')
     .then(response => response.text())
     .then(data => {
       const rows = data.split('\r\n');
