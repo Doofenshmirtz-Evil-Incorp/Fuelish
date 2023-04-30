@@ -92,6 +92,7 @@ input[type="text"]{
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    margin-left: 2%;
 }
 
 .price-box .price-petrol{
@@ -109,16 +110,17 @@ input[type="text"]{
     font-size: 1.5rem;
     font-weight: 800;
     margin-top: 30px;
-    text-align: left;
-    margin-right: 90px;
+    text-align: center;
+    margin-right: 15%;
 }
 
 .price-box .price-petrol, .price-box .price-diesel span{
-    position: absolute;
-    margin-left: 60px;
+    text-align: center;
+    position: relative;
+    margin-left: 10%;
     font-size: 1.5rem;
-    padding-left: 20px;
-    /* padding-right: ; */
+    padding-left: 0%;
+    padding-right: 10%;
 }
 
 .change{
@@ -126,26 +128,28 @@ input[type="text"]{
     display: flex;
     justify-content: space-between;
     margin-top: -10px;
+    margin-left: 5%;
 }
 
 .change .petrol-change, .change .diesel-change{
     display: flex;
+    position: relative;
     align-items: center;
     width: 50%;
     height: 100px;
-    margin-left: -6%;
+    margin-left: -10%;
 }
 
 .change .petrol-change{
-    padding-left: 20px;
     justify-content: center;
     font-weight: bold;
+    margin-left: -10%;
 }
 
 .change .diesel-change{
     margin-right: 8%;
     justify-content: center;
-    font-weight: bold;
+    font-weight: bold;padding-left: 5%;
 }
 
 .change i{
