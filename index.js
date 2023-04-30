@@ -68,7 +68,7 @@ var func=function()
               {
                 error404.style.display='none';
                 console.log(rslt[i]);
-                st.src="images/"+city+".jpeg";
+                st.src="images/states/"+city+".jpeg";
                 st.style.display='block';
                 st.classList.add("fadeIn");
                 console.log(document.getElementById("pp"));
