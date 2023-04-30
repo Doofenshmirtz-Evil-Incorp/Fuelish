@@ -11,6 +11,7 @@ Fuelish is a simple web application that helps you to check the fuel prices of y
   - [Installation](#installation)
   - [Usage](#usage)
   - [Contributing](#contributing)
+  - [Author](#author)
   - [License](#license)
 
 ## Features
@@ -43,13 +44,17 @@ To use Fuelish, follow these steps:
 
 ## Contributing
 
-We welcome contributions from the community. To contribute to Fuelish, follow these steps:
+We welcome contributions from the community, especially if you're willing to bribe us with fuel. To contribute to Fuelish, follow these steps:
 
 1. Fork the repository.
 2. Create a new branch: git checkout -b my-feature-branch
 3. Make your changes and commit them: git commit -am 'Add some feature'
 4. Push to the branch: git push origin my-feature-branch
 5. Submit a pull request, and we'll consider it (as long as it's not just a request to add a feature that tells jokes).
+
+## Author
+
+Fuelish was created by [Aryaman Srivastava](@actuallyaryaman) and [Asvin Jain](@asvin1), two fuel-saving ninjas who believe that the only thing better than a full tank of gas is a full tank of gas that didn't break the bank. If you have any questions or feedback, you can reach out to us at  We promise to respond faster than a V8 engine revving up!
 
 ## License
 
