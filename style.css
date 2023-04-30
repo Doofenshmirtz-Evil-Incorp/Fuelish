@@ -11,16 +11,26 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #06283D;
+    background: #000000;
+}
+
+.logo{
+    position:absolute;
+    left:0;
+    top:0;
+    margin-bottom: auto;
+
 }
 
 .container{
     position: relative;
+    margin-top: 120px;
+    margin-bottom: auto;
     width: 500px;
     height: 105px;
-    background: #fff;
+    background: #ffffffd6;
     border-radius: 18px;
-    font-family: sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     transition: 0.6s ease-out;
 }
 
@@ -36,15 +46,16 @@ body{
 }
 
 .search-box input{
+    background-color: #ffffffd6;
     color: #06283d;
     width: 80%;
     font-size: 24px;
     font-weight: 500;
-    text-transform: uppercase;
     padding-left: 32px;
 }
 
 .search-box input::placeholder{
+    background: #D6D6D6;
     font-size: 20px;
     font-weight: 500;
     color: #06283d;
@@ -54,28 +65,33 @@ body{
     cursor: pointer;
     width: 50px;
     height: 50px;
-    color: #06283d;
-    background: #dff6ff;
+    color: #000000;
+    background: #D6D6D6;
     border-radius: 50%;
     font-size: 22px;
     transition: 0.4s ease;
 }
 
+input[type="text"]{
+    background-color: #D6D6D6;
+}
+
 .search-box button:hover{
-    color: #fff;
-    background: #06283d;
+    color: #ffffffd6;
+    background: #000000;
 }
 
 .search-box i{
     position: absolute;
-    color: #06283d;
+    color: #e40b0b;
     font-size: 28px;
 }
 
 .price-box{
-    text-align: center;
-    width: 60%;
-    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
 .price-box .price-petrol{
@@ -88,13 +104,13 @@ body{
 }
 
 .price-box .price-diesel{
-    float: right;
+    float: left;
     color: #06283d;
     font-size: 1.5rem;
     font-weight: 800;
     margin-top: 30px;
-    text-align: right;
-    margin-right: -150px;
+    text-align: left;
+    margin-right: 90px;
 }
 
 .price-box .price-petrol, .price-box .price-diesel span{
@@ -109,7 +125,7 @@ body{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 60px;
+    margin-top: -10px;
 }
 
 .change .petrol-change, .change .diesel-change{
@@ -117,16 +133,19 @@ body{
     align-items: center;
     width: 50%;
     height: 100px;
+    margin-left: -6%;
 }
 
 .change .petrol-change{
     padding-left: 20px;
-    justify-content: flex-start;
+    justify-content: center;
+    font-weight: bold;
 }
 
 .change .diesel-change{
-    padding-left: 20px;
-    justify-content: flex-start;
+    margin-right: 8%;
+    justify-content: center;
+    font-weight: bold;
 }
 
 .change i{
@@ -181,6 +200,19 @@ body{
     display: none;
     scale:0;
     opacity:0;
+}
+
+footer{
+    color: white;
+    text-align: center; 
+    bottom: 0;
+    position: fixed;
+    right: 0;
+    left: 0;
+}
+
+footer a{
+    color: rgb(145, 222, 234);
 }
 
 .fadeIn{
