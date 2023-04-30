@@ -28,7 +28,7 @@ window.onload=()=>{
           for (let j = 0; j < headers.length; j++) {
             obj[headers[j]] = row[j];
           }
-          preloadImage("images/states/"+obj["State"]+".jpeg",obj["State"]);
+          preloadImage("images/states/"+obj["State"].toLowerCase()+".jpeg",obj["State"].toLowerCase());
           document.querySelector('.search-box datalist').innerHTML+="<option>"+obj["State"]+"</option>";
           result.push(obj);
         }
