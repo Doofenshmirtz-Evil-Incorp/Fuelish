@@ -3,7 +3,7 @@ const search = document.querySelector('.search-box button');
 const priceBox = document.querySelector('.price-box');
 const change = document.querySelector('.change');
 const error404 = document.querySelector('.not-found');
-const st = document.querySelector('.state-img img');
+const st = document.querySelector('.state-img iframe');
 const stu = document.querySelector('.state-img');
 const getLoc = document.getElementById("getlocation");
         
@@ -29,7 +29,7 @@ function preloadImage(url,name)
     stu.appendChild(img);
 }
 window.onload=()=>{
-  fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/Data.csv')
+  fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/City.csv')
     .then(response => response.text())
     .then(data => {
       const rows = data.split('\r\n');
@@ -43,9 +43,9 @@ window.onload=()=>{
           for (let j = 0; j < headers.length; j++) {
             obj[headers[j]] = row[j];
           }
-          preloadImage("images/states/"+obj["State"].toLowerCase()+".jpeg",obj["State"].toLowerCase());
-          document.querySelector('.search-box datalist').innerHTML+="<option>"+obj["State"]+"</option>";
-          result.push(obj);
+          // preloadImage("images/states/"+obj["City"].toLowerCase()+".jpeg",obj["City"].toLowerCase());
+          document.querySelector('.search-box datalist').innerHTML+="<option>"+obj["City"]+"</option>";
+          // result.push(obj);
         }
       }
       rslt=result;
@@ -60,7 +60,7 @@ var func=function()
     city=city.toLowerCase();
     var lent=0;
     var rslt;
-    fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/Data.csv')
+    fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/City.csv')
     .then(response => response.text())
     .then(data => {
       const rows = data.split('\r\n');
@@ -78,21 +78,15 @@ var func=function()
         }
       }
       rslt=result;
-    console.log(rslt);
     var found=0;
       for(i=0;i<lent-2;i++)
          { 
-            if(rslt[i]["State"].toLowerCase()==city)
+            if(rslt[i]["City"].toLowerCase()==city)
               {
                 error404.style.display='none';
-                for(j=0;j<lent-2;j++)
-                {
-                  document.getElementById(rslt[j]["State"].toLowerCase()).style.display='none';
-                  document.getElementById(rslt[j]["State"].toLowerCase()).classList.remove("fadeIn");
-                }
-                document.getElementById(city).style.display='block';
-                document.getElementById(city).classList.add("fadeIn");
-                console.log(document.getElementById("pp"));
+                st.style.display='block';
+                var iframe = document.getElementById('map');
+                iframe.src = iframe.src;
                 const ele1=document.getElementById("pp");
                 ele1.innerText=rslt[i]["Price(P)"];
                 const ele2=document.getElementById("dp");
@@ -131,11 +125,7 @@ var func=function()
          }
     if(found==0)
     {
-      for(j=0;j<lent-2;j++)
-      {
-        document.getElementById(rslt[j]["State"].toLowerCase()).style.display='none';
-        document.getElementById(rslt[j]["State"].toLowerCase()).classList.remove("fadeIn");
-      }
+      st.style.display='none';
       switch(city)
         {case "asvin":
           {
