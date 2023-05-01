@@ -212,8 +212,6 @@ input[type="text"]{
     margin-left: auto;
     margin-right: auto;
     display: block;
-    scale:0;
-    opacity:0;
 }
 
 footer{
