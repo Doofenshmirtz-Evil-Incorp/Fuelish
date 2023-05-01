@@ -13,6 +13,7 @@ function preloadImage(url,name)
     console.log(img);
     stu.appendChild(img);
 }
+var cords=[];
 window.onload=()=>{
   fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/City.csv')
     .then(response => response.text())
@@ -32,9 +33,27 @@ window.onload=()=>{
           document.querySelector('.search-box datalist').innerHTML+="<option>"+obj["City"]+"</option>";
           // result.push(obj);
         }
+      }})
+  fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
+    .then(response => response.text())
+    .then(data => {
+      const rows = data.split('\r\n');
+      const headers = rows[0].split(',');
+      const result = [];
+      lent=rows.length;
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i].split(',');
+        if (row.length === headers.length) {
+          const obj = {};
+          for (let j = 0; j < headers.length; j++) {
+            obj[headers[j]] = row[j];
+          }
+          cords.push(obj);
+        }
       }
-      rslt=result;
-})};
+      console.log(cords);
+    }
+)};
 
 var func=function()
 {
@@ -70,8 +89,10 @@ var func=function()
               {
                 error404.style.display='none';
                 st.style.display='block';
+                console.log(cords[i]);
+                var newsrc="https://www.openstreetmap.org/export/embed.html?bbox="+(parseFloat(cords[i]["long"])-0.05).toString()+"%2C"+(parseFloat(cords[i]["lat"])-0.05).toString()+"%2C"+(parseFloat(cords[i]["long"])+0.05).toString()+"%2C"+(parseFloat(cords[i]["lat"])+0.05).toString()+"&amp;layer=mapnik;marker="+cords[i]["lat"]+"%2C"+cords[i]["long"];
                 var iframe = document.getElementById('map');
-                iframe.src = iframe.src;
+                iframe.src=newsrc;
                 const ele1=document.getElementById("pp");
                 ele1.innerText=rslt[i]["Price(P)"];
                 const ele2=document.getElementById("dp");
@@ -87,7 +108,7 @@ var func=function()
                 }
                 else
                 {
-                  ele3.style.color='#06283D';
+                  ele3.style.color='green';
                 }
                 ele3.innerText=rslt[i]["Change(P)"];
                 const ele4=document.getElementById("cd");
@@ -101,7 +122,7 @@ var func=function()
                 }
                 else
                 {
-                  ele4.style.color='#06283D';
+                  ele4.style.color='green';
                 }
                 ele4.innerText=rslt[i]["Change(D)"];
                 found=1;
