@@ -5,6 +5,21 @@ const change = document.querySelector('.change');
 const error404 = document.querySelector('.not-found');
 const st = document.querySelector('.state-img img');
 const stu = document.querySelector('.state-img');
+const getLoc = document.getElementById("getlocation");
+        
+        getLoc.addEventListener('click', event => {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(pos => {
+                    const latitude = pos.coords.latitude;
+                    const longitude = pos.coords.longitude;
+                    console.log(latitude, longitude);
+                }, error => {
+                    console.log("Geolocation request denied by user", error.code);
+                });
+            } else {
+                console.log("Geolocation is not supported.");
+            }
+        });
 function preloadImage(url,name)
 {
     var img=new Image();
