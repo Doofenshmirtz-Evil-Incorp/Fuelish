@@ -122,7 +122,7 @@ var func=function()
                 }
                 else
                 {
-                  ele3.style.color='#06283D';
+                  ele3.style.color='green';
                 }
                 ele3.innerText=rslt[i]["Change(P)"];
                 const ele4=document.getElementById("cd");
@@ -136,7 +136,7 @@ var func=function()
                 }
                 else
                 {
-                  ele4.style.color='#06283D';
+                  ele4.style.color='green';
                 }
                 ele4.innerText=rslt[i]["Change(D)"];
                 found=1;
