@@ -6,7 +6,7 @@ const error404 = document.querySelector('.not-found');
 const st = document.querySelector('.state-img iframe');
 const stu = document.querySelector('.state-img');
 const getLoc = document.getElementById("getlocation");
-        
+var cords=[];
         getLoc.addEventListener('click', event => {
             if ('geolocation' in navigator) {
                 navigator.geolocation.getCurrentPosition(pos => {
@@ -48,8 +48,26 @@ window.onload=()=>{
           // result.push(obj);
         }
       }
-      rslt=result;
-})};
+    })
+  }
+fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
+.then(response => response.text())
+.then(data => {
+  const rows = data.split('\r\n');
+  const headers = rows[0].split(',');
+  const result = [];
+  lent=rows.length;
+  for (let i = 1; i < rows.length; i++) {
+    const row = rows[i].split(',');
+    if (row.length === headers.length) {
+      const obj = {};
+      for (let j = 0; j < headers.length; j++) {
+        obj[headers[j]] = row[j];
+      }
+      cords.push(obj);
+    }
+  }
+});
 
 var func=function()
 {
@@ -85,8 +103,10 @@ var func=function()
               {
                 error404.style.display='none';
                 st.style.display='block';
+                // console.log(cords[i]);
+                var newsrc="https://www.openstreetmap.org/export/embed.html?bbox="+(parseFloat(cords[i]["long"])-0.05).toString()+"%2C"+(parseFloat(cords[i]["lat"])-0.05).toString()+"%2C"+(parseFloat(cords[i]["long"])+0.05).toString()+"%2C"+(parseFloat(cords[i]["lat"])+0.05).toString()+"&amp;layer=mapnik;marker="+cords[i]["lat"]+"%2C"+cords[i]["long"];
                 var iframe = document.getElementById('map');
-                iframe.src = iframe.src;
+                iframe.src=newsrc;
                 const ele1=document.getElementById("pp");
                 ele1.innerText=rslt[i]["Price(P)"];
                 const ele2=document.getElementById("dp");
