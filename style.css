@@ -206,6 +206,16 @@ input[type="text"]{
     opacity:0;
 }
 
+.state-img iframe{
+    width: 80%;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    scale:0;
+    opacity:0;
+}
+
 footer{
     color: white;
     text-align: center; 

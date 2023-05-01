@@ -3,7 +3,7 @@ const search = document.querySelector('.search-box button');
 const priceBox = document.querySelector('.price-box');
 const change = document.querySelector('.change');
 const error404 = document.querySelector('.not-found');
-const st = document.querySelector('.state-img img');
+const st = document.querySelector('.state-img iframe');
 const stu = document.querySelector('.state-img');
 function preloadImage(url,name)
 {
@@ -28,9 +28,9 @@ window.onload=()=>{
           for (let j = 0; j < headers.length; j++) {
             obj[headers[j]] = row[j];
           }
-          preloadImage("images/states/"+obj["City"].toLowerCase()+".jpeg",obj["City"].toLowerCase());
+          // preloadImage("images/states/"+obj["City"].toLowerCase()+".jpeg",obj["City"].toLowerCase());
           document.querySelector('.search-box datalist').innerHTML+="<option>"+obj["City"]+"</option>";
-          result.push(obj);
+          // result.push(obj);
         }
       }
       rslt=result;
@@ -69,6 +69,9 @@ var func=function()
             if(rslt[i]["City"].toLowerCase()==city)
               {
                 error404.style.display='none';
+                st.style.display='block';
+                var iframe = document.getElementById('map');
+                iframe.src = iframe.src;
                 const ele1=document.getElementById("pp");
                 ele1.innerText=rslt[i]["Price(P)"];
                 const ele2=document.getElementById("dp");
@@ -107,6 +110,7 @@ var func=function()
          }
     if(found==0)
     {
+      st.style.display='none';
       switch(city)
         {case "asvin":
           {
