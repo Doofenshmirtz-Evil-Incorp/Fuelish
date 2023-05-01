@@ -186,6 +186,7 @@ var func=function()
 
        }
 }
+document.getElementById('sbut').addEventListener('click', func,false);
 search.addEventListener('click', func,false );
 document.querySelector('.search-box input').addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
