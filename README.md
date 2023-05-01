@@ -63,4 +63,4 @@ Fuelish is licensed under the GNU V3 License. See the [LICENSE](LICENSE) file fo
 
 ## Acknowledgements
 
-[Adit Kaushal](99acres.com)
+[Adit Kaushal](https://www.99acres.com)
