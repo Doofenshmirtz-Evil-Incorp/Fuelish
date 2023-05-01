@@ -28,7 +28,7 @@ body{
     margin-bottom: auto;
     width: 500px;
     height: 105px;
-    background: #ffffffd6;
+    background: #AAD3DF;
     border-radius: 18px;
     font-family: Arial, Helvetica, sans-serif;
     transition: 0.6s ease-out;
@@ -46,7 +46,7 @@ body{
 }
 
 .search-box input{
-    background-color: #ffffffd6;
+    background-color: #AAD3DF;
     color: #06283d;
     width: 80%;
     font-size: 24px;
@@ -55,7 +55,7 @@ body{
 }
 
 .search-box input::placeholder{
-    background: #D6D6D6;
+    background: #AAD3DF;
     font-size: 20px;
     font-weight: 500;
     color: #06283d;
@@ -66,18 +66,18 @@ body{
     width: 50px;
     height: 50px;
     color: #000000;
-    background: #D6D6D6;
+    background: #AAD3DF;
     border-radius: 50%;
     font-size: 22px;
     transition: 0.4s ease;
 }
 
 input[type="text"]{
-    background-color: #D6D6D6;
+    background-color: #AAD3DF;
 }
 
 .search-box button:hover{
-    color: #ffffffd6;
+    color: #AAD3DF;
     background: #000000;
 }
 
@@ -207,11 +207,11 @@ input[type="text"]{
 }
 
 .state-img iframe{
-    width: 80%;
+    width: 90%;
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
-    display: block;
+    display: none;
 }
 
 footer{
