@@ -40,8 +40,6 @@ window.onload=()=>{
           for (let j = 0; j < headers.length; j++) {
             obj[headers[j]] = row[j];
           }
-          // preloadImage("images/states/"+obj["City"].toLowerCase()+".jpeg",obj["City"].toLowerCase());
-          // document.querySelector('.search-box datalist').innerHTML+="<option>"+obj["City"]+"</option>";
           document.getElementById("state").innerHTML+="<option value='"+obj["State"]+"'>"+obj["State"]+"</option>";
           rslt.push(obj);
         }
@@ -157,12 +155,6 @@ var found=0;
             break;
           }
         }
-        //  console.log(error404);
-        //  container.style.height='400px'
-        //  change.style.display='none';
-        //  priceBox.style.display='none';
-        //  error404.style.display='block';
-        //  error404.classList.add('fadeIn');
          return;
     }
 }
@@ -197,38 +189,6 @@ function func()
                     }
                   }
                 })
-                // const ele1=document.getElementById("pp");
-                // ele1.innerText=rslt[i]["Price(P)"];
-                // const ele2=document.getElementById("dp");
-                // ele2.innerText=rslt[i]["Price(D)"];
-                // const ele3=document.getElementById("cp");
-                // if((rslt[i]["Change(P)"]).charAt(0)==="+")
-                // {
-                //   ele3.style.color='crimson';
-                // }
-                // else if((rslt[i]["Change(P)"]).charAt(0)==="-")
-                // {
-                //   ele3.style.color='green';
-                // }
-                // else
-                // {
-                //   ele3.style.color='green';
-                // }
-                // ele3.innerText=rslt[i]["Change(P)"];
-                // const ele4=document.getElementById("cd");
-                // if((rslt[i]["Change(D)"]).charAt(0)==="+")
-                // {
-                //   ele4.style.color='crimson';
-                // }
-                // else if((rslt[i]["Change(D)"]).charAt(0)==="-")
-                // {
-                //   ele4.style.color='green';
-                // }
-                // else
-                // {
-                //   ele4.style.color='green';
-                // }
-                // ele4.innerText=rslt[i]["Change(D)"];
                 found=1;
                 break;
               }
@@ -258,23 +218,9 @@ function func()
             break;
           }
         }
-        //  console.log(error404);
-        //  container.style.height='400px'
-        //  change.style.display='none';
-        //  priceBox.style.display='none';
-        //  error404.style.display='block';
-        //  error404.classList.add('fadeIn');
          return;
     }
     
 }
 document.getElementById('state').addEventListener('change',func);
 document.getElementById('city').addEventListener('change', cfunc);
-// document.getElementById('sbut').addEventListener('click', func(rslt),false);
-// document.getElementById('state').addEventListener('click', func(rslt),false);
-// search.addEventListener('click', func(rslt),false );
-// document.querySelector('.search-box input').addEventListener('keypress', function (e) {
-//   if (e.key === 'Enter') {
-//     func();
-//   }
-// });
