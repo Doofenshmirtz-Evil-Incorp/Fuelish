@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap"
-        rel="stylesheet">
+    
+    <!-- Importing Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Importing external stylesheet -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Setting page title -->
     <title>Fuelish</title>
 </head>
 <body>
+    <!-- Logo section -->
     <div class="logo">
         <a href="https://github.com/Fuelish"><img src="images/Feulish.png" width="200px" alt=""></a>
     </div>
+    
+    <!-- Search box section -->
     <div class="container">
         <div class="search-box">
             <button id="getlocation" class="fa-solid fa-location-dot"></button>
@@ -25,7 +32,8 @@
             </select>
             <button id="sbut" class="fa-solid fa-magnifying-glass"></button>
         </div>        
-
+        
+        <!-- Map section -->
         <div class="state-img">
             <iframe id="map"
                 height="200"
@@ -36,12 +44,14 @@
                  src="https://www.openstreetmap.org/export/embed.html?bbox=40.86914062500001%2C-9.958868450753572%2C123.13476562500001%2C45.34382576751692&amp;layer=mapnik">
             </iframe>
         </div>
-
+        
+        <!-- Not found section -->
         <div class="not-found">
             <img src="images/404.png" alt="">
             <p>Oops! Invalid Location : </p>
         </div>
-
+        
+        <!-- Price box section -->
         <div class="price-box">
             <div class="price-petrol">
                 <p>Petrol</p>
@@ -53,6 +63,8 @@
                 <p id="dp">$10</p>
             </div>
         </div>
+        
+        <!-- Change section -->
         <div class="change">
             <div class="petrol-change">
                 <div class="text">
@@ -61,18 +73,22 @@
                     <ul id="cp">+$12</ul>
                 </div>
             </div>
-
             <div class="diesel-change">
                 <div class="text">
                     <span></span>
                     <p>Change:</p>
                     <ul id="cd">-$12</ul>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    
+    <!-- Importing Font Awesome icon library -->
     <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
+    <!-- Import index.js -->
     <script src="index.js"></script>
 </body>
+<!-- Footer Section -->
 <footer>
     <p>Made with &hearts; in India by <a href="https://www.github.com/actuallyaryaman">Aryaman</a> and <a href="https://www.github.com/asvin1"> Asvin</a></p>
 </footer>
