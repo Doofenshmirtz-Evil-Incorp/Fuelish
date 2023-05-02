@@ -197,38 +197,38 @@ function func()
                     }
                   }
                 })
-                const ele1=document.getElementById("pp");
-                ele1.innerText=rslt[i]["Price(P)"];
-                const ele2=document.getElementById("dp");
-                ele2.innerText=rslt[i]["Price(D)"];
-                const ele3=document.getElementById("cp");
-                if((rslt[i]["Change(P)"]).charAt(0)==="+")
-                {
-                  ele3.style.color='crimson';
-                }
-                else if((rslt[i]["Change(P)"]).charAt(0)==="-")
-                {
-                  ele3.style.color='green';
-                }
-                else
-                {
-                  ele3.style.color='green';
-                }
-                ele3.innerText=rslt[i]["Change(P)"];
-                const ele4=document.getElementById("cd");
-                if((rslt[i]["Change(D)"]).charAt(0)==="+")
-                {
-                  ele4.style.color='crimson';
-                }
-                else if((rslt[i]["Change(D)"]).charAt(0)==="-")
-                {
-                  ele4.style.color='green';
-                }
-                else
-                {
-                  ele4.style.color='green';
-                }
-                ele4.innerText=rslt[i]["Change(D)"];
+                // const ele1=document.getElementById("pp");
+                // ele1.innerText=rslt[i]["Price(P)"];
+                // const ele2=document.getElementById("dp");
+                // ele2.innerText=rslt[i]["Price(D)"];
+                // const ele3=document.getElementById("cp");
+                // if((rslt[i]["Change(P)"]).charAt(0)==="+")
+                // {
+                //   ele3.style.color='crimson';
+                // }
+                // else if((rslt[i]["Change(P)"]).charAt(0)==="-")
+                // {
+                //   ele3.style.color='green';
+                // }
+                // else
+                // {
+                //   ele3.style.color='green';
+                // }
+                // ele3.innerText=rslt[i]["Change(P)"];
+                // const ele4=document.getElementById("cd");
+                // if((rslt[i]["Change(D)"]).charAt(0)==="+")
+                // {
+                //   ele4.style.color='crimson';
+                // }
+                // else if((rslt[i]["Change(D)"]).charAt(0)==="-")
+                // {
+                //   ele4.style.color='green';
+                // }
+                // else
+                // {
+                //   ele4.style.color='green';
+                // }
+                // ele4.innerText=rslt[i]["Change(D)"];
                 found=1;
                 break;
               }
