@@ -17,10 +17,14 @@
     <div class="container">
         <div class="search-box">
             <button id="getlocation" class="fa-solid fa-location-dot"></button>
-            <input class="inputbox" type="text" list="state" placeholder="Enter your location">
-            <datalist id="state"></datalist>
+            <select name="state" id="state" class="dropdown">
+                <option value="" selected>Select a state</option>
+            </select>
+            <select name="city" id="city" disabled class="dropdown">
+                <option value="" selected disabled>Select a city</option>
+            </select>
             <button id="sbut" class="fa-solid fa-magnifying-glass"></button>
-        </div>
+        </div>        
 
         <div class="state-img">
             <iframe id="map"

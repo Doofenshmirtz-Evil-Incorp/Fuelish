@@ -23,7 +23,7 @@ body{
 
 .container{
     position: relative;
-    margin-top: 120px;
+    margin-top: auto;
     margin-bottom: auto;
     width: 500px;
     height: 105px;
@@ -44,20 +44,19 @@ body{
     margin-right: auto;
 }
 
-.search-box input{
-    background-color: #AAD3DF;
-    color: #06283d;
-    width: 80%;
-    font-size: 24px;
-    font-weight: 500;
-    padding-left: 32px;
+select[name="state"],
+select[name="city"] {
+    background-color: #bceceb;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #AAD3DF;
+    border-radius: 5px;
+    width: 200px;
+    margin-right: 10px;
 }
 
-.search-box input::placeholder{
-    background: #AAD3DF;
-    font-size: 20px;
-    font-weight: 500;
-    color: #06283d;
+select[name="city"] {
+  margin-right: 0;
 }
 
 .search-box button{
