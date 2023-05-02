@@ -21,7 +21,7 @@ body{
 
 }
 
-.container{
+.container {
     position: relative;
     margin-top: auto;
     margin-bottom: auto;
@@ -32,6 +32,14 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     transition: 0.6s ease-out;
 }
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+    height: auto;
+  }
+}
+
 
 .search-box{
     width: 95%;
