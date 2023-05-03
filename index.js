@@ -19,6 +19,11 @@ getLoc.addEventListener('click', event => {
             const latitude = pos.coords.latitude;
             const longitude = pos.coords.longitude;
             console.log(latitude, longitude);
+            fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+latitude+'&lon='+longitude)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data["address"]);
+            });
         }, error => {
             console.log("Geolocation request denied by user", error.code);
         });
@@ -44,7 +49,6 @@ window.onload=()=>{
           rslt.push(obj);
         }
       }
-      console.log(rslt);
     })
     .catch(error => console.error(error));
   fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
@@ -67,15 +71,17 @@ window.onload=()=>{
     })
   .catch(error => console.error(error));
 }
-function getcord(city)
-{
-  for(j=0;j<corlent-2;j++)
-  { 
-     if(cords[j]["City"].toLowerCase()==city.toLowerCase())
-       {return [cords[j]["lat"],cords[j]["long"]];}
-  }
-}
-function cfunc()
+async function getcord(city)
+{ var arr=[];
+       arr=await fetch('https://nominatim.openstreetmap.org/search.php?q='+city.replace(/ /g, '+')+'&format=jsonv2')
+       .then(response => response.json())
+       .then(data => {
+           return data[0]["boundingbox"];
+       })
+       .catch(error => {console.error(error);return [0,0,0,0]});
+  return arr;
+};
+async function cfunc()
 {
 var found=0;
       for(i=0;i<clent;i++)
@@ -89,8 +95,8 @@ var found=0;
                 change.classList.add('fadeIn');
                 container.style.height = '590px';
                 st.style.display='block';
-                var [lat,long]=getcord(datac[i]["City"]);
-                var newsrc="https://www.openstreetmap.org/export/embed.html?bbox="+(parseFloat(long)-0.05).toString()+"%2C"+(parseFloat(lat)-0.05).toString()+"%2C"+(parseFloat(long)+0.05).toString()+"%2C"+(parseFloat(lat)+0.05).toString()+"&amp;layer=mapnik";
+                var [b0,b1,b2,b3]=await getcord(datac[i]["City"]);
+                var newsrc="https://www.openstreetmap.org/export/embed.html?bbox="+b2+"%2C"+b0+"%2C"+b3+"%2C"+b1+"&amp;layer=mapnik";
                 var iframe = document.getElementById('map');
                 iframe.src=newsrc;
                 iframe.style.display='block';
@@ -158,16 +164,19 @@ var found=0;
          return;
     }
 }
-function func()
+async function func()
 {
   if(state.value=="")
     {return;}
-  console.log(state.value);
     var found=0;
       for(i=0;i<slent-2;i++)
          { 
             if(rslt[i]["State"].toLowerCase()==(state.value).toLowerCase())
-              {console.log('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv');
+              {
+                var [b0,b1,b2,b3]=await getcord(state.value);
+                var newsrc="https://www.openstreetmap.org/export/embed.html?bbox="+b2+"%2C"+b0+"%2C"+b3+"%2C"+b1+"&amp;layer=mapnik";
+                var iframe = document.getElementById('map');
+                iframe.src=newsrc;
                 document.getElementById("city").disabled=false;
                 document.getElementById("city").innerHTML="<option value='' selected disabled>Select a city</option>";
                 fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
