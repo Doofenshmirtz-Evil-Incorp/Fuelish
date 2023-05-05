@@ -34,7 +34,7 @@ getLoc.addEventListener('click', event => {
 window.onload=async ()=>{
   var status=0;
     while(status==0)
-    {await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv')
+    {await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv',{method:"GET",mode:"cors"})
     .then(response => response.text())
     .then(data => {
       const rows = data.split('\r\n');
