@@ -33,8 +33,9 @@ getLoc.addEventListener('click', event => {
 });
 window.onload=async ()=>{
   var status=0;
-    while(status==0)
-    {await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv')
+    while(status!=2)
+    {console.log(status);
+     await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv')
     .then(response => response.text())
     .then(data => {
       const rows = data.split('\r\n');
