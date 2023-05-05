@@ -33,6 +33,9 @@ getLoc.addEventListener('click', event => {
 });
 window.onload=async ()=>{
   var status=0;
+  await fetch('https://raw.githubusercontent.com/Doofenshmirtz-Evil-Incorp/FuelishCLI/main/src/requirements.txt',{method:"GET",mode:"cors"})
+  .then(response => response.text())
+  .then(data => {console.log(data);});
     while(status!=2)
     {console.log(status);
      await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv',{method:"GET",mode:"cors"})
