@@ -7,12 +7,14 @@ const st = document.querySelector('.state-img iframe');
 const stu = document.querySelector('.state-img');
 const getLoc = document.getElementById("getlocation");
 const stdrop = document.querySelector('.search-box select');
+
 var cords=[];
 var rslt=[];//state data
 var datac=[];//city data of select state
 var slent;
 var clent;
 var corlent;
+
 getLoc.addEventListener('click', event => {
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(pos => {
@@ -33,14 +35,7 @@ getLoc.addEventListener('click', event => {
 });
 window.onload=async ()=>{
   var status=0;
-  await fetch('https://nominatim.openstreetmap.org/search.php?q=delhi&format=jsonv2')
-       .then(response => response.json())
-       .then(data => {
-           console.log(data);
-       })
-       .catch(error => {console.error(error)});
-    while(status!=2)
-    {console.log(status);
+    while(status!=2){
      await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv',{method:"GET",mode:"cors"})
     .then(response => response.text())
     .then(data => {
