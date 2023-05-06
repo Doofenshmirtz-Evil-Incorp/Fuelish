@@ -1,3 +1,4 @@
+import {Closest} from './pos.js';
 const container = document.querySelector('.container');
 const search = document.querySelector('.search-box button');
 const priceBox = document.querySelector('.price-box');
@@ -15,16 +16,20 @@ var slent;
 var clent;
 var corlent;
 
-getLoc.addEventListener('click', event => {
+getLoc.addEventListener('click',  event => {
+  let gcity,gstate;
     if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(pos => {
+        navigator.geolocation.getCurrentPosition( pos => {
             const latitude = pos.coords.latitude;
             const longitude = pos.coords.longitude;
             console.log(latitude, longitude);
             fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+latitude+'&lon='+longitude)
             .then(response => response.json())
-            .then(data => {
-                console.log(data["address"]);
+            .then(async data => {
+                [gcity,gstate]=Closest(cords,[latitude,longitude],data["address"]["state"]);
+                document.getElementById("state").value=gstate;
+                console.log(document.getElementById("state").value);
+                await func(1,gcity);
             });
         }, error => {
             console.log("Geolocation request denied by user", error.code);
@@ -59,7 +64,7 @@ window.onload=async ()=>{
   await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
   .then(response => response.text())
   .then(data => {
-    const rows = data.split('\r\n');
+    const rows = data.split('\r\r\n');
     const headers = rows[0].split(',');
     corlent=rows.length;
     for (let i = 1; i < rows.length; i++) {
@@ -91,6 +96,7 @@ async function getcord(city)
 async function cfunc()
 {
 var found=0;
+let i;
       for(i=0;i<clent;i++)
          {                 
             if(datac[i]["City"].toLowerCase()==(city.value).toLowerCase())
@@ -171,11 +177,12 @@ var found=0;
          return;
     }
 }
-async function func()
+async function func(mode=0,gcity)
 {
   if(state.value=="")
     {return;}
     var found=0;
+    let i;
       for(i=0;i<slent-2;i++)
          { 
             if(rslt[i]["State"].toLowerCase()==(state.value).toLowerCase())
@@ -200,9 +207,18 @@ async function func()
                       for (let j = 0; j < headers.length; j++) {
                         obj[headers[j]] = row[j];
                       }
-                      document.getElementById("city").innerHTML+="<option value='"+obj["City"]+"'>"+obj["City"]+"</option>";
+                      if(mode==1 && obj["City"]==gcity)
+                      {
+                        document.getElementById("city").innerHTML+="<option selected value='"+obj["City"]+"'>"+obj["City"]+"</option>";
+                      }
+                      else
+                      {document.getElementById("city").innerHTML+="<option value='"+obj["City"]+"'>"+obj["City"]+"</option>";}
                       datac.push(obj);
                     }
+                  }
+                  if(mode==1)
+                  {
+                    cfunc();
                   }
                 })
                 found=1;
