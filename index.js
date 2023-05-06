@@ -6,13 +6,15 @@ const error404 = document.querySelector('.not-found');
 const st = document.querySelector('.state-img iframe');
 const stu = document.querySelector('.state-img');
 const getLoc = document.getElementById("getlocation");
-const stdrop = document.querySelector('.search-box select')
+const stdrop = document.querySelector('.search-box select');
+
 var cords=[];
 var rslt=[];//state data
 var datac=[];//city data of select state
 var slent;
 var clent;
 var corlent;
+
 getLoc.addEventListener('click', event => {
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(pos => {
@@ -31,45 +33,51 @@ getLoc.addEventListener('click', event => {
         console.log("Geolocation is not supported.");
     }
 });
-// window.onload=()=>{
-//   fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv')
-//     .then(response => response.text())
-//     .then(data => {
-//       const rows = data.split('\r\n');
-//       const headers = rows[0].split(',');
-//       slent=rows.length;
-//       for (let i = 1; i < rows.length; i++) {
-//         const row = rows[i].split(',');
-//         if (row.length === headers.length) {
-//           const obj = {};
-//           for (let j = 0; j < headers.length; j++) {
-//             obj[headers[j]] = row[j];
-//           }
-//           document.getElementById("state").innerHTML+="<option value='"+obj["State"]+"'>"+obj["State"]+"</option>";
-//           rslt.push(obj);
-//         }
-//       }
-//     })
-//     .catch(error => console.error(error));
-//   fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
-//   .then(response => response.text())
-//   .then(data => {
-//     const rows = data.split('\r\n');
-//     const headers = rows[0].split(',');
-//     corlent=rows.length;
-//     for (let i = 1; i < rows.length; i++) {
-//       const row = rows[i].split(',');
-//       if (row.length === headers.length) {
-//         const obj = {};
-//         for (let j = 0; j < headers.length; j++) {
-//           obj[headers[j]] = row[j];
-//         }
-//         cords.push(obj);
-//       }
-//     }
-//     })
-//   .catch(error => console.error(error));
-// }
+window.onload=async ()=>{
+  var status=0;
+    while(status!=2){
+     await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv',{method:"GET",mode:"cors"})
+    .then(response => response.text())
+    .then(data => {
+      const rows = data.split('\r\n');
+      const headers = rows[0].split(',');
+      slent=rows.length;
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i].split(',');
+        if (row.length === headers.length) {
+          const obj = {};
+          for (let j = 0; j < headers.length; j++) {
+            obj[headers[j]] = row[j];
+          }
+          document.getElementById("state").innerHTML+="<option value='"+obj["State"]+"'>"+obj["State"]+"</option>";
+          rslt.push(obj);
+        }
+      }
+      status=1;
+    })
+    .catch(error => {console.error(error);});
+  await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
+  .then(response => response.text())
+  .then(data => {
+    const rows = data.split('\r\n');
+    const headers = rows[0].split(',');
+    corlent=rows.length;
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i].split(',');
+      if (row.length === headers.length) {
+        const obj = {};
+        for (let j = 0; j < headers.length; j++) {
+          obj[headers[j]] = row[j];
+        }
+        cords.push(obj);
+      }
+    }
+    status=2;
+    })
+  .catch(error => {console.error(error);});
+  console.log(status);
+}
+}
 async function getcord(city)
 { var arr=[];
        arr=await fetch('https://nominatim.openstreetmap.org/search.php?q='+city.replace(/ /g, '+')+'&format=jsonv2')
