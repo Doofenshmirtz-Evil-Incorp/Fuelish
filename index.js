@@ -17,6 +17,7 @@ var clent;
 var corlent;
 
 getLoc.addEventListener('click',  event => {
+  document.getElementById("getlocation").className="fa-solid fa-spinner fa-spin-pulse";
   let gcity,gstate;
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition( pos => {
@@ -32,9 +33,11 @@ getLoc.addEventListener('click',  event => {
                 await func(1,gcity);
             });
         }, error => {
+          document.getElementById("getlocation").className="fa-solid fa-location-dot";
             console.log("Geolocation request denied by user", error.code);
         });
     } else {
+      document.getElementById("getlocation").className="fa-solid fa-location-dot";
         console.log("Geolocation is not supported.");
     }
 });
@@ -146,6 +149,7 @@ let i;
                 }
                 ele4.innerText=datac[i]["Change(D)"];
                 found=1;
+                document.getElementById("getlocation").className="fa-solid fa-location-dot";
                 break;
               }
          }
