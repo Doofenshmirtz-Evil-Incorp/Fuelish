@@ -44,7 +44,7 @@ getLoc.addEventListener('click',  event => {
 window.onload=async ()=>{
   var status=0;
     while(status!=2){
-     await fetch('https://corsproxy.io/?https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv',{method:"GET",mode:"cors"})
+     await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv',{method:"GET",mode:"cors"})
     .then(response => response.text())
     .then(data => {
       const rows = data.split('\r\n');
@@ -64,7 +64,7 @@ window.onload=async ()=>{
       status=1;
     })
     .catch(error => {console.error(error);});
-  await fetch('https://corsproxy.io/?https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
+  await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
   .then(response => response.text())
   .then(data => {
     const rows = data.split('\r\r\n');
@@ -197,7 +197,7 @@ async function func(mode=0,gcity)
                 iframe.src=newsrc;
                 document.getElementById("city").disabled=false;
                 document.getElementById("city").innerHTML="<option value='' selected disabled>Select a city</option>";
-                fetch('https://corsproxy.io/?https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
+                fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
                 .then(response => response.text())
                 .then(data => {
                   datac=[];
