@@ -1,19 +1,15 @@
 import {Closest} from './pos.js';
 const container = document.querySelector('.container');
-const search = document.querySelector('.search-box button');
 const priceBox = document.querySelector('.price-box');
 const change = document.querySelector('.change');
 const st = document.querySelector('.state-img iframe');
-const stu = document.querySelector('.state-img');
 const getLoc = document.getElementById("getlocation");
-const stdrop = document.querySelector('.search-box select');
 
 var cords=[];
 var rslt=[];//state data
 var datac=[];//city data of select state
 var slent;
 var clent;
-var corlent;
 
 getLoc.addEventListener('click',  event => {
   document.getElementById("getlocation").className="fa-solid fa-spinner fa-spin-pulse";
@@ -200,34 +196,6 @@ async function func(mode=0,gcity)
                 break;
               }
          }
-    if(found==0)
-    {
-      st.style.display='none';
-      switch(city)
-        {case "asvin":
-          {
-            window.open('https://github.com/Asvin1', '_blank');
-            break;
-          }
-          case "aryaman":
-          {
-            window.open('https://github.com/actuallyaryaman', '_blank');
-            break;
-          }
-          case "adit":
-          {
-            window.open('https://www.99acres.com/', '_blank');
-            break;
-          }
-          case "manul":
-          {
-            window.open('https://i.ibb.co/xLyHwcX/Whats-App-Image-2023-04-30-at-1-18-21-PM.jpg', '_blank');
-            break;
-          }
         }
-         return;
-    }
-    
-}
 document.getElementById('state').addEventListener('change',func);
 document.getElementById('city').addEventListener('change', cfunc);
