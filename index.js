@@ -3,7 +3,6 @@ const container = document.querySelector('.container');
 const search = document.querySelector('.search-box button');
 const priceBox = document.querySelector('.price-box');
 const change = document.querySelector('.change');
-const error404 = document.querySelector('.not-found');
 const st = document.querySelector('.state-img iframe');
 const stu = document.querySelector('.state-img');
 const getLoc = document.getElementById("getlocation");
@@ -104,7 +103,6 @@ let i;
          {                 
             if(datac[i]["City"].toLowerCase()==(city.value).toLowerCase())
               {
-                error404.style.display='none';
                 priceBox.style.display = '';
                 change.style.display = '';
                 priceBox.classList.add('fadeIn');
@@ -123,29 +121,29 @@ let i;
                 const ele3=document.getElementById("cp");
                 if((datac[i]["Change(P)"]).charAt(0)==="+")
                 {
-                  ele3.style.color='crimson';
+                  ele3.style.color='#EE3E3E';
                 }
                 else if((datac[i]["Change(P)"]).charAt(0)==="-")
                 {
-                  ele3.style.color='green';
+                  ele3.style.color='#72ff72';
                 }
                 else
                 {
-                  ele3.style.color='green';
+                  ele3.style.color='#72ff72';
                 }
                 ele3.innerText=datac[i]["Change(P)"];
                 const ele4=document.getElementById("cd");
                 if((datac[i]["Change(D)"]).charAt(0)==="+")
                 {
-                  ele4.style.color='crimson';
+                  ele4.style.color='#EE3E3E';
                 }
                 else if((datac[i]["Change(D)"]).charAt(0)==="-")
                 {
-                  ele4.style.color='green';
+                  ele4.style.color='#72ff72';
                 }
                 else
                 {
-                  ele4.style.color='green';
+                  ele4.style.color='#72ff72';
                 }
                 ele4.innerText=datac[i]["Change(D)"];
                 found=1;
@@ -153,33 +151,6 @@ let i;
                 break;
               }
          }
-    if(found==0)
-    {
-      st.style.display='none';
-      switch(city)
-        {case "asvin":
-          {
-            window.open('https://github.com/Asvin1', '_blank');
-            break;
-          }
-          case "aryaman":
-          {
-            window.open('https://github.com/actuallyaryaman', '_blank');
-            break;
-          }
-          case "adit":
-          {
-            window.open('https://www.99acres.com/', '_blank');
-            break;
-          }
-          case "manul":
-          {
-            window.open('https://i.ibb.co/xLyHwcX/Whats-App-Image-2023-04-30-at-1-18-21-PM.jpg', '_blank');
-            break;
-          }
-        }
-         return;
-    }
 }
 async function func(mode=0,gcity)
 {
