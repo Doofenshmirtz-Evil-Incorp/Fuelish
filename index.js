@@ -1,12 +1,9 @@
+import {Closest} from './pos.js';
 const container = document.querySelector('.container');
-const search = document.querySelector('.search-box button');
 const priceBox = document.querySelector('.price-box');
 const change = document.querySelector('.change');
-const error404 = document.querySelector('.not-found');
 const st = document.querySelector('.state-img iframe');
-const stu = document.querySelector('.state-img');
 const getLoc = document.getElementById("getlocation");
-const stdrop = document.querySelector('.search-box select');
 
 var cords=[];
 var rslt=[];//state data
@@ -15,28 +12,35 @@ var slent;
 var clent;
 var corlent;
 
-getLoc.addEventListener('click', event => {
+getLoc.addEventListener('click',  event => {
+  document.getElementById("getlocation").className="fa-solid fa-spinner fa-spin-pulse";
+  let gcity,gstate;
     if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(pos => {
+        navigator.geolocation.getCurrentPosition( pos => {
             const latitude = pos.coords.latitude;
             const longitude = pos.coords.longitude;
             console.log(latitude, longitude);
             fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+latitude+'&lon='+longitude)
             .then(response => response.json())
-            .then(data => {
-                console.log(data["address"]);
+            .then(async data => {
+                [gcity,gstate]=Closest(cords,[latitude,longitude],data["address"]["state"]);
+                document.getElementById("state").value=gstate;
+                console.log(document.getElementById("state").value);
+                await func(1,gcity);
             });
         }, error => {
+          document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
             console.log("Geolocation request denied by user", error.code);
         });
     } else {
+      document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
         console.log("Geolocation is not supported.");
     }
 });
 window.onload=async ()=>{
   var status=0;
     while(status!=2){
-     await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv',{method:"GET",mode:"cors"})
+     await fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv',{method:"GET",mode:"cors"})
     .then(response => response.text())
     .then(data => {
       const rows = data.split('\r\n');
@@ -56,10 +60,10 @@ window.onload=async ()=>{
       status=1;
     })
     .catch(error => {console.error(error);});
-  await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
+  await fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
   .then(response => response.text())
   .then(data => {
-    const rows = data.split('\r\n');
+    const rows = data.split('\r\r\n');
     const headers = rows[0].split(',');
     corlent=rows.length;
     for (let i = 1; i < rows.length; i++) {
@@ -80,22 +84,22 @@ window.onload=async ()=>{
 }
 async function getcord(city)
 { var arr=[];
-       arr=await fetch('https://nominatim.openstreetmap.org/search.php?q='+city.replace(/ /g, '+')+'&format=jsonv2')
-       .then(response => response.json())
-       .then(data => {
-           return data[0]["boundingbox"];
-       })
-       .catch(error => {console.error(error);return [0,0,0,0]});
+      arr=await fetch('https://nominatim.openstreetmap.org/search.php?q='+city.replace(/ /g, '+')+'&format=jsonv2')
+      .then(response => response.json())
+      .then(data => {
+          return data[0]["boundingbox"];
+      })
+      .catch(error => {console.error(error);return [0,0,0,0]});
   return arr;
 };
 async function cfunc()
 {
 var found=0;
+let i;
       for(i=0;i<clent;i++)
-         {                 
+        {                 
             if(datac[i]["City"].toLowerCase()==(city.value).toLowerCase())
               {
-                error404.style.display='none';
                 priceBox.style.display = '';
                 change.style.display = '';
                 priceBox.classList.add('fadeIn');
@@ -114,70 +118,44 @@ var found=0;
                 const ele3=document.getElementById("cp");
                 if((datac[i]["Change(P)"]).charAt(0)==="+")
                 {
-                  ele3.style.color='crimson';
+                  ele3.style.color='#EE3E3E';
                 }
                 else if((datac[i]["Change(P)"]).charAt(0)==="-")
                 {
-                  ele3.style.color='green';
+                  ele3.style.color='#72ff72';
                 }
                 else
                 {
-                  ele3.style.color='green';
+                  ele3.style.color='#72ff72';
                 }
                 ele3.innerText=datac[i]["Change(P)"];
                 const ele4=document.getElementById("cd");
                 if((datac[i]["Change(D)"]).charAt(0)==="+")
                 {
-                  ele4.style.color='crimson';
+                  ele4.style.color='#EE3E3E';
                 }
                 else if((datac[i]["Change(D)"]).charAt(0)==="-")
                 {
-                  ele4.style.color='green';
+                  ele4.style.color='#72ff72';
                 }
                 else
                 {
-                  ele4.style.color='green';
+                  ele4.style.color='#72ff72';
                 }
                 ele4.innerText=datac[i]["Change(D)"];
                 found=1;
+                document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
                 break;
               }
-         }
-    if(found==0)
-    {
-      st.style.display='none';
-      switch(city)
-        {case "asvin":
-          {
-            window.open('https://github.com/Asvin1', '_blank');
-            break;
-          }
-          case "aryaman":
-          {
-            window.open('https://github.com/actuallyaryaman', '_blank');
-            break;
-          }
-          case "adit":
-          {
-            window.open('https://www.99acres.com/', '_blank');
-            break;
-          }
-          case "manul":
-          {
-            window.open('https://i.ibb.co/xLyHwcX/Whats-App-Image-2023-04-30-at-1-18-21-PM.jpg', '_blank');
-            break;
-          }
         }
-         return;
-    }
 }
-async function func()
+async function func(mode=0,gcity)
 {
   if(state.value=="")
     {return;}
-    var found=0;
+    let i;
       for(i=0;i<slent-2;i++)
-         { 
+        { 
             if(rslt[i]["State"].toLowerCase()==(state.value).toLowerCase())
               {
                 var [b0,b1,b2,b3]=await getcord(state.value);
@@ -186,7 +164,7 @@ async function func()
                 iframe.src=newsrc;
                 document.getElementById("city").disabled=false;
                 document.getElementById("city").innerHTML="<option value='' selected disabled>Select a city</option>";
-                fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
+                fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
                 .then(response => response.text())
                 .then(data => {
                   datac=[];
@@ -200,43 +178,23 @@ async function func()
                       for (let j = 0; j < headers.length; j++) {
                         obj[headers[j]] = row[j];
                       }
-                      document.getElementById("city").innerHTML+="<option value='"+obj["City"]+"'>"+obj["City"]+"</option>";
+                      if(mode==1 && obj["City"]==gcity)
+                      {
+                        document.getElementById("city").innerHTML+="<option selected value='"+obj["City"]+"'>"+obj["City"]+"</option>";
+                      }
+                      else
+                      {document.getElementById("city").innerHTML+="<option value='"+obj["City"]+"'>"+obj["City"]+"</option>";}
                       datac.push(obj);
                     }
                   }
+                  if(mode==1)
+                  {
+                    cfunc();
+                  }
                 })
-                found=1;
                 break;
               }
-         }
-    if(found==0)
-    {
-      st.style.display='none';
-      switch(city)
-        {case "asvin":
-          {
-            window.open('https://github.com/Asvin1', '_blank');
-            break;
-          }
-          case "aryaman":
-          {
-            window.open('https://github.com/actuallyaryaman', '_blank');
-            break;
-          }
-          case "adit":
-          {
-            window.open('https://www.99acres.com/', '_blank');
-            break;
-          }
-          case "manul":
-          {
-            window.open('https://i.ibb.co/xLyHwcX/Whats-App-Image-2023-04-30-at-1-18-21-PM.jpg', '_blank');
-            break;
-          }
         }
-         return;
-    }
-    
-}
+        }
 document.getElementById('state').addEventListener('change',func);
 document.getElementById('city').addEventListener('change', cfunc);
