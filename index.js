@@ -10,6 +10,7 @@ var rslt=[];//state data
 var datac=[];//city data of select state
 var slent;
 var clent;
+var corlent;
 
 getLoc.addEventListener('click',  event => {
   document.getElementById("getlocation").className="fa-solid fa-spinner fa-spin-pulse";
@@ -39,7 +40,7 @@ getLoc.addEventListener('click',  event => {
 window.onload=async ()=>{
   var status=0;
     while(status!=2){
-     await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv',{method:"GET",mode:"cors"})
+     await fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv',{method:"GET",mode:"cors"})
     .then(response => response.text())
     .then(data => {
       const rows = data.split('\r\n');
@@ -59,7 +60,7 @@ window.onload=async ()=>{
       status=1;
     })
     .catch(error => {console.error(error);});
-  await fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
+  await fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
   .then(response => response.text())
   .then(data => {
     const rows = data.split('\r\r\n');
@@ -152,7 +153,6 @@ async function func(mode=0,gcity)
 {
   if(state.value=="")
     {return;}
-    var found=0;
     let i;
       for(i=0;i<slent-2;i++)
          { 
@@ -164,7 +164,7 @@ async function func(mode=0,gcity)
                 iframe.src=newsrc;
                 document.getElementById("city").disabled=false;
                 document.getElementById("city").innerHTML="<option value='' selected disabled>Select a city</option>";
-                fetch('https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
+                fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
                 .then(response => response.text())
                 .then(data => {
                   datac=[];
