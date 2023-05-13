@@ -192,7 +192,6 @@ async function func(mode=0,gcity)
                     cfunc();
                   }
                 })
-                found=1;
                 break;
               }
          }
