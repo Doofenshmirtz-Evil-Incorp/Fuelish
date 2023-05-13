@@ -29,11 +29,11 @@ getLoc.addEventListener('click',  event => {
                 await func(1,gcity);
             });
         }, error => {
-          document.getElementById("getlocation").className="fa-solid fa-location-dot";
+          document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
             console.log("Geolocation request denied by user", error.code);
         });
     } else {
-      document.getElementById("getlocation").className="fa-solid fa-location-dot";
+      document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
         console.log("Geolocation is not supported.");
     }
 });
@@ -84,12 +84,12 @@ window.onload=async ()=>{
 }
 async function getcord(city)
 { var arr=[];
-       arr=await fetch('https://nominatim.openstreetmap.org/search.php?q='+city.replace(/ /g, '+')+'&format=jsonv2')
-       .then(response => response.json())
-       .then(data => {
-           return data[0]["boundingbox"];
-       })
-       .catch(error => {console.error(error);return [0,0,0,0]});
+      arr=await fetch('https://nominatim.openstreetmap.org/search.php?q='+city.replace(/ /g, '+')+'&format=jsonv2')
+      .then(response => response.json())
+      .then(data => {
+          return data[0]["boundingbox"];
+      })
+      .catch(error => {console.error(error);return [0,0,0,0]});
   return arr;
 };
 async function cfunc()
@@ -97,7 +97,7 @@ async function cfunc()
 var found=0;
 let i;
       for(i=0;i<clent;i++)
-         {                 
+        {                 
             if(datac[i]["City"].toLowerCase()==(city.value).toLowerCase())
               {
                 priceBox.style.display = '';
@@ -144,10 +144,10 @@ let i;
                 }
                 ele4.innerText=datac[i]["Change(D)"];
                 found=1;
-                document.getElementById("getlocation").className="fa-solid fa-location-dot";
+                document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
                 break;
               }
-         }
+        }
 }
 async function func(mode=0,gcity)
 {
@@ -155,7 +155,7 @@ async function func(mode=0,gcity)
     {return;}
     let i;
       for(i=0;i<slent-2;i++)
-         { 
+        { 
             if(rslt[i]["State"].toLowerCase()==(state.value).toLowerCase())
               {
                 var [b0,b1,b2,b3]=await getcord(state.value);
@@ -194,7 +194,7 @@ async function func(mode=0,gcity)
                 })
                 break;
               }
-         }
+        }
         }
 document.getElementById('state').addEventListener('change',func);
 document.getElementById('city').addEventListener('change', cfunc);

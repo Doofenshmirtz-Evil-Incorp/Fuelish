@@ -13,20 +13,22 @@
     
     <!-- Setting page title -->
     <title>Fuelish</title>
+    <link rel="icon" type="image/png" href="images/logo-5.png" class="favicon">
 </head>
 <body>
     <!-- Logo section -->
     <div class="logo">
-        <a href="https://github.com/Doofenshmirtz-Evil-Incorp/Fuelish" target="_blank" rel="noopener noreferrer"><img src="images/Feulish.png" width="150px" alt=""></a>
+        <a href="https://doofenshmirtz-evil-incorp.github.io/Fuelish/" target="_blank" rel="noopener noreferrer"><img src="images/Feulish.png" width="150px" alt=""></a>
     </div>
     
     <!-- Search box section -->
     <div class="container">
         <div class="search-box">
-            <button id="getlocation" class="fa-solid fa-location-dot"></button>
+            <button id="getlocation" class="fa-solid fa-location-crosshairs"></button>
             <select name="state" id="state" class="dropdown">
                 <option value="" selected>Select a state</option>
             </select>
+            <a href="https://www.google.com/maps/search/petrol+pumps+near+me/" target="_blank" rel="noopener noreferrer"><button class="fa-solid fa-gas-pump" style="color: orange;"></button></a>
             <select name="city" id="city" disabled class="dropdown">
                 <option value="" selected disabled style="color: azure;">Select a city</option>
             </select>
@@ -36,11 +38,11 @@
         <div class="state-img">
             <iframe id="map"
                 height="200"
-                 frameborder="0" 
-                 scrolling="no" 
-                 marginheight="0" 
-                 marginwidth="0" 
-                 src="https://www.openstreetmap.org/export/embed.html?bbox=40.86914062500001%2C-9.958868450753572%2C123.13476562500001%2C45.34382576751692&amp;layer=mapnik">
+                frameborder="0" 
+                scrolling="no" 
+                marginheight="0" 
+                marginwidth="0" 
+                src="https://www.openstreetmap.org/export/embed.html?bbox=40.86914062500001%2C-9.958868450753572%2C123.13476562500001%2C45.34382576751692&amp;layer=mapnik">
             </iframe>
         </div>
         
@@ -87,5 +89,6 @@
 <!-- Footer Section -->
 <footer>
     <p>Made with &hearts; in India by <a href="https://www.github.com/actuallyaryaman" target="_blank" rel="noopener noreferrer">Aryaman</a> and <a href="https://www.github.com/asvin1" target="_blank" rel="noopener noreferrer"> Asvin</a></p>
+    <p>You can help improve this site! The code is open. <a href="https://github.com/Doofenshmirtz-Evil-Incorp/Fuelish" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a></p>
 </footer>
 </html>
