@@ -35,24 +35,28 @@ body{
 
 select[name="state"]
 {
+    font-family: monospace;
     text-align: center;
     background-color:#547f85;
     color: white;
     position:relative;
     width: auto;
     height: 20%;
+    padding: 2%;
     z-index: 1;
     border-radius: 1px;
     
 }
 
 select[name="city"] {
+    font-family: monospace;
     text-align: center;
     background-color:#547f85;
     color: white;
     position: relative;
+    padding: 2%;
     top: 50%;
-    left: 19.3%;
+    left: 19;
     width: auto;
     z-index: 2;
     border-radius: 1px;
@@ -60,8 +64,8 @@ select[name="city"] {
 
 select option:disabled {
     color: black;
-  }
-  
+}
+
 
 
 .search-box button{
