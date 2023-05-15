@@ -13,7 +13,6 @@ Fuelish is a simple web application that helps you to check the fuel prices of y
   - [Contributing](#contributing)
   - [Author](#author)
   - [License](#license)
-  - [Acknowledgements](#acknowledgements)
 
 ## Features
 
@@ -27,13 +26,15 @@ Fuelish is built with the following technologies:
 - HTML, because it's the foundation of the web.
 - CSS, because we don't want our app to look like it's from the 90s.
 - JavaScript, because we want to make our app interactive.
+- OpenMaps API, because we want to show you your location.
+- Google Maps API, because we want to redirect you to the nearest petrol pumps.
 
 ## Installation
 
 To install Fuelish, follow these steps:
 
-1. Clone the repository: git clone https://github.com/Fuelish/FuelishWeb
-2. Navigate to the project directory: cd FuelishWeb
+1. Clone the repository: git clone https://github.com/Doofenshmirtz-Evil-Incorp/Fuelish
+2. Navigate to the project directory: cd Fuelish
 3. Open index.html in your web browser.
 
 ## Usage
@@ -55,12 +56,8 @@ We welcome contributions from the community, especially if you're willing to bri
 
 ## Author
 
-Fuelish was created by [Aryaman Srivastava](@actuallyaryaman) and [Asvin Jain](@asvin1), two fuel-saving ninjas who believe that the only thing better than a full tank of gas is a full tank of gas that didn't break the bank. If you have any questions or feedback, you can reach out to us at  We promise to respond faster than a V8 engine revving up!
+Fuelish was created by [Aryaman Srivastava](https://github.com/actuallyaryaman) and [Asvin Jain](https://github.com/asvin1), two fuel-saving ninjas who believe that the only thing better than a full tank of gas is a full tank of gas that didn't break the bank. If you have any questions or feedback, you can reach out to us at  We promise to respond faster than a V8 engine revving up!
 
 ## License
 
 Fuelish is licensed under the GNU V3 License. See the [LICENSE](LICENSE) file for details. This license ensures that if you become a millionaire because of the money you saved using Fuelish, you'll still have to give us credit for it.
-
-## Acknowledgements
-
-[Adit Kaushal](https://www.99acres.com) for-... We can't remember.
