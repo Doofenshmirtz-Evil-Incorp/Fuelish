@@ -27,17 +27,27 @@ getLoc.addEventListener('click',  event => {
             const latitude = pos.coords.latitude;
             const longitude = pos.coords.longitude;
             console.log(latitude, longitude);
-            L.circleMarker([latitude,longitude],0,{
-              color: 'blue',
-              fillColor: 'blue'
-            }).addTo(map);
+            L.circleMarker([latitude,longitude],{
+              radius:5,
+              color: 'red',
+              fillColor: 'red'
+            }).bindPopup("Idhar hain aap").openPopup().addTo(map);
             fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+latitude+'&lon='+longitude)
             .then(response => response.json())
             .then(async data => {
-                [gcity,gstate]=Closest(cords,[latitude,longitude],data["address"]["state"]);
+                var out=Closest(cords,[latitude,longitude],data["address"]["state"]);
+                [gcity,gstate]=out[0];
                 document.getElementById("state").value=gstate;
                 console.log(document.getElementById("state").value);
                 await func(1,gcity);
+                for(let i=0;i<5;i++)
+                {
+                  L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
+                    radius:7,
+                    color: 'blue',
+                    fillColor: 'blue'
+                  }).bindPopup(out[1][i]["City"]).openPopup().addTo(map);
+                }
             });
         }, error => {
           document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";

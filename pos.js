@@ -17,6 +17,8 @@ export function Closest(points,
         const obj={};
         obj["State"]=points[i]["State"];
         obj["City"]=points[i]["City"];
+        obj["lat"]=points[i]["lat"];
+        obj["long"]=points[i]["long"];
         obj["dist"]=cur;
         arr.push(obj);
         arr.sort(function(a,b){return a["dist"]-b["dist"]});
@@ -32,6 +34,5 @@ export function Closest(points,
             dstate=points[i]["State"];
         }
     }
-    console.log(arr);
-    return [dcity,dstate];
+    return [[dcity,dstate],arr];
 };
