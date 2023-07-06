@@ -2,7 +2,7 @@ import {Closest} from './pos.js';
 const container = document.querySelector('.container');
 const priceBox = document.querySelector('.price-box');
 const change = document.querySelector('.change');
-const st = document.querySelector('.state-img iframe');
+const st = document.getElementById("map");
 const getLoc = document.getElementById("getlocation");
 
 var cords=[];
@@ -11,6 +11,13 @@ var datac=[];//city data of select state
 var slent;
 var clent;
 var corlent;
+var b0,b1,b2,b3;
+
+const map = L.map('map').setView([25, 75], 3);
+const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+maxZoom: 19,
+attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
 
 getLoc.addEventListener('click',  event => {
   document.getElementById("getlocation").className="fa-solid fa-spinner fa-spin-pulse";
@@ -20,6 +27,10 @@ getLoc.addEventListener('click',  event => {
             const latitude = pos.coords.latitude;
             const longitude = pos.coords.longitude;
             console.log(latitude, longitude);
+            L.circleMarker([latitude,longitude],0,{
+              color: 'blue',
+              fillColor: 'blue'
+            }).addTo(map);
             fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+latitude+'&lon='+longitude)
             .then(response => response.json())
             .then(async data => {
@@ -106,11 +117,11 @@ let i;
                 change.classList.add('fadeIn');
                 container.style.height = '590px';
                 st.style.display='block';
-                var [b0,b1,b2,b3]=await getcord(state.value.replace(/ /g, '+')+"+"+datac[i]["City"]);
-                var newsrc="https://www.openstreetmap.org/export/embed.html?bbox="+b2+"%2C"+b0+"%2C"+b3+"%2C"+b1+"&amp;layer=mapnik";
-                var iframe = document.getElementById('map');
-                iframe.src=newsrc;
-                iframe.style.display='block';
+                [b0,b1,b2,b3]=await getcord(state.value.replace(/ /g, '+')+"+"+datac[i]["City"]);
+                map.fitBounds([
+                  [b1, b2],
+                  [b0, b3]
+              ]);
                 const ele1=document.getElementById("pp");
                 ele1.innerText=datac[i]["Price(P)"];
                 const ele2=document.getElementById("dp");
@@ -148,6 +159,7 @@ let i;
                 break;
               }
         }
+        map.invalidateSize();
 }
 async function func(mode=0,gcity)
 {
@@ -158,10 +170,11 @@ async function func(mode=0,gcity)
         { 
             if(rslt[i]["State"].toLowerCase()==(state.value).toLowerCase())
               {
-                var [b0,b1,b2,b3]=await getcord(state.value);
-                var newsrc="https://www.openstreetmap.org/export/embed.html?bbox="+b2+"%2C"+b0+"%2C"+b3+"%2C"+b1+"&amp;layer=mapnik";
-                var iframe = document.getElementById('map');
-                iframe.src=newsrc;
+                [b0,b1,b2,b3]=await getcord(state.value);
+                map.fitBounds([
+                  [b1, b2],
+                  [b0, b3]
+              ]);
                 document.getElementById("city").disabled=false;
                 document.getElementById("city").innerHTML="<option value='' selected disabled>Select a city</option>";
                 fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
@@ -195,6 +208,14 @@ async function func(mode=0,gcity)
                 break;
               }
         }
+        map.invalidateSize();
         }
 document.getElementById('state').addEventListener('change',func);
 document.getElementById('city').addEventListener('change', cfunc);
+container.addEventListener("animationend", function() {
+  map.invalidateSize();
+  map.fitBounds([
+    [b1, b2],
+    [b0, b3]
+]);
+});
