@@ -87,6 +87,16 @@ select option:disabled {
     background: #004E58;
 }
 
+.nearby
+{
+    margin-top: 10px;
+    text-align: center;
+    color: #cfdfe9;
+    font-size: 1.0rem;
+    scale: 0;
+    opacity: 0;
+}
+
 .price-box{
     width: 100%;
     display: flex;
@@ -100,7 +110,7 @@ select option:disabled {
     color: #cfdfe9;
     font-size: 1.5rem;
     font-weight: 800;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: 30px;
 }
 
@@ -109,7 +119,7 @@ select option:disabled {
     color: #cfdfe9;
     font-size: 1rem;
     font-weight: 800;
-    margin-top: 30px;
+    margin-top: 10px;
     text-align: center;
     margin-right: 15%;
 }
@@ -179,7 +189,7 @@ select option:disabled {
 }
 
 .leaflet-container {
-    margin-top: 40px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     height: 50%;

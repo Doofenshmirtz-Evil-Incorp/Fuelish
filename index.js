@@ -4,6 +4,7 @@ const priceBox = document.querySelector('.price-box');
 const change = document.querySelector('.change');
 const st = document.getElementById("map");
 const getLoc = document.getElementById("getlocation");
+const near = document.getElementById('nearby');
 
 var cords=[];
 var rslt=[];//state data
@@ -19,10 +20,70 @@ maxZoom: 19,
 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+function getdata(st,ct)
+{let i;
+  for(i=0;i<slent-2;i++)
+        { 
+            if(rslt[i]["State"].toLowerCase()==(st).toLowerCase())
+              {
+                return fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+st+'.csv')
+                .then(response => response.text())
+                .then( data => {
+                  datac=[];
+                  const rows = data.split('\r\n');
+                  const headers = rows[0].split(',');
+                  clent=rows.length;
+                  for (let i = 1; i < rows.length; i++) {
+                    const row = rows[i].split(',');
+                    if (row.length === headers.length) {
+                      const obj = {};
+                      for (let j = 0; j < headers.length; j++) {
+                        obj[headers[j]] = row[j];
+                      }
+                      datac.push(obj);
+                    }
+                  }
+                  for(i=0;i<clent;i++)
+                  {                 
+                      if(datac[i]["City"].toLowerCase()==(ct).toLowerCase())
+                        {return datac[i];break;}
+                  }
+                })
+                  break;
+              }
+    }
+}
+
+async function clicky(data)
+{
+  near.classList.remove('fadeOut');
+  near.classList.add('fadeIn');
+  let txt=data.target.options.data;
+const ar=txt.split("-");
+const npr = document.getElementById('npr');
+getdata(ar[0],ar[1]).then(data=>{
+  npr.innerHTML="";
+  npr.innerText=data["City"];
+  var pp=parseFloat(document.getElementById("pp").innerText).toFixed(2);
+  var dp=parseFloat(document.getElementById("dp").innerText).toFixed(2);
+  var pp1=parseFloat(data["Price(P)"]).toFixed(2);
+  var dp1=parseFloat(data["Price(D)"]).toFixed(2);
+  if((pp-pp1)>=0)
+    npr.innerHTML+="<p style='color: #72ff72'>"+"Petrol : "+data["Price(P)"]+"("+(pp1-pp).toFixed(2)+")"+"</p>";
+  else
+    npr.innerHTML+="<p style='color: #EE3E3E'>"+"Petrol : "+data["Price(P)"]+"("+(pp1-pp).toFixed(2)+")"+"</p>";
+  if((dp-dp1)>=0)
+    npr.innerHTML+="<p style='color: #72ff72'>"+"Deisel : "+data["Price(D)"]+"("+(dp1-dp).toFixed(2)+")"+"</p>";
+  else
+    npr.innerHTML+="<p style='color: #EE3E3E'>"+"Deisel : "+data["Price(D)"]+"("+(dp1-dp).toFixed(2)+")"+"</p>";
+  });
+}
+
 getLoc.addEventListener('click',  event => {
   document.getElementById("getlocation").className="fa-solid fa-spinner fa-spin-pulse";
   let gcity,gstate;
     if ('geolocation' in navigator) {
+      near.classList.remove('fadeIn');
         navigator.geolocation.getCurrentPosition( pos => {
             const latitude = pos.coords.latitude;
             const longitude = pos.coords.longitude;
@@ -43,10 +104,11 @@ getLoc.addEventListener('click',  event => {
                 for(let i=0;i<5;i++)
                 {
                   L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
+                    data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
                     radius:7,
                     color: 'blue',
                     fillColor: 'blue'
-                  }).bindPopup(out[1][i]["City"]).openPopup().addTo(map);
+                  }).bindPopup(out[1][i]["State"]+'-'+out[1][i]["City"]).openPopup().on('click',clicky).addTo(map);
                 }
             });
         }, error => {
@@ -103,16 +165,47 @@ window.onload=async ()=>{
   console.log(status);
 }
 }
+
 async function getcord(city)
-{ var arr=[];
+{ var arr=[];var i,bl,bound=[];
       arr=await fetch('https://nominatim.openstreetmap.org/search.php?q='+city.replace(/ /g, '+')+'&format=jsonv2')
       .then(response => response.json())
       .then(data => {
           return data[0]["boundingbox"];
       })
-      .catch(error => {console.error(error);return [0,0,0,0]});
+      .catch(error => {return [0,0,0,0]});
+  if(arr[0]==0)
+  {
+    await fetch('https://raw.githubusercontent.com/Doofenshmirtz-Evil-Incorp/FuelishCLI/main/src/bound.csv')
+        .then(response => response.text())
+        .then( data => {
+          const rows = data.split('\n');
+          const headers = rows[0].split(',');
+          for (let i = 1; i < rows.length; i++) {
+            const row = rows[i].split(',');
+            if (row.length === headers.length) {
+              const obj = {};
+              for (let j = 0; j < headers.length; j++) {
+                obj[headers[j]] = row[j];
+              }
+              bound.push(obj);
+            }
+          }
+          bl=bound.length;
+          for(i=0;i<bl-1;i++)
+          {
+            if(bound[i]["City"].toLowerCase()==(city.split('+')).slice(-1)[0].toLowerCase())
+            {
+              arr=[bound[i]["s"],bound[i]["n"],bound[i]["w"],bound[i]["e"]];
+              break;
+            }
+          }
+        }
+        )
+  }
   return arr;
 };
+
 async function cfunc()
 {
 var found=0;
@@ -171,10 +264,12 @@ let i;
         }
         map.invalidateSize();
 }
+
 async function func(mode=0,gcity)
 {
   if(state.value=="")
     {return;}
+    map.removeLayer(circleMarker);
     let i;
       for(i=0;i<slent-2;i++)
         { 
