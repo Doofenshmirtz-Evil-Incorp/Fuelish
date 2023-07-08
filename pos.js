@@ -10,18 +10,29 @@ export function Closest(points,
 {
     let n = points.length;
     let d = Infinity;
-    let dstate,dcity;
+    let dstate,dcity,cur;
+    var arr=[];
     for (let i = 0; i < n; i++) {
+        cur=distance(points[i]["lat"], points[i]["long"],target[0], target[1]);
+        const obj={};
+        obj["State"]=points[i]["State"];
+        obj["City"]=points[i]["City"];
+        obj["lat"]=points[i]["lat"];
+        obj["long"]=points[i]["long"];
+        obj["dist"]=cur;
+        arr.push(obj);
+        arr.sort(function(a,b){return a["dist"]-b["dist"]});
+        arr=arr.slice(0,5);    
         if(points[i]["lat"]==0 || points[i]["State"]!=ins)
         {
             continue;
         }
-        if(distance(points[i]["lat"], points[i]["long"],target[0], target[1])<d)
+        if(cur<d)
         {
-            d=distance(points[i]["lat"], points[i]["long"],target[0], target[1]);
+            d=cur;
             dcity=points[i]["City"];
             dstate=points[i]["State"];
         }
     }
-    return [dcity,dstate];
+    return [[dcity,dstate],arr];
 };

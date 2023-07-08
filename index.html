@@ -10,7 +10,8 @@
     
     <!-- Importing external stylesheet -->
     <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <!-- Setting page title -->
     <title>Fuelish</title>
     <link rel="icon" type="image/png" href="images/logo-5.png" class="favicon">
@@ -36,18 +37,12 @@
         </div>        
         
         <!-- Map section -->
-        <div class="state-img">
-            <iframe id="map"
-                height="200"
-                frameborder="0" 
-                scrolling="no" 
-                marginheight="0" 
-                marginwidth="0" 
-                src="https://www.openstreetmap.org/export/embed.html?bbox=40.86914062500001%2C-9.958868450753572%2C123.13476562500001%2C45.34382576751692&amp;layer=mapnik">
-            </iframe>
-        </div>
+            <div id='map'></div>
         
-
+        <div class="nearby" id="nearby">
+            <p>Nearby Prices</p>
+            <p id="npr">Nearby Prices</p>
+        </div>
         
         <!-- Price box section -->
         <div class="price-box">
