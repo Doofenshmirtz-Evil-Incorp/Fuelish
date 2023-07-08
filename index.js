@@ -56,7 +56,6 @@ function getdata(st,ct)
 
 async function clicky(data)
 {
-  near.classList.remove('fadeOut');
   near.classList.add('fadeIn');
   let txt=data.target.options.data;
 const ar=txt.split("-");
@@ -73,9 +72,9 @@ getdata(ar[0],ar[1]).then(data=>{
   else
     npr.innerHTML+="<p style='color: #EE3E3E'>"+"Petrol : "+data["Price(P)"]+"("+(pp1-pp).toFixed(2)+")"+"</p>";
   if((dp-dp1)>=0)
-    npr.innerHTML+="<p style='color: #72ff72'>"+"Deisel : "+data["Price(D)"]+"("+(dp1-dp).toFixed(2)+")"+"</p>";
+    npr.innerHTML+="<p style='color: #72ff72'>"+"Diesel : "+data["Price(D)"]+"("+(dp1-dp).toFixed(2)+")"+"</p>";
   else
-    npr.innerHTML+="<p style='color: #EE3E3E'>"+"Deisel : "+data["Price(D)"]+"("+(dp1-dp).toFixed(2)+")"+"</p>";
+    npr.innerHTML+="<p style='color: #EE3E3E'>"+"Diesel : "+data["Price(D)"]+"("+(dp1-dp).toFixed(2)+")"+"</p>";
   });
 }
 
@@ -150,7 +149,7 @@ window.onload=async ()=>{
   await fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
   .then(response => response.text())
   .then(data => {
-    const rows = data.split('\r\r\n');
+    const rows = data.split('\r\n');
     const headers = rows[0].split(',');
     corlent=rows.length;
     for (let i = 1; i < rows.length; i++) {
@@ -204,7 +203,7 @@ async function getcord(city)
               break;
             }
           }
-        }
+          }
         )
   }
   return arr;
@@ -213,7 +212,7 @@ async function getcord(city)
 async function cfunc()
 {
 var found=0;
-let i;
+let i;near.classList.remove('fadeIn');
       for(i=0;i<clent;i++)
         {                 
             if(datac[i]["City"].toLowerCase()==(city.value).toLowerCase())
@@ -273,7 +272,10 @@ async function func(mode=0,gcity)
 {
   if(state.value=="")
     {return;}
-    let i;markers.remove();
+    let i;
+    try{
+    markers.remove();}
+    catch(err){}
       for(i=0;i<slent-2;i++)
         { 
             if(rslt[i]["State"].toLowerCase()==(state.value).toLowerCase())
@@ -320,7 +322,7 @@ async function func(mode=0,gcity)
         }
 document.getElementById('state').addEventListener('change',func);
 document.getElementById('city').addEventListener('change', cfunc);
-container.addEventListener("animationend", function() {
+priceBox.addEventListener("animationend", function() {
   map.invalidateSize();
   map.fitBounds([
     [b1, b2],
