@@ -13,7 +13,7 @@ var slent;
 var clent;
 var corlent;
 var b0,b1,b2,b3;
-
+var markers;
 const map = L.map('map').setView([25, 75], 3);
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 maxZoom: 19,
@@ -88,11 +88,13 @@ getLoc.addEventListener('click',  event => {
             const latitude = pos.coords.latitude;
             const longitude = pos.coords.longitude;
             console.log(latitude, longitude);
-            L.circleMarker([latitude,longitude],{
+            markers=L.layerGroup();var mar;
+            mar=L.circleMarker([latitude,longitude],{
               radius:5,
               color: 'red',
               fillColor: 'red'
-            }).bindPopup("Idhar hain aap").openPopup().addTo(map);
+            }).bindPopup("Idhar hain aap").openPopup();
+            markers.addLayer(mar);
             fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+latitude+'&lon='+longitude)
             .then(response => response.json())
             .then(async data => {
@@ -103,13 +105,15 @@ getLoc.addEventListener('click',  event => {
                 await func(1,gcity);
                 for(let i=0;i<5;i++)
                 {
-                  L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
+                  mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
                     data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
                     radius:7,
                     color: 'blue',
                     fillColor: 'blue'
-                  }).bindPopup(out[1][i]["State"]+'-'+out[1][i]["City"]).openPopup().on('click',clicky).addTo(map);
+                  }).bindPopup(out[1][i]["State"]+'-'+out[1][i]["City"]).openPopup().on('click',clicky);
+                  markers.addLayer(mar);
                 }
+                markers.addTo(map);
             });
         }, error => {
           document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
@@ -269,8 +273,7 @@ async function func(mode=0,gcity)
 {
   if(state.value=="")
     {return;}
-    map.removeLayer(circleMarker);
-    let i;
+    let i;markers.remove();
       for(i=0;i<slent-2;i++)
         { 
             if(rslt[i]["State"].toLowerCase()==(state.value).toLowerCase())
