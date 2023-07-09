@@ -92,7 +92,8 @@ select option:disabled {
     margin-top: 10px;
     text-align: center;
     color: #cfdfe9;
-    font-size: 1.0rem;
+    font-weight: 800;
+    font-size: 1rem;
     scale: 0;
     opacity: 0;
 }
@@ -198,6 +199,14 @@ select option:disabled {
     max-height: 40%;
     display:None;
 }
+
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
 
 footer{
     color: white;

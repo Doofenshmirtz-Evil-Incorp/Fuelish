@@ -6,8 +6,9 @@ function distance(x1, y1, x2, y2)
 
 // Function to calculate K closest points
 export function Closest(points,
-    target,ins)
+    target,ins,marker)
 {
+    marker.remove();
     let n = points.length;
     let d = Infinity;
     let dstate,dcity,cur;
@@ -22,7 +23,7 @@ export function Closest(points,
         obj["dist"]=cur;
         arr.push(obj);
         arr.sort(function(a,b){return a["dist"]-b["dist"]});
-        arr=arr.slice(0,5);    
+        // arr=arr.slice(0,11);    
         if(points[i]["lat"]==0 || points[i]["State"]!=ins)
         {
             continue;

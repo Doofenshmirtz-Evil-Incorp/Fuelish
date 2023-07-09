@@ -13,7 +13,7 @@ var slent;
 var clent;
 var corlent;
 var b0,b1,b2,b3;
-var markers;
+var markers=L.layerGroup();
 const map = L.map('map').setView([25, 75], 3);
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 maxZoom: 19,
@@ -87,32 +87,63 @@ getLoc.addEventListener('click',  event => {
             const latitude = pos.coords.latitude;
             const longitude = pos.coords.longitude;
             console.log(latitude, longitude);
-            markers=L.layerGroup();var mar;
-            mar=L.circleMarker([latitude,longitude],{
-              radius:5,
-              color: 'red',
-              fillColor: 'red'
-            }).bindPopup("Idhar hain aap").openPopup();
-            markers.addLayer(mar);
             fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+latitude+'&lon='+longitude)
             .then(response => response.json())
             .then(async data => {
-                var out=Closest(cords,[latitude,longitude],data["address"]["state"]);
+                var out=Closest(cords,[latitude,longitude],data["address"]["state"],markers);
                 [gcity,gstate]=out[0];
                 document.getElementById("state").value=gstate;
                 console.log(document.getElementById("state").value);
                 await func(1,gcity);
-                for(let i=0;i<5;i++)
-                {
-                  mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
-                    data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
-                    radius:7,
-                    color: 'blue',
-                    fillColor: 'blue'
-                  }).bindPopup(out[1][i]["State"]+'-'+out[1][i]["City"]).openPopup().on('click',clicky);
+                markers=L.layerGroup();var mar;
+                mar=L.circleMarker([latitude,longitude],{
+                  radius:5,
+                  color: 'cyan',
+                  fillColor: 'cyan'
+                }).bindPopup("Idhar hain aap").openPopup();
+                markers.addLayer(mar);
+                var pp,dp;
+                getdata(gstate,gcity).then(data=>{
+                  pp=parseFloat(data["Price(P)"]).toFixed(2);
+                  dp=parseFloat(data["Price(D)"]).toFixed(2);
+                });
+                var pp1,dp1;
+                for(let i=0;i<7;i++)
+                {await getdata(out[1][i]["State"],out[1][i]["City"]).then(data=>{
+                    pp1=parseFloat(data["Price(P)"]).toFixed(2);
+                    dp1=parseFloat(data["Price(D)"]).toFixed(2);
+                    console.log(out[1][i]["City"],(pp1-pp),(dp1-dp));
+                    if((pp1-pp)<=0 && (dp1-dp)<=0)
+                    {
+                      mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
+                      data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
+                      radius:7,
+                      color: '#72ff72',
+                      fillColor: '#72ff72'
+                      }).bindPopup(out[1][i]["State"]+'<p>'+out[1][i]["City"]+'</p>').openPopup().on('click',clicky);
+                    }
+                    else if((pp1-pp)>0 && (dp1-dp)>0)
+                    {
+                        mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
+                        data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
+                        radius:7,
+                        color: '#EE3E3E',
+                        fillColor: '#EE3E3E'
+                        }).bindPopup(out[1][i]["State"]+'<p>'+out[1][i]["City"]+'</p>').openPopup().on('click',clicky);
+                    }
+                    else
+                    {
+                        mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
+                        data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
+                        radius:7,
+                        color: 'orange',
+                        fillColor: 'orange'
+                        }).bindPopup(out[1][i]["State"]+'<p>'+out[1][i]["City"]+'</p>').openPopup().on('click',clicky);
+                    }
                   markers.addLayer(mar);
+                  markers.addTo(map);
+                  })
                 }
-                markers.addTo(map);
             });
         }, error => {
           document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
@@ -273,9 +304,6 @@ async function func(mode=0,gcity)
   if(state.value=="")
     {return;}
     let i;
-    try{
-    markers.remove();}
-    catch(err){}
       for(i=0;i<slent-2;i++)
         { 
             if(rslt[i]["State"].toLowerCase()==(state.value).toLowerCase())
