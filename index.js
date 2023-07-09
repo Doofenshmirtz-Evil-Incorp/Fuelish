@@ -29,10 +29,10 @@ function getdata(st,ct)
                 return fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+st+'.csv')
                 .then(response => response.text())
                 .then( data => {
-                  datac=[];
+                  var dat=[];
                   const rows = data.split('\r\n');
                   const headers = rows[0].split(',');
-                  clent=rows.length;
+                  var clt=rows.length;
                   for (let i = 1; i < rows.length; i++) {
                     const row = rows[i].split(',');
                     if (row.length === headers.length) {
@@ -40,18 +40,71 @@ function getdata(st,ct)
                       for (let j = 0; j < headers.length; j++) {
                         obj[headers[j]] = row[j];
                       }
-                      datac.push(obj);
+                      dat.push(obj);
                     }
                   }
-                  for(i=0;i<clent;i++)
+                  for(i=0;i<clt;i++)
                   {                 
-                      if(datac[i]["City"].toLowerCase()==(ct).toLowerCase())
-                        {return datac[i];break;}
+                      if(dat[i]["City"].toLowerCase()==(ct).toLowerCase())
+                        {return dat[i];break;}
                   }
                 })
                   break;
               }
     }
+}
+
+async function genmark(gs,gc,lat,lon,out)
+{
+                markers=L.layerGroup();var mar;
+                mar=L.circleMarker([lat,lon],{
+                  radius:5,
+                  color: 'cyan',
+                  fillColor: 'cyan'
+                }).bindPopup("Idhar hain aap").openPopup();
+                markers.addLayer(mar);
+                var pp,dp;
+                getdata(gs,gc).then(data=>{
+                  pp=parseFloat(data["Price(P)"]).toFixed(2);
+                  dp=parseFloat(data["Price(D)"]).toFixed(2);
+                });
+                var pp1,dp1;
+                for(let i=0;i<6;i++)
+                {console.log(i,out[1][i]["State"],out[1][i]["City"]);
+                  await getdata(out[1][i]["State"],out[1][i]["City"]).then(data=>{
+                    pp1=parseFloat(data["Price(P)"]).toFixed(2);
+                    dp1=parseFloat(data["Price(D)"]).toFixed(2);
+                    if((pp1-pp)<=0 && (dp1-dp)<=0)
+                    {
+                      mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
+                      data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
+                      radius:7,
+                      color: '#72ff72',
+                      fillColor: '#72ff72'
+                      }).bindPopup(out[1][i]["State"]+'<p>'+out[1][i]["City"]+'</p>').openPopup().on('click',clicky);
+                    }
+                    else if((pp1-pp)>0 && (dp1-dp)>0)
+                    {
+                        mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
+                        data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
+                        radius:7,
+                        color: '#EE3E3E',
+                        fillColor: '#EE3E3E'
+                        }).bindPopup(out[1][i]["State"]+'<p>'+out[1][i]["City"]+'</p>').openPopup().on('click',clicky);
+                    }
+                    else
+                    {
+                        mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
+                        data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
+                        radius:7,
+                        color: 'orange',
+                        fillColor: 'orange'
+                        }).bindPopup(out[1][i]["State"]+'<p>'+out[1][i]["City"]+'</p>').openPopup().on('click',clicky);
+                    }
+                  markers.addLayer(mar);
+                  markers.addTo(map);
+                  })
+                }
 }
 
 async function clicky(data)
@@ -95,55 +148,7 @@ getLoc.addEventListener('click',  event => {
                 document.getElementById("state").value=gstate;
                 console.log(document.getElementById("state").value);
                 await func(1,gcity);
-                markers=L.layerGroup();var mar;
-                mar=L.circleMarker([latitude,longitude],{
-                  radius:5,
-                  color: 'cyan',
-                  fillColor: 'cyan'
-                }).bindPopup("Idhar hain aap").openPopup();
-                markers.addLayer(mar);
-                var pp,dp;
-                getdata(gstate,gcity).then(data=>{
-                  pp=parseFloat(data["Price(P)"]).toFixed(2);
-                  dp=parseFloat(data["Price(D)"]).toFixed(2);
-                });
-                var pp1,dp1;
-                for(let i=0;i<7;i++)
-                {await getdata(out[1][i]["State"],out[1][i]["City"]).then(data=>{
-                    pp1=parseFloat(data["Price(P)"]).toFixed(2);
-                    dp1=parseFloat(data["Price(D)"]).toFixed(2);
-                    console.log(out[1][i]["City"],(pp1-pp),(dp1-dp));
-                    if((pp1-pp)<=0 && (dp1-dp)<=0)
-                    {
-                      mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
-                      data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
-                      radius:7,
-                      color: '#72ff72',
-                      fillColor: '#72ff72'
-                      }).bindPopup(out[1][i]["State"]+'<p>'+out[1][i]["City"]+'</p>').openPopup().on('click',clicky);
-                    }
-                    else if((pp1-pp)>0 && (dp1-dp)>0)
-                    {
-                        mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
-                        data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
-                        radius:7,
-                        color: '#EE3E3E',
-                        fillColor: '#EE3E3E'
-                        }).bindPopup(out[1][i]["State"]+'<p>'+out[1][i]["City"]+'</p>').openPopup().on('click',clicky);
-                    }
-                    else
-                    {
-                        mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
-                        data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
-                        radius:7,
-                        color: 'orange',
-                        fillColor: 'orange'
-                        }).bindPopup(out[1][i]["State"]+'<p>'+out[1][i]["City"]+'</p>').openPopup().on('click',clicky);
-                    }
-                  markers.addLayer(mar);
-                  markers.addTo(map);
-                  })
-                }
+                genmark(gstate,gcity,latitude,longitude,out);
             });
         }, error => {
           document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
@@ -240,8 +245,9 @@ async function getcord(city)
   return arr;
 };
 
-async function cfunc()
+async function cfunc(mode=0)
 {
+  map.removeLayer(markers);
 var found=0;
 let i;near.classList.remove('fadeIn');
       for(i=0;i<clent;i++)
@@ -293,6 +299,18 @@ let i;near.classList.remove('fadeIn');
                 ele4.innerText=datac[i]["Change(D)"];
                 found=1;
                 document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
+                if(mode==0)
+                {
+                  for(let j=0;j<corlent;j++)
+                  {
+                    if(cords[j]["City"]==city.value)
+                    {
+                      var out=Closest(cords,[cords[j]["lat"],cords[j]["long"]],state.value,markers);
+                      genmark(state.value,city.value,cords[j]["lat"],cords[j]["long"],out);
+                      break;
+                    }
+                  }
+                }
                 break;
               }
         }
@@ -340,7 +358,7 @@ async function func(mode=0,gcity)
                   }
                   if(mode==1)
                   {
-                    cfunc();
+                    cfunc(1);
                   }
                 })
                 break;
@@ -349,7 +367,7 @@ async function func(mode=0,gcity)
         map.invalidateSize();
         }
 document.getElementById('state').addEventListener('change',func);
-document.getElementById('city').addEventListener('change', cfunc);
+document.getElementById('city').addEventListener('change', function(){cfunc(0);});
 priceBox.addEventListener("animationend", function() {
   map.invalidateSize();
   map.fitBounds([
