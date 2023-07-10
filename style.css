@@ -9,29 +9,36 @@ html, body {
     height: 100%;
 }
 body{
-    /* height: 100vh; */
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
     background: #000000;
 }
 
+.footer {
+    position:relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
 #page-container {
     position: relative;
-    min-height: 100vh;
-    padding-top: 20%;
-    padding-bottom: 4%;
+    min-height: 80vh;
+    max-height: 100vh;
+    padding-top: 5%;
+    padding-bottom: 10%;
 }
   
 
 .logo{
-    position:relative;
+    position:fixed;
     top: 0;
 }
 
 .container {
     position: relative;
-    margin-top: auto;
+    margin-top: 15vh;
     margin-bottom: auto;border-radius: 3px;
     width: 300px;
     height: 105px;

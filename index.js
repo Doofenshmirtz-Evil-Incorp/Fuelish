@@ -43,7 +43,9 @@ async function getcsv(url,splitter='\r\n')
 };
 
 async function bharat()
-{ container.style.height = '590px';
+{ map.removeLayer(markers);
+  map.setView([20, 77], 3)
+  container.style.height = '590px';
   st.style.display='block';
   map.invalidateSize();
   markers=L.layerGroup();var mar;
