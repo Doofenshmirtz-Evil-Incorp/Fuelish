@@ -29,11 +29,30 @@ body{
     margin-bottom: auto;border-radius: 3px;
     width: 300px;
     height: 105px;
-    background: #004E58;
+    background: #1d404a;
     border-radius: 10px;
-    font-family: monospace;
+    font-family: Helvetica;
     transition: 0.6s ease-out;
 }
+
+.leaflet-container {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50%;
+    width: 90%;
+    min-height: 40%;
+    max-height: 40%;
+    display:None;
+}
+
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+  filter: invert(100%) hue-rotate(180deg) brightness(100%) contrast(100%);
+}
+
 
 select[name="state"]
 {
@@ -188,25 +207,6 @@ select option:disabled {
     scale: 0;
     opacity: 0;
 }
-
-.leaflet-container {
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 50%;
-    width: 90%;
-    min-height: 40%;
-    max-height: 40%;
-    display:None;
-}
-
-.leaflet-layer,
-.leaflet-control-zoom-in,
-.leaflet-control-zoom-out,
-.leaflet-control-attribution {
-  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
-}
-
 
 footer{
     color: white;
