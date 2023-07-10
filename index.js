@@ -371,7 +371,6 @@ async function func(mode=0,gcity)
         map.invalidateSize();
         }
 document.getElementById('state').addEventListener('change',func);
-document.getElementById('but').addEventListener('click',anim);
 document.getElementById('city').addEventListener('change', function(){cfunc(0);});
 priceBox.addEventListener("animationend", function() {
   map.invalidateSize();
