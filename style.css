@@ -25,9 +25,9 @@ body{
   
 
 .logo{
-    position:relative;
+    position:absolute;
     top: 0;
-
+    margin-right: auto;
 }
 
 .container {
