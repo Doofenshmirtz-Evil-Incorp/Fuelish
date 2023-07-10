@@ -19,15 +19,14 @@ body{
 #page-container {
     position: relative;
     min-height: 100vh;
-    padding-top: 25%;
-    padding-bottom: 10%;
+    padding-top: 20%;
+    padding-bottom: 4%;
 }
   
 
 .logo{
-    position:absolute;
+    position:relative;
     top: 0;
-    margin-right: auto;
 }
 
 .container {
