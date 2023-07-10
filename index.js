@@ -13,45 +13,151 @@ var slent;
 var clent;
 var corlent;
 var b0,b1,b2,b3;
-var markers;
+var markers=L.layerGroup();
 const map = L.map('map').setView([25, 75], 3);
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 maxZoom: 19,
 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-function getdata(st,ct)
+async function getcsv(url,splitter='\r\n')
+{
+  return await fetch(url)
+  .then(response => response.text())
+  .then( data => {
+    var loc=[];
+    const rows = data.split(splitter);
+    const headers = rows[0].split(',');
+    var len=rows.length;
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i].split(',');
+      if (row.length === headers.length) {
+        const obj = {};
+        for (let j = 0; j < headers.length; j++) {
+          obj[headers[j]] = row[j];
+        }
+        loc.push(obj);
+      }
+    }return [loc,len];
+})
+};
+
+async function bharat()
+{ container.style.height = '590px';
+  st.style.display='block';
+  map.invalidateSize();
+  markers=L.layerGroup();var mar;
+  var order=Closest (cords,[8.058382,77.544730],"Tamil Nadu",markers);
+  for(let i=0;i<707;i++)
+  { map.invalidateSize();//22.947989, 79.197638
+    console.log(order[1][i]["City"],order[1][i]["dist"],order[1][i]["circ"]);
+    if(parseFloat(order[1][i]["circ"])<3)    
+    {mar=L.circleMarker([order[1][i]["lat"],order[1][i]["long"]],{
+        radius:7,
+        color: '#2a176f',
+        fillColor: '#2a176f'
+        }).bindPopup("#2a176f").openPopup();
+    markers.addLayer(mar);
+    markers.addTo(map);}
+    else if(parseFloat(order[1][i]["dist"])<12)    
+    {mar=L.circleMarker([order[1][i]["lat"],order[1][i]["long"]],{
+        radius:7,
+        color: '#138808',
+        fillColor: '#138808'
+        }).bindPopup("#138808").openPopup();
+    markers.addLayer(mar);
+    markers.addTo(map);}
+    else if(parseFloat(order[1][i]["dist"])<18)    
+    {mar=L.circleMarker([order[1][i]["lat"],order[1][i]["long"]],{
+        radius:7,
+        color: '#ffffff',
+        fillColor: '#ffffff'
+        }).bindPopup("#ffffff").openPopup();
+    markers.addLayer(mar);
+    markers.addTo(map);}
+    else    
+    {mar=L.circleMarker([order[1][i]["lat"],order[1][i]["long"]],{
+        radius:7,
+        color: '#f0630e',
+        fillColor: '#f0630e'
+        }).bindPopup("#f0630e").openPopup();
+    markers.addLayer(mar);
+    markers.addTo(map);}
+    await new Promise(r => setTimeout(r, 0.01));
+    }
+}
+
+async function getdata(st,ct)
 {let i;
   for(i=0;i<slent-2;i++)
-        { 
-            if(rslt[i]["State"].toLowerCase()==(st).toLowerCase())
-              {
-                return fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+st+'.csv')
-                .then(response => response.text())
-                .then( data => {
-                  datac=[];
-                  const rows = data.split('\r\n');
-                  const headers = rows[0].split(',');
-                  clent=rows.length;
-                  for (let i = 1; i < rows.length; i++) {
-                    const row = rows[i].split(',');
-                    if (row.length === headers.length) {
-                      const obj = {};
-                      for (let j = 0; j < headers.length; j++) {
-                        obj[headers[j]] = row[j];
-                      }
-                      datac.push(obj);
-                    }
-                  }
-                  for(i=0;i<clent;i++)
-                  {                 
-                      if(datac[i]["City"].toLowerCase()==(ct).toLowerCase())
-                        {return datac[i];break;}
-                  }
-                })
-                  break;
-              }
-    }
+  { 
+    if(rslt[i]["State"].toLowerCase()==(st).toLowerCase())
+      {var dat=[],clt;
+        await getcsv('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+st+'.csv').then(data =>
+        {
+          dat=data[0];
+          clt=data[1];
+        })
+        for(i=0;i<clt;i++)
+          {            
+              if(dat[i]["City"].toLowerCase()==(ct).toLowerCase())
+                {return dat[i];break;}
+          }
+          break;
+      }
+  }
+}
+
+async function genmark(gs,gc,lat,lon,out)
+{
+  markers=L.layerGroup();var mar;
+  mar=L.circleMarker([lat,lon],{
+    radius:5,
+    color: 'cyan',
+    fillColor: 'cyan'
+  }).bindPopup("Idhar hain aap").openPopup();
+  markers.addLayer(mar);
+  var pp,dp;
+  getdata(gs,gc).then(data=>{
+    pp=parseFloat(data["Price(P)"]).toFixed(2);
+    dp=parseFloat(data["Price(D)"]).toFixed(2);
+  });
+  var pp1,dp1;
+  for(let i=0;i<8;i++)
+  {   await getdata(out[1][i]["State"],out[1][i]["City"]).then(data=>{
+      pp1=parseFloat(data["Price(P)"]).toFixed(2);
+      dp1=parseFloat(data["Price(D)"]).toFixed(2);
+      if((pp1-pp)<=0 && (dp1-dp)<=0)
+      {
+        mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
+        data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
+        radius:7,
+        color: '#72ff72',
+        fillColor: '#72ff72'
+        }).bindPopup(out[1][i]["State"]+'<p>'+out[1][i]["City"]+'</p>').openPopup().on('click',clicky);
+      }
+      else if((pp1-pp)>0 && (dp1-dp)>0)
+      {
+          mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
+          data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
+          radius:7,
+          color: '#EE3E3E',
+          fillColor: '#EE3E3E'
+          }).bindPopup(out[1][i]["State"]+'<p>'+out[1][i]["City"]+'</p>').openPopup().on('click',clicky);
+      }
+      else
+      {
+          mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
+          data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
+          radius:7,
+          color: 'orange',
+          fillColor: 'orange'
+          }).bindPopup(out[1][i]["State"]+'<p>'+out[1][i]["City"]+'</p>').openPopup().on('click',clicky);
+      }
+    markers.addLayer(mar);
+    markers.addTo(map);
+    })
+  }
 }
 
 async function clicky(data)
@@ -87,32 +193,15 @@ getLoc.addEventListener('click',  event => {
             const latitude = pos.coords.latitude;
             const longitude = pos.coords.longitude;
             console.log(latitude, longitude);
-            markers=L.layerGroup();var mar;
-            mar=L.circleMarker([latitude,longitude],{
-              radius:5,
-              color: 'red',
-              fillColor: 'red'
-            }).bindPopup("Idhar hain aap").openPopup();
-            markers.addLayer(mar);
             fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+latitude+'&lon='+longitude)
             .then(response => response.json())
             .then(async data => {
-                var out=Closest(cords,[latitude,longitude],data["address"]["state"]);
+                var out=Closest(cords,[latitude,longitude],data["address"]["state"],markers);
                 [gcity,gstate]=out[0];
                 document.getElementById("state").value=gstate;
                 console.log(document.getElementById("state").value);
                 await func(1,gcity);
-                for(let i=0;i<5;i++)
-                {
-                  mar=L.circleMarker([out[1][i]["lat"],out[1][i]["long"]],{
-                    data:String(out[1][i]["State"]+'-'+out[1][i]["City"]),
-                    radius:7,
-                    color: 'blue',
-                    fillColor: 'blue'
-                  }).bindPopup(out[1][i]["State"]+'-'+out[1][i]["City"]).openPopup().on('click',clicky);
-                  markers.addLayer(mar);
-                }
-                markers.addTo(map);
+                genmark(gstate,gcity,latitude,longitude,out);
             });
         }, error => {
           document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
@@ -126,45 +215,18 @@ getLoc.addEventListener('click',  event => {
 window.onload=async ()=>{
   var status=0;
     while(status!=2){
-     await fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv',{method:"GET",mode:"cors"})
-    .then(response => response.text())
-    .then(data => {
-      const rows = data.split('\r\n');
-      const headers = rows[0].split(',');
-      slent=rows.length;
-      for (let i = 1; i < rows.length; i++) {
-        const row = rows[i].split(',');
-        if (row.length === headers.length) {
-          const obj = {};
-          for (let j = 0; j < headers.length; j++) {
-            obj[headers[j]] = row[j];
-          }
-          document.getElementById("state").innerHTML+="<option value='"+obj["State"]+"'>"+obj["State"]+"</option>";
-          rslt.push(obj);
-        }
-      }
+     await getcsv('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv')
+     .then(data =>{
+      rslt=data[0];
+      slent=data[1];
       status=1;
-    })
-    .catch(error => {console.error(error);});
-  await fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
-  .then(response => response.text())
-  .then(data => {
-    const rows = data.split('\r\n');
-    const headers = rows[0].split(',');
-    corlent=rows.length;
-    for (let i = 1; i < rows.length; i++) {
-      const row = rows[i].split(',');
-      if (row.length === headers.length) {
-        const obj = {};
-        for (let j = 0; j < headers.length; j++) {
-          obj[headers[j]] = row[j];
-        }
-        cords.push(obj);
+      for(let x=0;x<slent-2;x++)
+      {
+        document.getElementById("state").innerHTML+="<option value='"+rslt[x]["State"]+"'>"+rslt[x]["State"]+"</option>";
       }
-    }
-    status=2;
-    })
-  .catch(error => {console.error(error);});
+     });
+  await getcsv('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
+  .then(data =>{cords=data[0];corlent=data[1];status=2;});
   console.log(status);
 }
 }
@@ -178,22 +240,10 @@ async function getcord(city)
       })
       .catch(error => {return [0,0,0,0]});
   if(arr[0]==0)
-  {
-    await fetch('https://raw.githubusercontent.com/Doofenshmirtz-Evil-Incorp/FuelishCLI/main/src/bound.csv')
-        .then(response => response.text())
-        .then( data => {
-          const rows = data.split('\n');
-          const headers = rows[0].split(',');
-          for (let i = 1; i < rows.length; i++) {
-            const row = rows[i].split(',');
-            if (row.length === headers.length) {
-              const obj = {};
-              for (let j = 0; j < headers.length; j++) {
-                obj[headers[j]] = row[j];
-              }
-              bound.push(obj);
-            }
-          }
+  {  console.log("b",arr);
+    await getcsv('https://raw.githubusercontent.com/Doofenshmirtz-Evil-Incorp/FuelishCLI/main/src/bound.csv','\n')
+    .then(data =>{bound=data[0];})
+    .then(data =>{
           bl=bound.length;
           for(i=0;i<bl-1;i++)
           {
@@ -204,13 +254,14 @@ async function getcord(city)
             }
           }
           }
-        )
+        );
   }
   return arr;
 };
 
-async function cfunc()
+async function cfunc(mode=0)
 {
+  map.removeLayer(markers);
 var found=0;
 let i;near.classList.remove('fadeIn');
       for(i=0;i<clent;i++)
@@ -262,6 +313,18 @@ let i;near.classList.remove('fadeIn');
                 ele4.innerText=datac[i]["Change(D)"];
                 found=1;
                 document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
+                if(mode==0)
+                {
+                  for(let j=0;j<corlent;j++)
+                  {
+                    if(cords[j]["City"]==city.value)
+                    {
+                      var out=Closest(cords,[cords[j]["lat"],cords[j]["long"]],state.value,markers);
+                      genmark(state.value,city.value,cords[j]["lat"],cords[j]["long"],out);
+                      break;
+                    }
+                  }
+                }
                 break;
               }
         }
@@ -273,9 +336,6 @@ async function func(mode=0,gcity)
   if(state.value=="")
     {return;}
     let i;
-    try{
-    markers.remove();}
-    catch(err){}
       for(i=0;i<slent-2;i++)
         { 
             if(rslt[i]["State"].toLowerCase()==(state.value).toLowerCase())
@@ -287,41 +347,32 @@ async function func(mode=0,gcity)
               ]);
                 document.getElementById("city").disabled=false;
                 document.getElementById("city").innerHTML="<option value='' selected disabled>Select a city</option>";
-                fetch('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
-                .then(response => response.text())
-                .then(data => {
-                  datac=[];
-                  const rows = data.split('\r\n');
-                  const headers = rows[0].split(',');
-                  clent=rows.length;
-                  for (let i = 1; i < rows.length; i++) {
-                    const row = rows[i].split(',');
-                    if (row.length === headers.length) {
-                      const obj = {};
-                      for (let j = 0; j < headers.length; j++) {
-                        obj[headers[j]] = row[j];
-                      }
-                      if(mode==1 && obj["City"]==gcity)
-                      {
-                        document.getElementById("city").innerHTML+="<option selected value='"+obj["City"]+"'>"+obj["City"]+"</option>";
-                      }
-                      else
-                      {document.getElementById("city").innerHTML+="<option value='"+obj["City"]+"'>"+obj["City"]+"</option>";}
-                      datac.push(obj);
-                    }
-                  }
-                  if(mode==1)
+                getcsv('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
+                .then(data=>
                   {
-                    cfunc();
-                  }
-                })
+                    datac=[];
+                    clent=data[1];
+                    datac=data[0];
+                    for(let x=0;x<clent-2;x++)
+                    if(mode==1 && datac[x]["City"]==gcity)
+                    {
+                      document.getElementById("city").innerHTML+="<option selected value='"+datac[x]["City"]+"'>"+datac[x]["City"]+"</option>";
+                    }
+                    else
+                    {document.getElementById("city").innerHTML+="<option value='"+datac[x]["City"]+"'>"+datac[x]["City"]+"</option>";}
+                    if(mode==1)
+                    {
+                      cfunc(1);
+                    }
+                  });
                 break;
               }
         }
         map.invalidateSize();
         }
 document.getElementById('state').addEventListener('change',func);
-document.getElementById('city').addEventListener('change', cfunc);
+document.getElementById('city').addEventListener('change', function(){cfunc(0);});
+document.getElementById('animation').addEventListener('click',bharat);
 priceBox.addEventListener("animationend", function() {
   map.invalidateSize();
   map.fitBounds([
