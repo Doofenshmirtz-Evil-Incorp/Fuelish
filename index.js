@@ -42,7 +42,7 @@ async function getcsv(url,splitter='\r\n')
 })
 };
 
-async function anim()
+async function bharat()
 { container.style.height = '590px';
   st.style.display='block';
   map.invalidateSize();
@@ -54,33 +54,33 @@ async function anim()
     if(parseFloat(order[1][i]["circ"])<3)    
     {mar=L.circleMarker([order[1][i]["lat"],order[1][i]["long"]],{
         radius:7,
-        color: 'blue',
-        fillColor: 'blue'
-        }).bindPopup("blue").openPopup();
+        color: '#2a176f',
+        fillColor: '#2a176f'
+        }).bindPopup("#2a176f").openPopup();
     markers.addLayer(mar);
     markers.addTo(map);}
     else if(parseFloat(order[1][i]["dist"])<12)    
     {mar=L.circleMarker([order[1][i]["lat"],order[1][i]["long"]],{
         radius:7,
-        color: 'green',
-        fillColor: 'green'
-        }).bindPopup("green").openPopup();
+        color: '#138808',
+        fillColor: '#138808'
+        }).bindPopup("#138808").openPopup();
     markers.addLayer(mar);
     markers.addTo(map);}
     else if(parseFloat(order[1][i]["dist"])<18)    
     {mar=L.circleMarker([order[1][i]["lat"],order[1][i]["long"]],{
         radius:7,
-        color: 'white',
-        fillColor: 'white'
-        }).bindPopup("white").openPopup();
+        color: '#ffffff',
+        fillColor: '#ffffff'
+        }).bindPopup("#ffffff").openPopup();
     markers.addLayer(mar);
     markers.addTo(map);}
     else    
     {mar=L.circleMarker([order[1][i]["lat"],order[1][i]["long"]],{
         radius:7,
-        color: 'orange',
-        fillColor: 'orange'
-        }).bindPopup("orange").openPopup();
+        color: '#f0630e',
+        fillColor: '#f0630e'
+        }).bindPopup("#f0630e").openPopup();
     markers.addLayer(mar);
     markers.addTo(map);}
     await new Promise(r => setTimeout(r, 0.01));
@@ -372,6 +372,7 @@ async function func(mode=0,gcity)
         }
 document.getElementById('state').addEventListener('change',func);
 document.getElementById('city').addEventListener('change', function(){cfunc(0);});
+document.getElementById('animation').addEventListener('click',bharat);
 priceBox.addEventListener("animationend", function() {
   map.invalidateSize();
   map.fitBounds([
