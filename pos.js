@@ -21,6 +21,8 @@ export function Closest(points,
         obj["lat"]=points[i]["lat"];
         obj["long"]=points[i]["long"];
         obj["dist"]=cur;
+        var circ=distance(22.947989,79.197638,points[i]["lat"], points[i]["long"]);
+        obj["circ"]=circ;
         arr.push(obj);
         arr.sort(function(a,b){return a["dist"]-b["dist"]});
         // arr=arr.slice(0,11);    
