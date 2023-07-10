@@ -52,8 +52,8 @@ async function bharat()
   var order=Closest (cords,[8.058382,77.544730],"Tamil Nadu",markers);
   for(let i=0;i<707;i++)
   { map.invalidateSize();//22.947989, 79.197638
-    console.log(order[1][i]["City"],order[1][i]["dist"],order[1][i]["circ"]);
-    if(parseFloat(order[1][i]["circ"])<3)    
+    // console.log(order[1][i]["City"],order[1][i]["dist"],order[1][i]["circ"]);
+    if(parseFloat(order[1][i]["circ"])<300)    
     {mar=L.circleMarker([order[1][i]["lat"],order[1][i]["long"]],{
         radius:7,
         color: '#2a176f',
@@ -61,7 +61,7 @@ async function bharat()
         }).bindPopup("#2a176f").openPopup();
     markers.addLayer(mar);
     markers.addTo(map);}
-    else if(parseFloat(order[1][i]["dist"])<12)    
+    else if(parseFloat(order[1][i]["dist"])<1200)    
     {mar=L.circleMarker([order[1][i]["lat"],order[1][i]["long"]],{
         radius:7,
         color: '#138808',
@@ -69,7 +69,7 @@ async function bharat()
         }).bindPopup("#138808").openPopup();
     markers.addLayer(mar);
     markers.addTo(map);}
-    else if(parseFloat(order[1][i]["dist"])<18)    
+    else if(parseFloat(order[1][i]["dist"])<2200)    
     {mar=L.circleMarker([order[1][i]["lat"],order[1][i]["long"]],{
         radius:7,
         color: '#ffffff',
