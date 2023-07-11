@@ -46,13 +46,13 @@ async function bharat()
 { map.removeLayer(markers);
   map.setView([20, 77], 3)
   container.style.height = '590px';
+  container.style.marginTop = '1px';
   st.style.display='block';
   map.invalidateSize();
   markers=L.layerGroup();var mar;
   var order=Closest (cords,[8.058382,77.544730],"Tamil Nadu",markers);
   for(let i=0;i<707;i++)
-  { map.invalidateSize();//22.947989, 79.197638
-    // console.log(order[1][i]["City"],order[1][i]["dist"],order[1][i]["circ"]);
+  { map.invalidateSize();
     if(parseFloat(order[1][i]["circ"])<300)    
     {mar=L.circleMarker([order[1][i]["lat"],order[1][i]["long"]],{
         radius:7,
@@ -275,6 +275,7 @@ let i;near.classList.remove('fadeIn');
                 priceBox.classList.add('fadeIn');
                 change.classList.add('fadeIn');
                 container.style.height = '590px';
+                container.style.marginTop = '1px';
                 st.style.display='block';
                 [b0,b1,b2,b3]=await getcord(state.value.replace(/ /g, '+')+"+"+datac[i]["City"]);
                 map.fitBounds([
