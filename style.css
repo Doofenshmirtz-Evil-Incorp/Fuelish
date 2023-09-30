@@ -33,6 +33,7 @@ body{
 }
 
 .logo{
+    z-index: 2;
     position:relative;
     top: 0;
 }
@@ -59,6 +60,10 @@ body{
     display:None;
 }
 
+.leaflet-control-attribution svg {
+    width:0
+}
+
 .leaflet-layer,
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out,
@@ -82,7 +87,7 @@ select[name="state"]
     width: 70%;
     height: 20%;
     padding: 2%;
-    z-index: 1;
+    z-index: 2;
     border-radius: 3px;
     
 }
@@ -104,6 +109,7 @@ select option:disabled {
 }
 
 .search-box button{
+    z-index: 2;
     cursor: pointer;
     width: 50px;
     height: 50px;
@@ -121,6 +127,7 @@ select option:disabled {
 
 .nearby
 {
+    z-index: 2;
     margin-top: 10px;
     text-align: center;
     color: #cfdfe9;
@@ -131,6 +138,7 @@ select option:disabled {
 }
 
 .price-box{
+    z-index: 2;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -139,6 +147,7 @@ select option:disabled {
 }
 
 .price-box .price-petrol{
+    z-index: 2;
     float: left;
     color: #cfdfe9;
     font-size: 1.5rem;
@@ -148,6 +157,7 @@ select option:disabled {
 }
 
 .price-box .price-diesel{
+    z-index: 2;
     float: left;
     color: #cfdfe9;
     font-size: 1rem;
@@ -158,6 +168,7 @@ select option:disabled {
 }
 
 .price-box .price-petrol, .price-box .price-diesel span{
+    z-index: 2;
     text-align: center;
     position: relative;
     margin-left: 10%;
@@ -167,6 +178,7 @@ select option:disabled {
 }
 
 .change{
+    z-index: 2;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -175,6 +187,7 @@ select option:disabled {
 }
 
 .change .petrol-change, .change .diesel-change{
+    z-index: 2;
     display: flex;
     position: relative;
     align-items: center;
@@ -184,6 +197,7 @@ select option:disabled {
 }
 
 .change .petrol-change{
+    z-index: 2;
     justify-content: center;
     font-weight: bold;
     margin-left: -10%;
@@ -191,6 +205,7 @@ select option:disabled {
 }
 
 .change .diesel-change{
+    z-index: 2;
     margin-right: 8%;
     justify-content: center;
     font-weight: bold;padding-left: 5%;
@@ -198,6 +213,7 @@ select option:disabled {
 }
 
 .change i{
+    z-index: 2;
     color: #06283D;
     font-size: 26px;
     margin-right: 10px;
@@ -205,23 +221,27 @@ select option:disabled {
 }
 
 .change span{
+    z-index: 2;
     color: #06283D;
     font-size: 22px;
     font-weight: 500;
 }
 
 .change p{
+    z-index: 2;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #cfdfe9;
     font-size: 14px;
     font-weight: 500;
 }
 .price-box, .change{
+    z-index: 2;
     scale: 0;
     opacity: 0;
 }
 
 footer{
+    z-index: 2;
     color: white;
     text-align: center; 
     bottom: 0;
@@ -247,5 +267,41 @@ footer a{
     to {
         scale: 1;
         opacity: 1;
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+    .leaflet-container {
+        position:fixed;
+        left: 0;
+        top:0;
+        right:0;
+        bottom: 0;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        height: 100vh;
+        max-height: 100vh;
+        width: 100vw;
+        display:block;
+        z-index: -3;
+    }
+    .container {
+        z-index: 1;
+        position: fixed;
+        left: 1%;
+    }
+    .search-box{
+        position: relative;
+        z-index: 2;
+    }
+    
+    footer{
+        display: flex;
+        position: fixed;
+        flex-direction: column;
+        width: max-content;
+        margin-bottom: 5vh;
     }
 }
