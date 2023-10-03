@@ -20,6 +20,32 @@ maxZoom: 19,
 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+// Function to manage site visit count
+function manageVisitCount() {
+  // Check if the visit count is already in localStorage
+  let visitCount = localStorage.getItem('visitCount');
+
+  // If it's not set, initialize it to 0
+  if (visitCount === null) {
+    visitCount = 0;
+  }
+
+  // Update the counter element
+  const visitCountElement = document.getElementById('visit-count');
+  visitCountElement.textContent = visitCount;
+
+  // Increment the visit count on each visit
+  visitCount++;
+  visitCountElement.textContent = visitCount;
+
+  // Update localStorage with the new count
+  localStorage.setItem('visitCount', visitCount);
+}
+
+// Call the function to manage visit count
+manageVisitCount();
+
+
 async function getcsv(url,splitter='\r\n')
 {
   return await fetch(url)
