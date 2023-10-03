@@ -270,7 +270,25 @@ footer a{
     }
 }
 
+/* Style for the visit counter */
+.visit-counter {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
+.visit-counter p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.visit-counter #visit-count {
+    font-size: 24px;
+    color: #007bff;
+    margin-left: 5px;
+}
 @media only screen and (min-width: 768px) {
     .leaflet-container {
         position:fixed;
