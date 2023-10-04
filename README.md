@@ -27,7 +27,6 @@ Fuelish is built with the following technologies:
 - CSS, because we don't want our app to look like it's from the 90s.
 - JavaScript, because we want to make our app interactive.
 - OpenMaps API, because we want to show you your location.
-- Google Maps API, because we want to redirect you to the nearest petrol pumps.
 
 ## Installation
 
