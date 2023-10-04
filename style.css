@@ -1,28 +1,31 @@
-*{
+* {
     margin: 0;
     padding: 0;
     border: 0;
     outline: none;
     box-sizing: border-box;
 }
-html, body {
+
+html,
+body {
     min-height: 100%;
     max-height: 200%;
 }
-body{
+
+body {
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     background: #000000;
 }
 
 .footer {
-    position:relative;
+    position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
-  }
+}
 
 #page-container {
     position: relative;
@@ -32,16 +35,17 @@ body{
     padding-bottom: 10%;
 }
 
-.logo{
+.logo {
     z-index: 2;
-    position:relative;
+    position: relative;
     top: 0;
 }
 
 .container {
     position: relative;
     margin-top: 15vh;
-    margin-bottom: auto;border-radius: 3px;
+    margin-bottom: auto;
+    border-radius: 3px;
     width: 300px;
     height: 105px;
     background: #1d404a;
@@ -57,45 +61,45 @@ body{
     height: 50%;
     width: 97%;
     max-height: 40%;
-    display:None;
+    display: None;
 }
 
 .leaflet-control-attribution svg {
-    width:0
+    width: 0
 }
 
 .leaflet-layer,
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out,
 .leaflet-control-attribution {
-  filter: invert(100%) hue-rotate(180deg) brightness(100%) contrast(100%);
+    filter: invert(100%) hue-rotate(180deg) brightness(100%) contrast(100%);
 }
 
-.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
     background: rgb(190, 12, 12);
     color: #7a2323;
     box-shadow: 0 3px 14px rgba(207, 16, 16, 0.4);
-    }
+}
 
-select[name="state"]
-{
+select[name="state"] {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    background-color:#547f85;
+    background-color: #547f85;
     color: white;
-    position:relative;
+    position: relative;
     width: 70%;
     height: 20%;
     padding: 2%;
     z-index: 2;
     border-radius: 3px;
-    
+
 }
 
 select[name="city"] {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    background-color:#547f85;
+    background-color: #547f85;
     color: white;
     position: relative;
     padding: 2%;
@@ -108,7 +112,7 @@ select option:disabled {
     color: black;
 }
 
-.search-box button{
+.search-box button {
     z-index: 2;
     cursor: pointer;
     width: 50px;
@@ -120,13 +124,12 @@ select option:disabled {
     transition: 0.4s ease;
 }
 
-.search-box button:hover{
+.search-box button:hover {
     color: #d01212;
     background: #004E58;
 }
 
-.nearby
-{
+.nearby {
     z-index: 2;
     margin-top: 10px;
     text-align: center;
@@ -137,7 +140,7 @@ select option:disabled {
     opacity: 0;
 }
 
-.price-box{
+.price-box {
     z-index: 2;
     width: 100%;
     display: flex;
@@ -146,7 +149,7 @@ select option:disabled {
     margin-left: 2%;
 }
 
-.price-box .price-petrol{
+.price-box .price-petrol {
     z-index: 2;
     float: left;
     color: #cfdfe9;
@@ -156,7 +159,7 @@ select option:disabled {
     margin-left: 30px;
 }
 
-.price-box .price-diesel{
+.price-box .price-diesel {
     z-index: 2;
     float: left;
     color: #cfdfe9;
@@ -167,7 +170,8 @@ select option:disabled {
     margin-right: 15%;
 }
 
-.price-box .price-petrol, .price-box .price-diesel span{
+.price-box .price-petrol,
+.price-box .price-diesel span {
     z-index: 2;
     text-align: center;
     position: relative;
@@ -177,7 +181,7 @@ select option:disabled {
     padding-right: 10%;
 }
 
-.change{
+.change {
     z-index: 2;
     width: 100%;
     display: flex;
@@ -186,7 +190,8 @@ select option:disabled {
     margin-left: 5%;
 }
 
-.change .petrol-change, .change .diesel-change{
+.change .petrol-change,
+.change .diesel-change {
     z-index: 2;
     display: flex;
     position: relative;
@@ -196,7 +201,7 @@ select option:disabled {
     margin-left: -10%;
 }
 
-.change .petrol-change{
+.change .petrol-change {
     z-index: 2;
     justify-content: center;
     font-weight: bold;
@@ -204,15 +209,16 @@ select option:disabled {
     text-align: center;
 }
 
-.change .diesel-change{
+.change .diesel-change {
     z-index: 2;
     margin-right: 8%;
     justify-content: center;
-    font-weight: bold;padding-left: 5%;
+    font-weight: bold;
+    padding-left: 5%;
     text-align: center;
 }
 
-.change i{
+.change i {
     z-index: 2;
     color: #06283D;
     font-size: 26px;
@@ -220,30 +226,32 @@ select option:disabled {
     margin-top: 6px;
 }
 
-.change span{
+.change span {
     z-index: 2;
     color: #06283D;
     font-size: 22px;
     font-weight: 500;
 }
 
-.change p{
+.change p {
     z-index: 2;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #cfdfe9;
     font-size: 14px;
     font-weight: 500;
 }
-.price-box, .change{
+
+.price-box,
+.change {
     z-index: 2;
     scale: 0;
     opacity: 0;
 }
 
-footer{
+footer {
     z-index: 2;
     color: white;
-    text-align: center; 
+    text-align: center;
     bottom: 0;
     right: 0;
     left: 0;
@@ -254,16 +262,16 @@ footer{
     height: 2.5rem;
 }
 
-footer a{
+footer a {
     color: rgb(145, 222, 234);
 }
 
-.fadeIn{
+.fadeIn {
     animation: 0.5s fadeIn forwards;
     animation-delay: 0.5s;
 }
 
-@keyframes fadeIn{
+@keyframes fadeIn {
     to {
         scale: 1;
         opacity: 1;
@@ -289,12 +297,13 @@ footer a{
     color: #007bff;
     margin-left: 5px;
 }
+
 @media only screen and (min-width: 768px) {
     .leaflet-container {
-        position:fixed;
+        position: fixed;
         left: 0;
-        top:0;
-        right:0;
+        top: 0;
+        right: 0;
         bottom: 0;
         margin-top: 0;
         margin-left: 0;
@@ -302,20 +311,22 @@ footer a{
         height: 100vh;
         max-height: 100vh;
         width: 100vw;
-        display:block;
+        display: block;
         z-index: -3;
     }
+
     .container {
         z-index: 1;
         position: fixed;
         left: 1%;
     }
-    .search-box{
+
+    .search-box {
         position: relative;
         z-index: 2;
     }
-    
-    footer{
+
+    footer {
         display: flex;
         position: fixed;
         flex-direction: column;
