@@ -304,14 +304,6 @@ footer a{
         width: max-content;
         margin-bottom: 5vh;
     }
-    .toggle-container
-    {
-        z-index:2;
-        position: relative;
-        bottom:15vh;
-        left:10vh
-        
-    }
 }
 /* Styles for the toggle button container */
 
@@ -325,6 +317,7 @@ footer a{
   
   /* Styles for the toggle switch */
   .switch {
+    margin-top: 20px;
     position: relative;
     display: inline-block;
     width: 60px;
