@@ -392,7 +392,7 @@ priceBox.addEventListener("animationend", function() {
 
 modeToggle.addEventListener("change", () => {
   if (modeToggle.checked) {
-    // Dark Mode
+    //light mode
     pageContainer.classList.remove("dark-mode");
     document.body.classList.remove("dark-mode");
      document.querySelector(".mode-label").textContent = "Light Mode";
@@ -400,7 +400,7 @@ modeToggle.addEventListener("change", () => {
     map.removeLayer(tiles); // Remove default (light) tile layer
     map.addLayer(darkModeTileLayer); // Add dark mode tile layer
   } else {
-    // Light Mode
+    //dark mode
      pageContainer.classList.add("dark-mode");
     document.body.classList.add("dark-mode");
     document.querySelector(".mode-label").textContent = "Dark Mode";
