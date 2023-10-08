@@ -271,7 +271,7 @@ footer a{
 }
 
 
-@media only screen and (min-width: 768px) {
+/* @media only screen and (min-width: 768px) {
     .leaflet-container {
         position:fixed;
         left: 0;
@@ -304,4 +304,4 @@ footer a{
         width: max-content;
         margin-bottom: 5vh;
     }
-}
+} */
