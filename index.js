@@ -5,6 +5,9 @@ const change = document.querySelector('.change');
 const st = document.getElementById("map");
 const getLoc = document.getElementById("getlocation");
 const near = document.getElementById('nearby');
+const modeToggle = document.getElementById("mode-toggle");
+const pageContainer = document.getElementById("page-container");
+const mapContainer = document.getElementById("map");
 
 var cords=[];
 var rslt=[];//state data
@@ -19,6 +22,8 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 maxZoom: 19,
 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+
+var darkModeTileLayer = new L.StamenTileLayer("terrain");
 
 async function getcsv(url,splitter='\r\n')
 {
@@ -382,4 +387,25 @@ priceBox.addEventListener("animationend", function() {
     [b1, b2],
     [b0, b3]
 ]);
+});
+
+
+modeToggle.addEventListener("change", () => {
+  if (modeToggle.checked) {
+    // Dark Mode
+    pageContainer.classList.remove("dark-mode");
+    document.body.classList.remove("dark-mode");
+     document.querySelector(".mode-label").textContent = "Light Mode";
+     mapContainer.classList.remove("dark-mode");
+    map.removeLayer(tiles); // Remove default (light) tile layer
+    map.addLayer(darkModeTileLayer); // Add dark mode tile layer
+  } else {
+    // Light Mode
+     pageContainer.classList.add("dark-mode");
+    document.body.classList.add("dark-mode");
+    document.querySelector(".mode-label").textContent = "Dark Mode";
+    mapContainer.classList.add("dark-mode");
+    map.removeLayer(darkModeTileLayer); // Remove dark mode tile layer
+    map.addLayer(tiles); // Add default (light) tile layer
+  }
 });

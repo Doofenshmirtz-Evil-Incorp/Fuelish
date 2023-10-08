@@ -304,4 +304,92 @@ footer a{
         width: max-content;
         margin-bottom: 5vh;
     }
+    .toggle-container
+    {
+        z-index:2;
+        position: relative;
+        
+    }
 }
+/* Styles for the toggle button container */
+
+@media (prefers-color-scheme: dark) {
+    /* Dark mode styles */
+    body {
+      background-color: #121212;
+      color: #fff;
+    }
+  }
+.toggle-container {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    left:17vh;
+    bottom:25vh;
+  }
+  
+  /* Styles for the toggle switch */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+
+  #mode-toggle{
+    right:-21px;
+    position: fixed;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  .mode-label {
+    margin-left: 10px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .dark-mode .leaflet-container {
+    background-color: #121212;
+    border: 1px solid #ccc;
+  }
+  
+  .dark-mode .leaflet-popup-content-wrapper,
+  .dark-mode .leaflet-popup-tip {
+    background: #222; /* Adjust background color for popups */
+    color: #fff; /* Adjust text color for popups */
+  }
+  

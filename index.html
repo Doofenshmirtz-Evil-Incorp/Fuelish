@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" href="images/favicon.png" class="favicon">
 </head>
 <body>
-    <div id="page-container">
+<div id="page-container">
     <!-- Logo section -->
     <div class="logo">
         <a href="https://doofenshmirtz-evil-incorp.github.io/Fuelish/" target="_blank" rel="noopener noreferrer"><img src="images/logo.png" width="150px" alt=""></a>
@@ -71,10 +71,19 @@
                 </div>
             </div>
         </div>
+        <div class="toggle-container">
+            <label class="switch">
+              <input type="checkbox" id="mode-toggle">
+              <span class="slider round"></span>
+            </label>
+            <p class="mode-label">Light Mode</p>
+        </div>
     </div>
+    
 
     <!-- Importing Font Awesome icon library -->
     <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
+    <script src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js"></script>
     <!-- Import index.js -->
     <script type="module" src="pos.js"></script>
     <script type="module" src="index.js"></script>
