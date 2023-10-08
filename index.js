@@ -23,7 +23,7 @@ maxZoom: 19,
 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-var darkModeTileLayer = new L.StamenTileLayer("terrain");
+// var darkModeTileLayer = new L.StamenTileLayer("terrain");
 
 async function getcsv(url,splitter='\r\n')
 {
@@ -391,21 +391,41 @@ priceBox.addEventListener("animationend", function() {
 
 
 modeToggle.addEventListener("change", () => {
+  // if (modeToggle.checked) {
+  //   //light mode
+ 
+  //   map.removeLayer(tiles); 
+  //   map.addLayer(darkModeTileLayer); 
+  // } else {
+  //   //dark mode
+  //    pageContainer.classList.add("dark-mode");
+  //   document.body.classList.add("dark-mode");
+  //   document.querySelector(".mode-label").textContent = "Dark Mode";
+  //   mapContainer.classList.add("dark-mode");
+  //   map.removeLayer(darkModeTileLayer); 
+  //   map.addLayer(tiles); 
+  // }
+
   if (modeToggle.checked) {
-    //light mode
-    pageContainer.classList.remove("dark-mode");
-    document.body.classList.remove("dark-mode");
-     document.querySelector(".mode-label").textContent = "Light Mode";
-     mapContainer.classList.remove("dark-mode");
-    map.removeLayer(tiles); // Remove default (light) tile layer
-    map.addLayer(darkModeTileLayer); // Add dark mode tile layer
-  } else {
-    //dark mode
-     pageContainer.classList.add("dark-mode");
     document.body.classList.add("dark-mode");
+    pageContainer.classList.add("dark-mode");
+      document.body.classList.add("dark-mode");
+    const classtogglename=document.getElementById("toggle-icon");
     document.querySelector(".mode-label").textContent = "Dark Mode";
+    classtogglename.classList.remove('fa-sun-o');
+    classtogglename.classList.add('fa-moon-o');
+    classtogglename.style.color="white"
     mapContainer.classList.add("dark-mode");
-    map.removeLayer(darkModeTileLayer); // Remove dark mode tile layer
-    map.addLayer(tiles); // Add default (light) tile layer
+
+  } else {
+     pageContainer.classList.remove("dark-mode");
+     document.body.classList.remove("dark-mode");
+     mapContainer.classList.remove("dark-mode");
+    document.body.classList.remove("dark-mode");
+    const classtogglename=document.getElementById("toggle-icon");
+    document.querySelector(".mode-label").textContent = "Light Mode";
+    classtogglename.classList.remove('fa-moon-o');
+    classtogglename.classList.add('fa-sun-o');
+    classtogglename.style.color="black"
   }
 });
