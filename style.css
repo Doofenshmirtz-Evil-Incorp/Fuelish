@@ -308,6 +308,8 @@ footer a{
     {
         z-index:2;
         position: relative;
+        bottom:15vh;
+        left:10vh
         
     }
 }
@@ -319,16 +321,6 @@ footer a{
       background-color: #121212;
       color: #fff;
     }
-  }
-.toggle-container {
-    z-index: 2;
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    left:17vh;
-    bottom:25vh;
   }
   
   /* Styles for the toggle switch */
