@@ -75,7 +75,7 @@ body{
     margin-top: 15vh;
     margin-bottom: auto;border-radius: 3px;
     width: 300px;
-    height: 125px;
+    height: 105px;
     background: #1d404a;
     border-radius: 10px;
     font-family: 'Courier New', Courier, monospace;
@@ -83,7 +83,7 @@ body{
 }
 
 .leaflet-container {
-    margin-top: 0px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     height: 50%;
@@ -353,37 +353,33 @@ footer a{
 }
 
 @media (max-width: 767px)
-{ */
+{
      .price-box .price-diesel,
      .price-box .price-petrol,
      .change p
      {
     color:white;
      }
-/* } */
+} */
 /* Styles for the toggle button container */
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
+    /* Dark mode styles */
     body {
       background-color: #121212;
       color: #fff;
     }
-  } */
+  }
   
   /* Styles for the toggle switch */
   .switch {
     margin-left: 15px;
     margin-top: 20px;
     position: relative;
-    padding: 0;
-    width: 70%;
-    z-index: 2;
+    display: inline-block;
     width: 20px;
     height: 10px;
 
-  }
-  #toggle-icon{
-    color: white;
   }
   
 
@@ -416,6 +412,7 @@ footer a{
 
   .dark-mode .leaflet-container {
     background-color: #121212;
+    border: 1px solid #ccc;
   }
   
   .dark-mode .leaflet-popup-content-wrapper,
