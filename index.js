@@ -426,6 +426,6 @@ modeToggle.addEventListener("change", () => {
     document.querySelector(".mode-label").textContent = "Sunny";
     classtogglename.classList.remove('fa-moon-o');
     classtogglename.classList.add('fa-sun-o');
-    classtogglename.style.color="black"
+    classtogglename.style.color="white"
   }
 });
