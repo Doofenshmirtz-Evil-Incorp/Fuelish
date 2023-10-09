@@ -411,7 +411,7 @@ modeToggle.addEventListener("change", () => {
     pageContainer.classList.add("dark-mode");
       document.body.classList.add("dark-mode");
     const classtogglename=document.getElementById("toggle-icon");
-    document.querySelector(".mode-label").textContent = "Dark Mode";
+    document.querySelector(".mode-label").textContent = "Dark";
     classtogglename.classList.remove('fa-sun-o');
     classtogglename.classList.add('fa-moon-o');
     classtogglename.style.color="white"
@@ -423,7 +423,7 @@ modeToggle.addEventListener("change", () => {
      mapContainer.classList.remove("dark-mode");
     document.body.classList.remove("dark-mode");
     const classtogglename=document.getElementById("toggle-icon");
-    document.querySelector(".mode-label").textContent = "Light Mode";
+    document.querySelector(".mode-label").textContent = "Sunny";
     classtogglename.classList.remove('fa-moon-o');
     classtogglename.classList.add('fa-sun-o');
     classtogglename.style.color="black"

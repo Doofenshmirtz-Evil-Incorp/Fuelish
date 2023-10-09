@@ -47,6 +47,10 @@ body{
 {
     content: url('images/logo.png');
 }
+.dark .favicon
+{
+    color:url('images/favicon.png')
+}
 
 .name1
 {
@@ -303,6 +307,8 @@ footer a{
     animation-delay: 0.5s;
 }
 
+
+
 @keyframes fadeIn{
     to {
         scale: 1;
@@ -337,7 +343,6 @@ footer a{
         position: relative;
         z-index: 2;
     }
-    
     footer{
         display: flex;
         position: fixed;
@@ -345,6 +350,16 @@ footer a{
         width: max-content;
         margin-bottom: 5vh;
     }
+}
+
+@media (max-width: 767px)
+{
+     .price-box .price-diesel,
+     .price-box .price-petrol,
+     .change p
+     {
+    color:white;
+     }
 }
 /* Styles for the toggle button container */
 
@@ -385,6 +400,9 @@ footer a{
     margin-left: 10px;
     font-weight: bold;
     color: black;
+    position: relative;
+    top:-18px;
+    left:30px;
   }
 
   .dark-mode .mode-label
@@ -399,7 +417,7 @@ footer a{
   
   .dark-mode .leaflet-popup-content-wrapper,
   .dark-mode .leaflet-popup-tip {
-    background: #222; /* Adjust background color for popups */
-    color: #fff; /* Adjust text color for popups */
+    background: #222; 
+    color: #fff; 
   }
   
