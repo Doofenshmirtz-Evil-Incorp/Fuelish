@@ -13,12 +13,7 @@ body{
     display: flex;
     align-items: center;
     justify-content:center;
-    background:white
-}
-
-.dark-mode
-{
-    background:black;
+    background: #000000;
 }
 
 .footer {
@@ -41,33 +36,6 @@ body{
     z-index: 2;
     position:relative;
     top: 0;
-}
-
-.dark-mode .logo-image
-{
-    content: url('images/logo.png');
-}
-.dark .favicon
-{
-    color:url('images/favicon.png')
-}
-
-.name1
-{
-    color:black;
-}
-.name2
-{
-    color:black
-}
-.dark-mode .name1
-{
-    color: white;
-}
-
-.dark-mode  .name2
-{
-    color:white
 }
 
 .container {
@@ -96,10 +64,10 @@ body{
     width:0
 }
 
-.dark-mode .leaflet-layer,
-.dark-mode .leaflet-control-zoom-in,
-.dark-mode .leaflet-control-zoom-out,
-.dark-mode .leaflet-control-attribution {
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
   filter: invert(100%) hue-rotate(180deg) brightness(100%) contrast(100%);
 }
 
@@ -181,7 +149,7 @@ select option:disabled {
 .price-box .price-petrol{
     z-index: 2;
     float: left;
-    color: #000000;
+    color: #cfdfe9;
     font-size: 1.5rem;
     font-weight: 800;
     margin-top: 10px;
@@ -191,7 +159,7 @@ select option:disabled {
 .price-box .price-diesel{
     z-index: 2;
     float: left;
-    color: #000000;
+    color: #cfdfe9;
     font-size: 1rem;
     font-weight: 800;
     margin-top: 10px;
@@ -262,7 +230,7 @@ select option:disabled {
 .change p{
     z-index: 2;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #000000;
+    color: #cfdfe9;
     font-size: 14px;
     font-weight: 500;
 }
@@ -272,17 +240,9 @@ select option:disabled {
     opacity: 0;
 }
 
-.dark-mode .price-box ,
-.dark-mode .price-petrol ,
-.dark-mode .price-diesel ,
-.dark-mode .change p
-{
-    color: white;
-}
-
 footer{
     z-index: 2;
-    color: black;
+    color: white;
     text-align: center; 
     bottom: 0;
     right: 0;
@@ -294,10 +254,6 @@ footer{
     height: 2.5rem;
 }
 
-.dark-mode footer
-{
-    color:white;
-}
 footer a{
     color: rgb(145, 222, 234);
 }
@@ -306,8 +262,6 @@ footer a{
     animation: 0.5s fadeIn forwards;
     animation-delay: 0.5s;
 }
-
-
 
 @keyframes fadeIn{
     to {
@@ -338,11 +292,11 @@ footer a{
         position: fixed;
         left: 1%;
     }
-
     .search-box{
         position: relative;
         z-index: 2;
     }
+    
     footer{
         display: flex;
         position: fixed;

@@ -5,9 +5,6 @@ const change = document.querySelector('.change');
 const st = document.getElementById("map");
 const getLoc = document.getElementById("getlocation");
 const near = document.getElementById('nearby');
-const modeToggle = document.getElementById("mode-toggle");
-const pageContainer = document.getElementById("page-container");
-const mapContainer = document.getElementById("map");
 
 var cords=[];
 var rslt=[];//state data
@@ -22,8 +19,6 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 maxZoom: 19,
 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
-
-// var darkModeTileLayer = new L.StamenTileLayer("terrain");
 
 async function getcsv(url,splitter='\r\n')
 {
