@@ -5,9 +5,6 @@ const change = document.querySelector('.change');
 const st = document.getElementById("map");
 const getLoc = document.getElementById("getlocation");
 const near = document.getElementById('nearby');
-const modeToggle = document.getElementById("mode-toggle");
-const pageContainer = document.getElementById("page-container");
-const mapContainer = document.getElementById("map");
 
 var cords=[];
 var rslt=[];//state data
@@ -22,8 +19,6 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 maxZoom: 19,
 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
-
-// var darkModeTileLayer = new L.StamenTileLayer("terrain");
 
 async function getcsv(url,splitter='\r\n')
 {
@@ -387,45 +382,4 @@ priceBox.addEventListener("animationend", function() {
     [b1, b2],
     [b0, b3]
 ]);
-});
-
-
-modeToggle.addEventListener("change", () => {
-  // if (modeToggle.checked) {
-  //   //light mode
- 
-  //   map.removeLayer(tiles); 
-  //   map.addLayer(darkModeTileLayer); 
-  // } else {
-  //   //dark mode
-  //    pageContainer.classList.add("dark-mode");
-  //   document.body.classList.add("dark-mode");
-  //   document.querySelector(".mode-label").textContent = "Dark Mode";
-  //   mapContainer.classList.add("dark-mode");
-  //   map.removeLayer(darkModeTileLayer); 
-  //   map.addLayer(tiles); 
-  // }
-
-  if (modeToggle.checked) {
-    document.body.classList.add("dark-mode");
-    pageContainer.classList.add("dark-mode");
-      document.body.classList.add("dark-mode");
-    const classtogglename=document.getElementById("toggle-icon");
-    document.querySelector(".mode-label").textContent = "Dark";
-    classtogglename.classList.remove('fa-sun-o');
-    classtogglename.classList.add('fa-moon-o');
-    classtogglename.style.color="white"
-    mapContainer.classList.add("dark-mode");
-
-  } else {
-     pageContainer.classList.remove("dark-mode");
-     document.body.classList.remove("dark-mode");
-     mapContainer.classList.remove("dark-mode");
-    document.body.classList.remove("dark-mode");
-    const classtogglename=document.getElementById("toggle-icon");
-    document.querySelector(".mode-label").textContent = "Sunny";
-    classtogglename.classList.remove('fa-moon-o');
-    classtogglename.classList.add('fa-sun-o');
-    classtogglename.style.color="black"
-  }
 });
