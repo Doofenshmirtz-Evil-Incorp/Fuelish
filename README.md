@@ -7,17 +7,28 @@ Fuelish is a simple web application that helps you to check the fuel prices of y
 - [Fuelish](#fuelish)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
+  - [Screenshots](#screenshots)
   - [Technologies Used](#technologies-used)
   - [Installation](#installation)
   - [Usage](#usage)
   - [Contributing](#contributing)
   - [Author](#author)
+  - [Contributors](#contributors)
   - [License](#license)
 
 ## Features
 
-- Fuelish displays the latest fuel prices of your state
-- Fuelish displays the petrol and diesel price and the daily changes so you can avoid overpaying for gas.
+- Displays the latest fuel prices of your state
+- Displays the petrol and diesel price and the daily changes so you can avoid overpaying for gas.
+- Finds out the lowest price within 50-kms radius.
+- Directs you to the nearest petrol pump.
+- Live Location! (Don't need to explain)
+## Screenshots
+![Screenshot of the website](images/screenshots/1 "a title")
+
+![Screenshot of the website](images/screenshots/2 "a title")
+
+![Screenshot of the website](images/screenshots/3 "a title")
 
 ## Technologies Used
 
@@ -56,6 +67,17 @@ We welcome contributions from the community, especially if you're willing to bri
 ## Author
 
 Fuelish was created by [Aryaman Srivastava](https://github.com/actuallyaryaman) and [Asvin Jain](https://github.com/asvin1), two fuel-saving ninjas who believe that the only thing better than a full tank of gas is a full tank of gas that didn't break the bank. If you have any questions or feedback, you can reach out to us at  We promise to respond faster than a V8 engine revving up!
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
 
