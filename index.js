@@ -398,34 +398,33 @@ modeToggle.addEventListener("change", () => {
   //   map.addLayer(darkModeTileLayer); 
   // } else {
   //   //dark mode
-  //    pageContainer.classList.add("dark-mode");
-  //   document.body.classList.add("dark-mode");
+  //    pageContainer.classList.add("light-mode");
+  //   document.body.classList.add("light-mode");
   //   document.querySelector(".mode-label").textContent = "Dark Mode";
-  //   mapContainer.classList.add("dark-mode");
+  //   mapContainer.classList.add("light-mode");
   //   map.removeLayer(darkModeTileLayer); 
   //   map.addLayer(tiles); 
   // }
 
   if (modeToggle.checked) {
-    document.body.classList.add("dark-mode");
-    pageContainer.classList.add("dark-mode");
-      document.body.classList.add("dark-mode");
+    document.body.classList.add("light-mode");
+    pageContainer.classList.add("light-mode");
+      document.body.classList.add("light-mode");
     const classtogglename=document.getElementById("toggle-icon");
-    document.querySelector(".mode-label").textContent = "Dark";
-    classtogglename.classList.remove('fa-sun-o');
-    classtogglename.classList.add('fa-moon-o');
-    classtogglename.style.color="white"
-    mapContainer.classList.add("dark-mode");
-
-  } else {
-     pageContainer.classList.remove("dark-mode");
-     document.body.classList.remove("dark-mode");
-     mapContainer.classList.remove("dark-mode");
-    document.body.classList.remove("dark-mode");
-    const classtogglename=document.getElementById("toggle-icon");
-    document.querySelector(".mode-label").textContent = "Sunny";
     classtogglename.classList.remove('fa-moon-o');
     classtogglename.classList.add('fa-sun-o');
     classtogglename.style.color="white"
+    mapContainer.classList.add("light-mode");
+  } else {
+
+
+    pageContainer.classList.remove("light-mode");
+    document.body.classList.remove("light-mode");
+    mapContainer.classList.remove("light-mode");
+   document.body.classList.remove("light-mode");
+   const classtogglename=document.getElementById("toggle-icon");
+   classtogglename.classList.remove('fa-sun-o');
+   classtogglename.classList.add('fa-moon-o');
+   classtogglename.style.color="white"
   }
 });

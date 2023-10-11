@@ -13,12 +13,12 @@ body{
     display: flex;
     align-items: center;
     justify-content:center;
-    background:white
+    background:rgb(0, 0, 0)
 }
 
-.dark-mode
+.light-mode
 {
-    background:black;
+    background:white;
 }
 
 .footer {
@@ -43,29 +43,29 @@ body{
     top: 0;
 }
 
-.dark-mode .logo-image
+.light-mode .logo-image
 {
-    content: url('images/logo.png');
+    content: url('images/logo2.png');
 }
 .dark .favicon
 {
-    color:url('images/favicon.png')
+    color:url('images/favicon2.png')
 }
 
-.name1
+.light-mode .name1
 {
     color:black;
 }
-.name2
+.light-mode .name2
 {
     color:black
 }
-.dark-mode .name1
+ .name1
 {
     color: white;
 }
 
-.dark-mode  .name2
+.name2
 {
     color:white
 }
@@ -75,7 +75,7 @@ body{
     margin-top: 15vh;
     margin-bottom: auto;border-radius: 3px;
     width: 300px;
-    height: 125px;
+    height: 150px;
     background: #1d404a;
     border-radius: 10px;
     font-family: 'Courier New', Courier, monospace;
@@ -95,13 +95,21 @@ body{
 .leaflet-control-attribution svg {
     width:0
 }
-
-.dark-mode .leaflet-layer,
-.dark-mode .leaflet-control-zoom-in,
-.dark-mode .leaflet-control-zoom-out,
-.dark-mode .leaflet-control-attribution {
+ .leaflet-layer,
+ .leaflet-control-zoom-in, 
+ .leaflet-control-zoom-out,
+ .leaflet-control-attribution {
   filter: invert(100%) hue-rotate(180deg) brightness(100%) contrast(100%);
 }
+
+.light-mode .leaflet-layer,
+.light-mode .leaflet-control-zoom-in, 
+.light-mode .leaflet-control-zoom-out,
+.light-mode .leaflet-control-attribution {
+ filter: invert(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
     background: rgb(190, 12, 12);
@@ -272,17 +280,17 @@ select option:disabled {
     opacity: 0;
 }
 
-.dark-mode .price-box ,
-.dark-mode .price-petrol ,
-.dark-mode .price-diesel ,
-.dark-mode .change p
+.light-mode .price-box ,
+.light-mode .price-petrol ,
+.light-mode .price-diesel ,
+.light-mode .change p
 {
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 footer{
     z-index: 2;
-    color: black;
+    color: rgb(255, 252, 252);
     text-align: center; 
     bottom: 0;
     right: 0;
@@ -294,9 +302,9 @@ footer{
     height: 2.5rem;
 }
 
-.dark-mode footer
+.light-mode footer
 {
-    color:white;
+    color:rgb(0, 0, 0);
 }
 footer a{
     color: rgb(145, 222, 234);
@@ -383,7 +391,10 @@ footer a{
 
   }
   #toggle-icon{
+    padding-top:15px;
+    padding-bottom: 17px;
     color: white;
+    font-size:larger
   }
   
 
@@ -400,26 +411,13 @@ footer a{
     transform: translateX(26px);
   }
   
-  .mode-label {
-    margin-left: 10px;
-    font-weight: bold;
-    color: white;
-    position: relative;
-    top:-18px;
-    left:30px;
-  }
 
-  .dark-mode .mode-label
-  {
-    color:white
-  }
-
-  .dark-mode .leaflet-container {
+  .light-mode .leaflet-container {
     background-color: #121212;
   }
   
-  .dark-mode .leaflet-popup-content-wrapper,
-  .dark-mode .leaflet-popup-tip {
+  .light-mode .leaflet-popup-content-wrapper,
+  .light-mode .leaflet-popup-tip {
     background: #222; 
     color: #fff; 
   }
