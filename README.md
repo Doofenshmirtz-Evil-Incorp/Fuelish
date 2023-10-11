@@ -24,11 +24,11 @@ Fuelish is a simple web application that helps you to check the fuel prices of y
 - Directs you to the nearest petrol pump.
 - Live Location! (Don't need to explain)
 ## Screenshots
-![Screenshot of the website](images/screenshots/1 "a title")
+![Screenshot of the website](images/screenshots/1.jpg "a title")
 
-![Screenshot of the website](images/screenshots/2 "a title")
+![Screenshot of the website](images/screenshots/2.jpg "a title")
 
-![Screenshot of the website](images/screenshots/3 "a title")
+![Screenshot of the website](images/screenshots/3.jpg "a title")
 
 ## Technologies Used
 
