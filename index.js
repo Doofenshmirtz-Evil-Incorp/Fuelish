@@ -413,7 +413,7 @@ modeToggle.addEventListener("change", () => {
     const classtogglename=document.getElementById("toggle-icon");
     classtogglename.classList.remove('fa-moon-o');
     classtogglename.classList.add('fa-sun-o');
-    classtogglename.style.color="white"
+    classtogglename.style.color="black"
     mapContainer.classList.add("light-mode");
   } else {
 
@@ -428,3 +428,5 @@ modeToggle.addEventListener("change", () => {
    classtogglename.style.color="white"
   }
 });
+
+
