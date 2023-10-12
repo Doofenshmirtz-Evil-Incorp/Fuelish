@@ -13,7 +13,6 @@ Fuelish is a simple web application that helps you to check the fuel prices of y
   - [Usage](#usage)
   - [Contributing](#contributing)
   - [Author](#author)
-  - [Contributors](#contributors)
   - [License](#license)
 
 ## Features
@@ -69,17 +68,10 @@ We welcome contributions from the community, especially if you're willing to bri
 
 Fuelish was created by [Aryaman Srivastava](https://github.com/actuallyaryaman) and [Asvin Jain](https://github.com/asvin1), two fuel-saving ninjas who believe that the only thing better than a full tank of gas is a full tank of gas that didn't break the bank. If you have any questions or feedback, you can reach out to us at  We promise to respond faster than a V8 engine revving up!
 
-## Contributors
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
 ## License
 
 Fuelish is licensed under the GNU V3 License. See the [LICENSE](LICENSE) file for details. This license ensures that if you become a millionaire because of the money you saved using Fuelish, you'll still have to give us credit for it.
+
+##
+
+![Powered by vercel](images/misc/powered-by-vercel.svg)
