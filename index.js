@@ -25,25 +25,12 @@ attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreet
 
 // var darkModeTileLayer = new L.StamenTileLayer("terrain");
 
-async function getcsv(url,splitter='\r\n')
+async function getcsv(url,splitter='\n')
 {
-  return await fetch(url)
-  .then(response => response.text())
+  return await fetch("https://www.dolthub.com/api/v1alpha1/evilincorp/Location/main?q=SELECT+*+FROM+`"+url+"`")
+  .then(response => response.json())
   .then( data => {
-    var loc=[];
-    const rows = data.split(splitter);
-    const headers = rows[0].split(',');
-    var len=rows.length;
-    for (let i = 1; i < rows.length; i++) {
-      const row = rows[i].split(',');
-      if (row.length === headers.length) {
-        const obj = {};
-        for (let j = 0; j < headers.length; j++) {
-          obj[headers[j]] = row[j];
-        }
-        loc.push(obj);
-      }
-    }return [loc,len];
+    return [data.rows,data.rows.length];
 })
 };
 
@@ -95,13 +82,14 @@ async function bharat()
 }
 
 async function getdata(st,ct)
-{let i;
-  for(i=0;i<slent-2;i++)
-  { 
-    if(rslt[i]["State"].toLowerCase()==(st).toLowerCase())
-      {var dat=[],clt;
-        await getcsv('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+st+'.csv').then(data =>
-        {
+{let i;var end;
+  await fetch("https://www.dolthub.com/api/v1alpha1/evilincorp/Location/main?q=SELECT+*+FROM+`state`+WHERE+State+=+%22"+st+"%22")
+  .then(response => response.json())
+  .then( data => {end=data.rows[0]["Endpoint"]})
+  console.log(rslt)
+
+var dat=[],clt;
+        await getcsv(end).then(data => {
           dat=data[0];
           clt=data[1];
         })
@@ -110,9 +98,6 @@ async function getdata(st,ct)
               if(dat[i]["City"].toLowerCase()==(ct).toLowerCase())
                 {return dat[i];break;}
           }
-          break;
-      }
-  }
 }
 
 async function genmark(gs,gc,lat,lon,out)
@@ -222,17 +207,17 @@ getLoc.addEventListener('click',  event => {
 window.onload=async ()=>{
   var status=0;
     while(status!=2){
-     await getcsv('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv')
+     await getcsv("state")
      .then(data =>{
       rslt=data[0];
       slent=data[1];
       status=1;
-      for(let x=0;x<slent-2;x++)
+      for(let x=0;x<slent;x++)
       {
         document.getElementById("state").innerHTML+="<option value='"+rslt[x]["State"]+"'>"+rslt[x]["State"]+"</option>";
       }
      });
-  await getcsv('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/src/Citycord.csv')
+  await getcsv('citycord')
   .then(data =>{cords=data[0];corlent=data[1];status=2;});
   console.log(status);
 }
@@ -248,11 +233,11 @@ async function getcord(city)
       .catch(error => {return [0,0,0,0]});
   if(arr[0]==0)
   {  console.log("b",arr);
-    await getcsv('https://raw.githubusercontent.com/Doofenshmirtz-Evil-Incorp/FuelishCLI/main/src/bound.csv','\n')
+    await getcsv('bound')
     .then(data =>{bound=data[0];})
     .then(data =>{
           bl=bound.length;
-          for(i=0;i<bl-1;i++)
+          for(i=0;i<bl;i++)
           {
             if(bound[i]["City"].toLowerCase()==(city.split('+')).slice(-1)[0].toLowerCase())
             {
@@ -272,7 +257,7 @@ async function cfunc(mode=0)
 var found=0;
 let i;near.classList.remove('fadeIn');
       for(i=0;i<clent;i++)
-        {                 
+        {console.log(datac)                 
             if(datac[i]["City"].toLowerCase()==(city.value).toLowerCase())
               {
                 priceBox.style.display = '';
@@ -283,10 +268,12 @@ let i;near.classList.remove('fadeIn');
                 container.style.marginTop = '1px';
                 st.style.display='block';
                 [b0,b1,b2,b3]=await getcord(state.value.replace(/ /g, '+')+"+"+datac[i]["City"]);
+                console.log(b0,b1,b2,b3)
                 map.fitBounds([
                   [b1, b2],
                   [b0, b3]
               ]);
+              
                 const ele1=document.getElementById("pp");
                 ele1.innerText=datac[i]["Price(P)"];
                 const ele2=document.getElementById("dp");
@@ -327,6 +314,7 @@ let i;near.classList.remove('fadeIn');
                   {
                     if(cords[j]["City"]==city.value)
                     {
+                      console.log(cords[j])
                       var out=Closest(cords,[cords[j]["lat"],cords[j]["long"]],state.value,markers);
                       genmark(state.value,city.value,cords[j]["lat"],cords[j]["long"],out);
                       break;
@@ -344,7 +332,7 @@ async function func(mode=0,gcity)
   if(state.value=="")
     {return;}
     let i;
-      for(i=0;i<slent-2;i++)
+      for(i=0;i<slent;i++)
         { 
             if(rslt[i]["State"].toLowerCase()==(state.value).toLowerCase())
               {
@@ -355,13 +343,14 @@ async function func(mode=0,gcity)
               ]);
                 document.getElementById("city").disabled=false;
                 document.getElementById("city").innerHTML="<option value='' selected disabled>Select a city</option>";
-                getcsv('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
+                getcsv(rslt[i]["Endpoint"])
                 .then(data=>
                   {
                     datac=[];
                     clent=data[1];
                     datac=data[0];
-                    for(let x=0;x<clent-2;x++)
+                    console.log(datac)
+                    for(let x=0;x<clent;x++)
                     if(mode==1 && datac[x]["City"]==gcity)
                     {
                       document.getElementById("city").innerHTML+="<option selected value='"+datac[x]["City"]+"'>"+datac[x]["City"]+"</option>";
