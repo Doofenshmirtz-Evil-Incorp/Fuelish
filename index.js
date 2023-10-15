@@ -5,6 +5,9 @@ const change = document.querySelector('.change');
 const st = document.getElementById("map");
 const getLoc = document.getElementById("getlocation");
 const near = document.getElementById('nearby');
+const shareBtn = document.getElementById('social-sharing-btns');
+
+let petrolPrice , dieselPrice , petrolChange , dieselChange;
 
 var cords=[];
 var rslt=[];//state data
@@ -214,6 +217,7 @@ getLoc.addEventListener('click',  event => {
         console.log("Geolocation is not supported.");
     }
 });
+
 window.onload=async ()=>{
   var status=0;
     while(status!=2){
@@ -266,6 +270,9 @@ async function cfunc(mode=0)
   map.removeLayer(markers);
 var found=0;
 let i;near.classList.remove('fadeIn');
+
+document.getElementById('social-sharing-btns').querySelector('button').disabled=false;
+shareBtn.style.display = 'block';
       for(i=0;i<clent;i++)
         {                 
             if(datac[i]["City"].toLowerCase()==(city.value).toLowerCase())
@@ -282,10 +289,19 @@ let i;near.classList.remove('fadeIn');
                   [b1, b2],
                   [b0, b3]
               ]);
+                shareBtn.disabled=false;
                 const ele1=document.getElementById("pp");
                 ele1.innerText=datac[i]["Price(P)"];
+
+                petrolPrice = ele1.innerText;
+                console.log(petrolPrice);
+
                 const ele2=document.getElementById("dp");
                 ele2.innerText=datac[i]["Price(D)"];
+
+                dieselPrice = ele2.innerText;
+                console.log(dieselPrice);
+
                 const ele3=document.getElementById("cp");
                 if((datac[i]["Change(P)"]).charAt(0)==="+")
                 {
@@ -300,6 +316,10 @@ let i;near.classList.remove('fadeIn');
                   ele3.style.color='#72ff72';
                 }
                 ele3.innerText=datac[i]["Change(P)"];
+
+                petrolChange = ele3.innerText;
+                console.log(petrolChange);
+
                 const ele4=document.getElementById("cd");
                 if((datac[i]["Change(D)"]).charAt(0)==="+")
                 {
@@ -314,6 +334,10 @@ let i;near.classList.remove('fadeIn');
                   ele4.style.color='#72ff72';
                 }
                 ele4.innerText=datac[i]["Change(D)"];
+
+                dieselChange = ele4.innerText;
+                console.log(dieselChange);
+
                 found=1;
                 document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
                 if(mode==0)
@@ -332,7 +356,14 @@ let i;near.classList.remove('fadeIn');
               }
         }
         map.invalidateSize();
+        
 }
+
+shareBtn.addEventListener('click' , (e) => {
+  let url = "Petrol price : " + petrolPrice + ",  Diesel price : " + dieselPrice + "\n" + "Change in petrol : " + petrolChange + ",  Change in diesel : " + dieselChange;
+  let text = 'Check out the latest fuel prices on Fuelish!\n\n';
+  window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text + url), '_blank');
+})
 
 async function func(mode=0,gcity)
 {
