@@ -367,7 +367,7 @@ shareBtn.addEventListener('click' , (e) => {
 
   let fuelInfo = `Petrol price : ${petrolPrice}\nChange in petrol : ${petrolChange}\n\nDiesel price : ${dieselPrice}\nChange in diesel : ${dieselChange}`;
 
-  let url = "Here is the link -> https://fuelish.vercel.app/";
+  let url = "Here is the website link -> https://fuelish.vercel.app/";
   
   let text = "Check out the latest fuel prices on Fuelish!";
 
