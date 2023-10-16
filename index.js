@@ -358,7 +358,7 @@ shareBtn.style.display = 'block';
         map.invalidateSize();
 }
 
-// Add a EventListener on shareBtn element 
+// Add an EventListener on shareBtn element 
 // It triggers when 'click' event occurs
 
 shareBtn.addEventListener('click' , (e) => {
