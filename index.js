@@ -13,6 +13,9 @@ const shareBtn = document.getElementById('social-sharing-btns');
 // Created variables to get the fuel prices and their changes 
 let petrolPrice , dieselPrice , petrolChange , dieselChange;
 
+// Create variable to get the selected State and City name
+let selectedState , selectedCity;
+
 var cords=[];
 var rslt=[];//state data
 var datac=[];//city data of select state
@@ -362,9 +365,10 @@ shareBtn.addEventListener('click' , (e) => {
   let fuelInfo = `Petrol price : ${petrolPrice}     Diesel price : ${dieselPrice}\nChange in petrol : ${petrolChange}    Change in diesel : ${dieselChange}`;
 
   let url = "Here is the link -> https://fuelish.vercel.app/";
-
+  
   let text = "Check out the latest fuel prices on Fuelish!";
 
+  let image = ""
   window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(`${text}\n${url}\n\n${fuelInfo}`), '_blank');
 
 });
@@ -383,6 +387,8 @@ async function func(mode=0,gcity)
                   [b1, b2],
                   [b0, b3]
               ]);
+                selectedState = rslt[i]["State"];
+                console.log(selectedState);
                 document.getElementById("city").disabled=false;
                 document.getElementById("city").innerHTML="<option value='' selected disabled>Select a city</option>";
                 getcsv('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
@@ -390,7 +396,9 @@ async function func(mode=0,gcity)
                   {
                     datac=[];
                     clent=data[1];
+                    console.log(clent);
                     datac=data[0];
+                    console.log(datac);
                     for(let x=0;x<clent-2;x++)
                     if(mode==1 && datac[x]["City"]==gcity)
                     {
