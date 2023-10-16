@@ -5,8 +5,9 @@ const change = document.querySelector('.change');
 const st = document.getElementById("map");
 const getLoc = document.getElementById("getlocation");
 const near = document.getElementById('nearby');
-const shareBtn = document.getElementById('social-sharing-btns');
+const shareBtn = document.getElementById('social-sharing-btns'); 
 
+// Created variables to get the fuel prices and their changes 
 let petrolPrice , dieselPrice , petrolChange , dieselChange;
 
 var cords=[];
@@ -271,8 +272,13 @@ async function cfunc(mode=0)
 var found=0;
 let i;near.classList.remove('fadeIn');
 
+
+// Make the sharing button enable when this function invokes
 document.getElementById('social-sharing-btns').querySelector('button').disabled=false;
+
+// And make the sharing button visible 
 shareBtn.style.display = 'block';
+
       for(i=0;i<clent;i++)
         {                 
             if(datac[i]["City"].toLowerCase()==(city.value).toLowerCase())
@@ -359,10 +365,21 @@ shareBtn.style.display = 'block';
         
 }
 
+// Add a EventListener on shareBtn element 
+// It triggers when 'click' event occurs
+
 shareBtn.addEventListener('click' , (e) => {
-  let url = "Petrol price : " + petrolPrice + ",  Diesel price : " + dieselPrice + "\n" + "Change in petrol : " + petrolChange + ",  Change in diesel : " + dieselChange;
-  let text = 'Check out the latest fuel prices on Fuelish!\n\n';
-  window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(text + url), '_blank');
+
+  // let url = "Petrol price : " + petrolPrice + ",  Diesel price : " + dieselPrice + "\n" + "Change in petrol : " + petrolChange + ",  Change in diesel : " + dieselChange;
+
+  let fuelInfo = `Petrol price : ${petrolPrice}     Diesel price : ${dieselPrice}\nChange in petrol : ${petrolChange}    Change in diesel : ${dieselChange}`;
+
+  let url = "Here is the link -> http://127.0.0.1:5500/Fuelish/index.html";
+
+  let text = "Check out the latest fuel prices on Fuelish!";
+
+  window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(`${text}\n${url}\n\n${fuelInfo}`), '_blank');
+
 })
 
 async function func(mode=0,gcity)
