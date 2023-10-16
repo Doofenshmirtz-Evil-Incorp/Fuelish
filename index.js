@@ -8,6 +8,10 @@ const near = document.getElementById('nearby');
 const modeToggle = document.getElementById("mode-toggle");
 const pageContainer = document.getElementById("page-container");
 const mapContainer = document.getElementById("map");
+const shareBtn = document.getElementById('social-sharing-btns');
+
+// Created variables to get the fuel prices and their changes 
+let petrolPrice , dieselPrice , petrolChange , dieselChange;
 
 var cords=[];
 var rslt=[];//state data
@@ -271,6 +275,13 @@ async function cfunc(mode=0)
   map.removeLayer(markers);
 var found=0;
 let i;near.classList.remove('fadeIn');
+
+// Make the sharing button enable when this function invokes
+document.getElementById('social-sharing-btns').querySelector('button').disabled=false;
+
+// And make the sharing button visible 
+shareBtn.style.display = 'block';
+
       for(i=0;i<clent;i++)
         {                 
             if(datac[i]["City"].toLowerCase()==(city.value).toLowerCase())
@@ -289,8 +300,10 @@ let i;near.classList.remove('fadeIn');
               ]);
                 const ele1=document.getElementById("pp");
                 ele1.innerText=datac[i]["Price(P)"];
+                petrolPrice = ele1.innerText;
                 const ele2=document.getElementById("dp");
                 ele2.innerText=datac[i]["Price(D)"];
+                dieselPrice = ele2.innerText;
                 const ele3=document.getElementById("cp");
                 if((datac[i]["Change(P)"]).charAt(0)==="+")
                 {
@@ -305,6 +318,7 @@ let i;near.classList.remove('fadeIn');
                   ele3.style.color='#72ff72';
                 }
                 ele3.innerText=datac[i]["Change(P)"];
+                petrolChange = ele3.innerText;
                 const ele4=document.getElementById("cd");
                 if((datac[i]["Change(D)"]).charAt(0)==="+")
                 {
@@ -319,6 +333,7 @@ let i;near.classList.remove('fadeIn');
                   ele4.style.color='#72ff72';
                 }
                 ele4.innerText=datac[i]["Change(D)"];
+                dieselChange = ele4.innerText;
                 found=1;
                 document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
                 if(mode==0)
@@ -338,6 +353,21 @@ let i;near.classList.remove('fadeIn');
         }
         map.invalidateSize();
 }
+
+// Add a EventListener on shareBtn element 
+// It triggers when 'click' event occurs
+
+shareBtn.addEventListener('click' , (e) => {
+
+  let fuelInfo = `Petrol price : ${petrolPrice}     Diesel price : ${dieselPrice}\nChange in petrol : ${petrolChange}    Change in diesel : ${dieselChange}`;
+
+  let url = "Here is the link -> https://fuelish.vercel.app/";
+
+  let text = "Check out the latest fuel prices on Fuelish!";
+
+  window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(`${text}\n${url}\n\n${fuelInfo}`), '_blank');
+
+});
 
 async function func(mode=0,gcity)
 {
