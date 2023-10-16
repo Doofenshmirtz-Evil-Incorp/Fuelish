@@ -371,7 +371,6 @@ shareBtn.addEventListener('click' , (e) => {
   
   let text = "Check out the latest fuel prices on Fuelish!";
 
-  let image = ""
   window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(`${text}\n${url}\n\n${location} :\n\n${fuelInfo}`), '_blank');
 
 });
