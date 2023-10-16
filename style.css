@@ -268,10 +268,6 @@ footer{
 }
 
 #social-sharing-btns{
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    /* margin-top: 12px; */
     position: relative;
     left: 25%;
     display: none;
@@ -280,8 +276,6 @@ footer{
 }
 
 #social-sharing-btns button:hover{
-    /* color: #fff;
-    background-color: #133c48; */
     color: #000;
     background-color: #60a76c;
 }
