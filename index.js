@@ -10,7 +10,7 @@ const pageContainer = document.getElementById("page-container");
 const mapContainer = document.getElementById("map");
 const shareBtn = document.getElementById('social-sharing-btns');
 
-// Created variables to get the fuel prices and their changes 
+// Create variables to get the fuel prices and their changes 
 let petrolPrice , dieselPrice , petrolChange , dieselChange;
 
 // Create variable to get the selected State and City name
