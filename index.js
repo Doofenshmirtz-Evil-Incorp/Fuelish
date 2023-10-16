@@ -289,6 +289,7 @@ shareBtn.style.display = 'block';
         {                 
             if(datac[i]["City"].toLowerCase()==(city.value).toLowerCase())
               {
+                selectedCity = datac[i]["City"];
                 priceBox.style.display = '';
                 change.style.display = '';
                 priceBox.classList.add('fadeIn');
@@ -362,14 +363,16 @@ shareBtn.style.display = 'block';
 
 shareBtn.addEventListener('click' , (e) => {
 
-  let fuelInfo = `Petrol price : ${petrolPrice}     Diesel price : ${dieselPrice}\nChange in petrol : ${petrolChange}    Change in diesel : ${dieselChange}`;
+  let location = `Fuel price in ${selectedCity} city, ${selectedState}`;
+
+  let fuelInfo = `Petrol price : ${petrolPrice}\nChange in petrol : ${petrolChange}\n\nDiesel price : ${dieselPrice}\nChange in diesel : ${dieselChange}`;
 
   let url = "Here is the link -> https://fuelish.vercel.app/";
   
   let text = "Check out the latest fuel prices on Fuelish!";
 
   let image = ""
-  window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(`${text}\n${url}\n\n${fuelInfo}`), '_blank');
+  window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(`${text}\n${url}\n\n${location} :\n\n${fuelInfo}`), '_blank');
 
 });
 
@@ -388,7 +391,6 @@ async function func(mode=0,gcity)
                   [b0, b3]
               ]);
                 selectedState = rslt[i]["State"];
-                console.log(selectedState);
                 document.getElementById("city").disabled=false;
                 document.getElementById("city").innerHTML="<option value='' selected disabled>Select a city</option>";
                 getcsv('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
@@ -396,9 +398,7 @@ async function func(mode=0,gcity)
                   {
                     datac=[];
                     clent=data[1];
-                    console.log(clent);
                     datac=data[0];
-                    console.log(datac);
                     for(let x=0;x<clent-2;x++)
                     if(mode==1 && datac[x]["City"]==gcity)
                     {
