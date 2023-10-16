@@ -232,6 +232,35 @@ footer {
     height: 2.5rem;
 }
 
+/* Sharing Button Styles */
+#social-sharing-btns button{
+    cursor: pointer;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #547f85;
+    transition-property: background-color , color;
+    transition: 0.25s;
+    font-size: 0.9rem;
+}
+
+/* Sharing Button's Div Element Styles */
+#social-sharing-btns{
+    position: relative;
+    left: 25%;
+    display: none;
+    padding: 4%;
+    width: 59%;
+}
+
+/* Hover Effect On Sharing Button Element Styles */
+#social-sharing-btns button:hover{
+    color: #000;
+    background-color: #60a76c;
+}
+
 /* Light Mode Footer Styles */
 .light-mode footer {
     color: rgb(0, 0, 0);
