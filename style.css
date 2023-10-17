@@ -313,6 +313,7 @@ footer a {
     padding-bottom: 17px;
     color: white;
     font-size: larger;
+    cursor: pointer;
 }
 
 #mode-toggle {
