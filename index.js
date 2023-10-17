@@ -8,7 +8,7 @@ const near = document.getElementById('nearby');
 const modeToggle = document.getElementById("mode-toggle");
 const pageContainer = document.getElementById("page-container");
 const mapContainer = document.getElementById("map");
-const shareBtn = document.getElementById('social-sharing-btns');
+const shareIcon = document.getElementById('social-sharing-icon');
 
 // Create variables to get the fuel prices and their changes 
 let petrolPrice , dieselPrice , petrolChange , dieselChange;
@@ -355,7 +355,7 @@ let i;near.classList.remove('fadeIn');
 // Add an EventListener on shareBtn element 
 // It triggers when 'click' event occurs
 
-shareBtn.addEventListener('click' , (e) => {
+shareIcon.addEventListener('click' , (e) => {
 
   let location = `Fuel price in ${selectedCity} city, ${selectedState}`;
 
