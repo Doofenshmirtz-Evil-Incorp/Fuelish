@@ -279,12 +279,6 @@ async function cfunc(mode=0)
 var found=0;
 let i;near.classList.remove('fadeIn');
 
-// Make the sharing button enable when this function invokes
-document.getElementById('social-sharing-btns').querySelector('button').disabled=false;
-
-// And make the sharing button visible 
-shareBtn.style.display = 'block';
-
       for(i=0;i<clent;i++)
         {                 
             if(datac[i]["City"].toLowerCase()==(city.value).toLowerCase())
