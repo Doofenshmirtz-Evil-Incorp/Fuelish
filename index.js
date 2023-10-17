@@ -279,8 +279,8 @@ async function cfunc(mode=0)
 var found=0;
 let i;near.classList.remove('fadeIn');
 
-// Remove the inactive link class
-document.getElementById('social-sharing-icon').classList.remove('inactive-link');
+// Make the whatsapp icon visible when state and city get selected
+document.getElementById('social-sharing-icon').classList.remove('hide-the-icon');
 
       for(i=0;i<clent;i++)
         {                 
