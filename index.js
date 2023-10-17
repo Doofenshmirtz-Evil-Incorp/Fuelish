@@ -8,6 +8,13 @@ const near = document.getElementById('nearby');
 const modeToggle = document.getElementById("mode-toggle");
 const pageContainer = document.getElementById("page-container");
 const mapContainer = document.getElementById("map");
+const shareIcon = document.getElementById('Whatsapp-link');
+
+// Create variables to get the fuel prices and their changes 
+let petrolPrice , dieselPrice , petrolChange , dieselChange;
+
+// Create variable to get the selected State and City name
+let selectedState , selectedCity;
 
 var cords=[];
 var rslt=[];//state data
@@ -271,10 +278,15 @@ async function cfunc(mode=0)
   map.removeLayer(markers);
 var found=0;
 let i;near.classList.remove('fadeIn');
+
+// Make the whatsapp icon visible when state and city get selected
+document.getElementById('social-sharing-icon').classList.remove('hide-the-icon');
+
       for(i=0;i<clent;i++)
         {                 
             if(datac[i]["City"].toLowerCase()==(city.value).toLowerCase())
               {
+                selectedCity = datac[i]["City"];
                 priceBox.style.display = '';
                 change.style.display = '';
                 priceBox.classList.add('fadeIn');
@@ -289,8 +301,10 @@ let i;near.classList.remove('fadeIn');
               ]);
                 const ele1=document.getElementById("pp");
                 ele1.innerText=datac[i]["Price(P)"];
+                petrolPrice = ele1.innerText;
                 const ele2=document.getElementById("dp");
                 ele2.innerText=datac[i]["Price(D)"];
+                dieselPrice = ele2.innerText;
                 const ele3=document.getElementById("cp");
                 if((datac[i]["Change(P)"]).charAt(0)==="+")
                 {
@@ -305,6 +319,7 @@ let i;near.classList.remove('fadeIn');
                   ele3.style.color='#72ff72';
                 }
                 ele3.innerText=datac[i]["Change(P)"];
+                petrolChange = ele3.innerText;
                 const ele4=document.getElementById("cd");
                 if((datac[i]["Change(D)"]).charAt(0)==="+")
                 {
@@ -319,6 +334,7 @@ let i;near.classList.remove('fadeIn');
                   ele4.style.color='#72ff72';
                 }
                 ele4.innerText=datac[i]["Change(D)"];
+                dieselChange = ele4.innerText;
                 found=1;
                 document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
                 if(mode==0)
@@ -339,6 +355,23 @@ let i;near.classList.remove('fadeIn');
         map.invalidateSize();
 }
 
+// Add an EventListener on shareBtn element 
+// It triggers when 'click' event occurs
+
+shareIcon.addEventListener('click' , (e) => {
+
+  let location = `Fuel price in ${selectedCity} city, ${selectedState}`;
+
+  let fuelInfo = `Petrol price : ${petrolPrice}\nChange in petrol : ${petrolChange}\n\nDiesel price : ${dieselPrice}\nChange in diesel : ${dieselChange}`;
+
+  let url = "Here is the website link -> https://fuelish.vercel.app/";
+  
+  let text = "Check out the latest fuel prices on Fuelish!";
+
+  window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(`${text}\n${url}\n\n${location} :\n\n${fuelInfo}`), '_blank');
+
+});
+
 async function func(mode=0,gcity)
 {
   if(state.value=="")
@@ -353,6 +386,7 @@ async function func(mode=0,gcity)
                   [b1, b2],
                   [b0, b3]
               ]);
+                selectedState = rslt[i]["State"];
                 document.getElementById("city").disabled=false;
                 document.getElementById("city").innerHTML="<option value='' selected disabled>Select a city</option>";
                 getcsv('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/assets/'+rslt[i]["State"]+'.csv')
@@ -413,7 +447,7 @@ modeToggle.addEventListener("change", () => {
     const classtogglename=document.getElementById("toggle-icon");
     classtogglename.classList.remove('fa-moon-o');
     classtogglename.classList.add('fa-sun-o');
-    classtogglename.style.color="white"
+    classtogglename.style.color="black"
     mapContainer.classList.add("light-mode");
   } else {
 
@@ -428,3 +462,5 @@ modeToggle.addEventListener("change", () => {
    classtogglename.style.color="white"
   }
 });
+
+

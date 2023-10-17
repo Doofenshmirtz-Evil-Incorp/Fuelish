@@ -21,6 +21,14 @@ body{
     background:white;
 }
 
+.light-mode .logo-image {
+    content: url('images/logo2.png');
+}
+
+.dark .favicon {
+    color: url('images/favicon2.png');
+}
+
 .footer {
     position:relative;
     left: 0;
@@ -43,31 +51,12 @@ body{
     top: 0;
 }
 
-.light-mode .logo-image
-{
-    content: url('images/logo2.png');
-}
-.dark .favicon
-{
-    color:url('images/favicon2.png')
+.light-mode .name1, .light-mode .name2 {
+    color: black;
 }
 
-.light-mode .name1
-{
-    color:black;
-}
-.light-mode .name2
-{
-    color:black
-}
- .name1
-{
+.name1, .name2 {
     color: white;
-}
-
-.name2
-{
-    color:white
 }
 
 .container {
@@ -75,7 +64,7 @@ body{
     margin-top: 15vh;
     margin-bottom: auto;border-radius: 3px;
     width: 300px;
-    height: 150px;
+    height: 120px;
     background: #1d404a;
     border-radius: 10px;
     font-family: 'Courier New', Courier, monospace;
@@ -112,9 +101,9 @@ body{
 
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
-    background: rgb(190, 12, 12);
-    color: #7a2323;
-    box-shadow: 0 3px 14px rgba(207, 16, 16, 0.4);
+    background: #06283D;
+    color: #fff;
+    /* box-shadow: 0 3px 14px rgba(207, 16, 16, 0.4); */
     }
 
 select[name="state"]
@@ -380,16 +369,29 @@ footer a{
   
   /* Styles for the toggle switch */
   .switch {
-    margin-left: 15px;
-    margin-top: 20px;
-    position: relative;
+    position: absolute;
+    top: 18px; /* Adjusted value for alignment */
+    left: 286px; /* Adjusted value for alignment */
     padding: 0;
-    width: 70%;
-    z-index: 2;
     width: 20px;
     height: 10px;
+    z-index: 2;
+    
+}
 
-  }
+.switch input:checked {
+    background-color: #2196F3;
+}
+
+
+ Light Mode Switch Background */
+ .light-mode .switch input:checked {
+    background-color: black /* Your desired background color for light mode */;
+ }
+
+ .switch input:checked {
+    transform: translateX(26px);
+}
   #toggle-icon{
     padding-top:15px;
     padding-bottom: 17px;
@@ -418,7 +420,40 @@ footer a{
   
   .light-mode .leaflet-popup-content-wrapper,
   .light-mode .leaflet-popup-tip {
-    background: #222; 
-    color: #fff; 
+    background: white; 
+    color:black; 
   }
+
+/* Div Tag Styles */
+#social-sharing-icon {
+    text-align: center;
+    margin: 8px;
+}
+
+/* To Hide The Whatsapp Icon Initially Styles */
+.hide-the-icon{
+    display: none;
+}
+
+/* Whatsapp Icon Styles */
+.fa {
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10%;
+}
+
+/* WhatsApp Icon Style */
+.fa-whatsapp {
+    font-size: 22px;
+    color: #fff; 
+    background:#25d366;
+    margin: 2px;
+    padding: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Hover On Whatsapp Icon Styles */
+.fa-whatsapp:hover {
+    background-color: #1d404a;
+}
   
