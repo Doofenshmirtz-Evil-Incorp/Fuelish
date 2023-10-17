@@ -1,48 +1,34 @@
-/* Reset CSS */
-* {
+*{
     margin: 0;
     padding: 0;
     border: 0;
     outline: none;
     box-sizing: border-box;
 }
-
-/* Body Styles */
 html, body {
     min-height: 100%;
     max-height: 200%;
 }
-
-body {
+body{
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: rgb(0, 0, 0);
+    justify-content:center;
+    background:rgb(0, 0, 0)
 }
 
-/* Light and Dark Mode Styles */
-.light-mode {
-    background: white;
+.light-mode
+{
+    background:white;
 }
 
-.light-mode .logo-image {
-    content: url('images/logo2.png');
-}
-
-.dark .favicon {
-    color: url('images/favicon2.png');
-}
-
-/* Footer Styles */
 .footer {
-    position: relative;
+    position:relative;
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
-}
+  }
 
-/* Page Container Styles */
 #page-container {
     position: relative;
     min-height: 80vh;
@@ -51,28 +37,43 @@ body {
     padding-bottom: 10%;
 }
 
-/* Logo Styles */
-.logo {
-    /* z-index: 2; */
-    position: relative;
-    /* top: 0; */
+.logo{
+    z-index: 2;
+    position:relative;
+    top: 0;
 }
 
-/* Name Styles */
-.light-mode .name1, .light-mode .name2 {
-    color: black;
+.light-mode .logo-image
+{
+    content: url('images/logo2.png');
+}
+.dark .favicon
+{
+    color:url('images/favicon2.png')
 }
 
-.name1, .name2 {
+.light-mode .name1
+{
+    color:black;
+}
+.light-mode .name2
+{
+    color:black
+}
+ .name1
+{
     color: white;
 }
 
-/* Container Styles */
+.name2
+{
+    color:white
+}
+
 .container {
     position: relative;
     margin-top: 15vh;
-    margin-bottom: auto;
-    border-radius: 3px;
+    margin-bottom: auto;border-radius: 3px;
     width: 300px;
     height: 150px;
     background: #1d404a;
@@ -81,7 +82,6 @@ body {
     transition: 0.6s ease-out;
 }
 
-/* Leaflet Styles */
 .leaflet-container {
     margin-top: 0px;
     margin-left: auto;
@@ -89,19 +89,57 @@ body {
     height: 50%;
     width: 97%;
     max-height: 40%;
-    display: none;
+    display:None;
 }
 
-/* Select Styles */
-select[name="state"], select[name="city"] {
+.leaflet-control-attribution svg {
+    width:0
+}
+ .leaflet-layer,
+ .leaflet-control-zoom-in, 
+ .leaflet-control-zoom-out,
+ .leaflet-control-attribution {
+  filter: invert(100%) hue-rotate(180deg) brightness(100%) contrast(100%);
+}
+
+.light-mode .leaflet-layer,
+.light-mode .leaflet-control-zoom-in, 
+.light-mode .leaflet-control-zoom-out,
+.light-mode .leaflet-control-attribution {
+ filter: invert(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: rgb(190, 12, 12);
+    color: #7a2323;
+    box-shadow: 0 3px 14px rgba(207, 16, 16, 0.4);
+    }
+
+select[name="state"]
+{
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    background-color: #547f85;
+    background-color:#547f85;
     color: white;
-    position: relative;
+    position:relative;
     width: 70%;
     height: 20%;
     padding: 2%;
+    z-index: 2;
+    border-radius: 3px;
+    
+}
+
+select[name="city"] {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color:#547f85;
+    color: white;
+    position: relative;
+    padding: 2%;
+    width: 70%;
     z-index: 2;
     border-radius: 3px;
 }
@@ -110,8 +148,7 @@ select option:disabled {
     color: black;
 }
 
-/* Search Box Styles */
-.search-box button {
+.search-box button{
     z-index: 2;
     cursor: pointer;
     width: 50px;
@@ -123,13 +160,13 @@ select option:disabled {
     transition: 0.4s ease;
 }
 
-.search-box button:hover {
+.search-box button:hover{
     color: #d01212;
     background: #004E58;
 }
 
-/* Nearby Styles */
-.nearby {
+.nearby
+{
     z-index: 2;
     margin-top: 10px;
     text-align: center;
@@ -140,15 +177,37 @@ select option:disabled {
     opacity: 0;
 }
 
-/* Price Box Styles */
-.price-box, .change {
+.price-box{
     z-index: 2;
-    scale: 0;
-    opacity: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-left: 2%;
 }
 
-/* Price Styles */
-.price-box .price-petrol, .price-box .price-diesel {
+.price-box .price-petrol{
+    z-index: 2;
+    float: left;
+    color: #000000;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.price-box .price-diesel{
+    z-index: 2;
+    float: left;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-top: 10px;
+    text-align: center;
+    margin-right: 15%;
+}
+
+.price-box .price-petrol, .price-box .price-diesel span{
     z-index: 2;
     text-align: center;
     position: relative;
@@ -158,8 +217,16 @@ select option:disabled {
     padding-right: 10%;
 }
 
-/* Change Styles */
-.change .petrol-change, .change .diesel-change {
+.change{
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -10px;
+    margin-left: 5%;
+}
+
+.change .petrol-change, .change .diesel-change{
     z-index: 2;
     display: flex;
     position: relative;
@@ -169,7 +236,7 @@ select option:disabled {
     margin-left: -10%;
 }
 
-.change .petrol-change {
+.change .petrol-change{
     z-index: 2;
     justify-content: center;
     font-weight: bold;
@@ -177,16 +244,15 @@ select option:disabled {
     text-align: center;
 }
 
-.change .diesel-change {
+.change .diesel-change{
     z-index: 2;
     margin-right: 8%;
     justify-content: center;
-    font-weight: bold;
-    padding-left: 5%;
+    font-weight: bold;padding-left: 5%;
     text-align: center;
 }
 
-.change i {
+.change i{
     z-index: 2;
     color: #06283D;
     font-size: 26px;
@@ -194,34 +260,38 @@ select option:disabled {
     margin-top: 6px;
 }
 
-.change span {
+.change span{
     z-index: 2;
     color: #06283D;
     font-size: 22px;
     font-weight: 500;
 }
 
-.change p {
+.change p{
     z-index: 2;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #000000;
     font-size: 14px;
     font-weight: 500;
 }
+.price-box, .change{
+    z-index: 2;
+    scale: 0;
+    opacity: 0;
+}
 
-/* Light Mode Styles */
-.light-mode .price-box,
-.light-mode .price-petrol,
-.light-mode .price-diesel,
-.light-mode .change p {
+.light-mode .price-box ,
+.light-mode .price-petrol ,
+.light-mode .price-diesel ,
+.light-mode .change p
+{
     color: rgb(255, 255, 255);
 }
 
-/* Footer Styles */
-footer {
+footer{
     z-index: 2;
     color: rgb(255, 252, 252);
-    text-align: center;
+    text-align: center; 
     bottom: 0;
     right: 0;
     left: 0;
@@ -232,109 +302,123 @@ footer {
     height: 2.5rem;
 }
 
-/* Div Tag Styles */
-#social-sharing-icon {
-    text-align: center;
-    margin: 8px;
+.light-mode footer
+{
+    color:rgb(0, 0, 0);
 }
-
-/* To Hide The Whatsapp Icon Initially Styles */
-.hide-the-icon{
-    display: none;
-}
-
-/* Whatsapp Icon Styles */
-.fa {
-    text-align: center;
-    text-decoration: none;
-    border-radius: 50%;
-}
-
-/* WhatsApp Icon Style */
-.fa-whatsapp {
-    font-size: 22px;
-    color: #fff; 
-    background:#25d366;
-    margin: 2px;
-    padding: 4px;
-    transition: all 0.3s ease;
-}
-
-/* Hover On Whatsapp Icon Styles */
-.fa-whatsapp:hover {
-    background-color: #1d404a;
-}
-
-/* Light Mode Footer Styles */
-.light-mode footer {
-    color: rgb(0, 0, 0);
-}
-
-/* Footer Link Styles */
-footer a {
+footer a{
     color: rgb(145, 222, 234);
 }
 
-/* Fade In Animation */
-.fadeIn {
+.fadeIn{
     animation: 0.5s fadeIn forwards;
     animation-delay: 0.5s;
 }
 
-/* Toggle Switch Styles */
-.switch {
-    position: absolute;
-    top: 18px; /* Adjusted value for alignment */
-    left: 286px; /* Adjusted value for alignment */
+
+
+@keyframes fadeIn{
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+
+/* @media only screen and (min-width: 768px) {
+    .leaflet-container {
+        position:fixed;
+        left: 0;
+        top:0;
+        right:0;
+        bottom: 0;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        height: 100vh;
+        max-height: 100vh;
+        width: 100vw;
+        display:block;
+        z-index: -3;
+    }
+    .container {
+        z-index: 1;
+        position: fixed;
+        left: 1%;
+    }
+
+    .search-box{
+        position: relative;
+        z-index: 2;
+    }
+    footer{
+        display: flex;
+        position: fixed;
+        flex-direction: column;
+        width: max-content;
+        margin-bottom: 5vh;
+    }
+}
+
+@media (max-width: 767px)
+{ */
+     .price-box .price-diesel,
+     .price-box .price-petrol,
+     .change p
+     {
+    color:white;
+     }
+/* } */
+/* Styles for the toggle button container */
+
+/* @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #121212;
+      color: #fff;
+    }
+  } */
+  
+  /* Styles for the toggle switch */
+  .switch {
+    margin-left: 15px;
+    margin-top: 20px;
+    position: relative;
     padding: 0;
+    width: 70%;
+    z-index: 2;
     width: 20px;
     height: 10px;
-    z-index: 2;
-    
-}
 
-.switch input:checked {
-    background-color: #2196F3;
-}
-
-
- Light Mode Switch Background */
- .light-mode .switch input:checked {
-    background-color: black /* Your desired background color for light mode */;
- }
-
- .switch input:checked {
-    transform: translateX(26px);
-} 
-
-
-#toggle-icon {
-    padding-top: 15px;
+  }
+  #toggle-icon{
+    padding-top:15px;
     padding-bottom: 17px;
     color: white;
-    font-size: larger;
-}
+    font-size:larger
+  }
+  
 
-#mode-toggle {
-    right: -21px;
+  #mode-toggle{
+    right:-21px;
     position: fixed;
-}
-
-input:checked {
+  }
+  
+  input:checked  {
     background-color: #2196F3;
-}
-
-input:checked {
+  }
+  
+  input:checked {
     transform: translateX(26px);
-}
+  }
+  
 
-/* Light Mode Leaflet Styles */
-.light-mode .leaflet-container {
+  .light-mode .leaflet-container {
     background-color: #121212;
-}
-
-.light-mode .leaflet-popup-content-wrapper,
-.light-mode .leaflet-popup-tip {
-    background: #222;
-    color: #1d1919;
-}
+  }
+  
+  .light-mode .leaflet-popup-content-wrapper,
+  .light-mode .leaflet-popup-tip {
+    background: #222; 
+    color: #fff; 
+  }
+  
