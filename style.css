@@ -232,33 +232,35 @@ footer {
     height: 2.5rem;
 }
 
-/* Sharing Button Styles */
-#social-sharing-btns button{
-    cursor: pointer;
-    padding: 4px 8px;
-    border: none;
-    border-radius: 4px;
-    font-weight: 600;
-    color: #fff;
-    background-color: #547f85;
-    transition-property: background-color , color;
-    transition: 0.25s;
+#social-sharing-btns {
+    text-align: center;
+}
+
+.fa {
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+/* WhatsApp Icon Style */
+.fa-whatsapp {
+    font-size: 22px;
+    color: #fff; 
+    background:#25d366;
+    margin: 2px;
+    padding: 3px;
+    transition: all 0.3s ease;
+}
+
+.Whatsapp-text{
     font-size: 0.9rem;
+    font-weight: 600;
+    color: #25d366;
+    margin: 2px 0px;
 }
 
-/* Sharing Button's Div Element Styles */
-#social-sharing-btns{
-    position: relative;
-    left: 25%;
-    display: none;
-    padding: 4%;
-    width: 59%;
-}
-
-/* Hover Effect On Sharing Button Element Styles */
-#social-sharing-btns button:hover{
-    color: #000;
-    background-color: #60a76c;
+.fa-whatsapp:hover {
+    background-color: #1d404a;
 }
 
 /* Light Mode Footer Styles */
