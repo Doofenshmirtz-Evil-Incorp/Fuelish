@@ -232,17 +232,18 @@ footer {
     height: 2.5rem;
 }
 
+/* Div Tag Styles */
 #social-sharing-icon {
     text-align: center;
     margin: 8px;
 }
 
-/* Make link inactive Styles */
-.inactive-link {
-    pointer-events: none;
-    cursor: not-allowed;
+/* To Hide The Whatsapp Icon Initially Styles */
+.hide-the-icon{
+    display: none;
 }
 
+/* Whatsapp Icon Styles */
 .fa {
     text-align: center;
     text-decoration: none;
@@ -259,6 +260,7 @@ footer {
     transition: all 0.3s ease;
 }
 
+/* Hover On Whatsapp Icon Styles */
 .fa-whatsapp:hover {
     background-color: #1d404a;
 }
