@@ -234,6 +234,7 @@ footer {
 
 #social-sharing-icon {
     text-align: center;
+    margin: 8px;
 }
 
 /* Make link inactive Styles */
@@ -254,15 +255,8 @@ footer {
     color: #fff; 
     background:#25d366;
     margin: 2px;
-    padding: 3px;
+    padding: 4px;
     transition: all 0.3s ease;
-}
-
-.Whatsapp-text{
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #25d366;
-    margin: 2px 0px;
 }
 
 .fa-whatsapp:hover {
