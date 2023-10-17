@@ -236,6 +236,12 @@ footer {
     text-align: center;
 }
 
+/* Make link inactive Styles */
+.inactive-link {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
 .fa {
     text-align: center;
     text-decoration: none;

@@ -8,7 +8,7 @@ const near = document.getElementById('nearby');
 const modeToggle = document.getElementById("mode-toggle");
 const pageContainer = document.getElementById("page-container");
 const mapContainer = document.getElementById("map");
-const shareIcon = document.getElementById('social-sharing-icon');
+const shareIcon = document.getElementById('Whatsapp-link');
 
 // Create variables to get the fuel prices and their changes 
 let petrolPrice , dieselPrice , petrolChange , dieselChange;
@@ -278,6 +278,9 @@ async function cfunc(mode=0)
   map.removeLayer(markers);
 var found=0;
 let i;near.classList.remove('fadeIn');
+
+// Remove the inactive link class
+document.getElementById('social-sharing-icon').classList.remove('inactive-link');
 
       for(i=0;i<clent;i++)
         {                 
