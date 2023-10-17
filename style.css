@@ -439,14 +439,14 @@ footer a{
 .fa {
     text-align: center;
     text-decoration: none;
-    border-radius: 10%;
+    border-radius: 100%;
 }
 
 /* WhatsApp Icon Style */
 .fa-whatsapp {
     font-size: 22px;
     color: #fff; 
-    background:#25d366;
+    background:transparent;
     margin: 2px;
     padding: 4px;
     transition: all 0.3s ease;
@@ -454,6 +454,6 @@ footer a{
 
 /* Hover On Whatsapp Icon Styles */
 .fa-whatsapp:hover {
-    background-color: #1d404a;
+    background-color: #06283D;
 }
   
