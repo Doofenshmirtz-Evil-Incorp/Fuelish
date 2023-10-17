@@ -9,8 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- Importing external stylesheet -->
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <link rel="stylesheet" href="style.css">
+    
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <!-- Setting page title -->
     <title>Fuelish</title>
@@ -21,12 +22,10 @@
     <!-- Logo section -->
     <div class="logo">
         <a href="https://doofenshmirtz-evil-incorp.github.io/Fuelish/" target="_blank" rel="noopener noreferrer"><img class="logo-image" src="images/logo.png" width="150px" alt=""></a>
-        
-            <label class="switch">
-                <input type="checkbox" id="mode-toggle">
-                <i class="icontoggle fa fa-moon-o" id="toggle-icon" aria-hidden="true"></i>
-          </label>
-        
+        <label class="switch">
+            <input type="checkbox" id="mode-toggle">
+            <i class="icontoggle fa fa-moon-o" id="toggle-icon" aria-hidden="true"></i>
+      </label>
     </div>
     <!-- Search box section -->
     <div class="container">
@@ -41,14 +40,11 @@
                 <option value="" selected disabled style="color: azure;">Select a city</option>
             </select>
             <br>
-
-        </div>  
-
-            <!-- Whatsapp sharing icon section -->
-            <div id="social-sharing-icon" class="hide-the-icon">
-                    <a href="#" class="fa fa-whatsapp" id="Whatsapp-link" ></a>
-            </div>
-            
+        </div>
+        <!-- Whatsapp sharing icon section -->
+        <div id="social-sharing-icon" class="hide-the-icon">
+            <a href="#" class="fa fa-whatsapp" id="Whatsapp-link" ></a>
+        </div>        
         <!-- Map section -->
         <div id='map'></div>
         
