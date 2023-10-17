@@ -150,11 +150,11 @@ select option:disabled {
 }
 
 /* Price Box Styles */
-/* .price-box, .change {
+.price-box, .change {
     z-index: 2;
     scale: 0;
     opacity: 0;
-} */
+}
 
 .price-box .price-petrol{
     z-index: 2;
