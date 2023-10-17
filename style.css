@@ -140,15 +140,45 @@ select option:disabled {
     opacity: 0;
 }
 
+.price-box{
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-left: 2%;
+}
+
 /* Price Box Styles */
-.price-box, .change {
+/* .price-box, .change {
     z-index: 2;
     scale: 0;
     opacity: 0;
+} */
+
+.price-box .price-petrol{
+    z-index: 2;
+    float: left;
+    color: #000000;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.price-box .price-diesel{
+    z-index: 2;
+    float: left;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-top: 10px;
+    text-align: center;
+    margin-right: 15%;
 }
 
 /* Price Styles */
-.price-box .price-petrol, .price-box .price-diesel {
+.price-box .price-petrol, .price-box .price-diesel span{
     z-index: 2;
     text-align: center;
     position: relative;
@@ -156,6 +186,15 @@ select option:disabled {
     font-size: 1rem;
     padding-left: 0%;
     padding-right: 10%;
+}
+
+.change{
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -10px;
+    margin-left: 5%;
 }
 
 /* Change Styles */
@@ -281,6 +320,20 @@ footer a {
     animation-delay: 0.5s;
 }
 
+@keyframes fadeIn{
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+.price-box .price-diesel,
+     .price-box .price-petrol,
+     .change p
+    {
+    color:white;
+}
+    
 /* Toggle Switch Styles */
 .switch {
     position: absolute;
