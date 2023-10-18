@@ -447,13 +447,7 @@ footer a{
     font-size: 22px;
     color: #fff; 
     background:transparent;
-    margin: 2px;
-    padding: 4px;
+    margin-left: 119px;
+    padding-bottom: 12px;
     transition: all 0.3s ease;
 }
-
-/* Hover On Whatsapp Icon Styles */
-.fa-whatsapp:hover {
-    background-color: #06283D;
-}
-  
