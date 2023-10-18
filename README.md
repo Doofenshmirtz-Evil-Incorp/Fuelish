@@ -64,6 +64,8 @@ We welcome contributions from the community, especially if you're willing to bri
 4. Push to the branch: git push origin my-feature-branch
 5. Submit a pull request, and we'll consider it (as long as it's not just a request to add a feature that tells jokes).
 
+**Important**: Please do not ask for assignment before creating a pull request. We encourage you to directly create a pull request for your contributions.
+
 ## Author
 
 Fuelish was created by [Aryaman Srivastava](https://github.com/actuallyaryaman) and [Asvin Jain](https://github.com/asvin1), two fuel-saving ninjas who believe that the only thing better than a full tank of gas is a full tank of gas that didn't break the bank. If you have any questions or feedback, you can reach out to us at  We promise to respond faster than a V8 engine revving up!
