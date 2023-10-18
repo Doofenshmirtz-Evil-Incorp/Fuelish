@@ -458,6 +458,11 @@ modeToggle.addEventListener("change", () => {
 
 
     pageContainer.classList.remove("light-mode");
+
+    //add a check to make the whatsapp icon visible in the dark mode
+    if( !pageContainer.classList.contains('light-mode')){
+      shareIcon.style.color = 'white';
+    }
     document.body.classList.remove("light-mode");
     mapContainer.classList.remove("light-mode");
    document.body.classList.remove("light-mode");
