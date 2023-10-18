@@ -443,6 +443,11 @@ modeToggle.addEventListener("change", () => {
   if (modeToggle.checked) {
     document.body.classList.add("light-mode");
     pageContainer.classList.add("light-mode");
+
+    // add a check to make the whatsapp icon visible in light mode
+    if( pageContainer.classList.contains('light-mode')){
+      shareIcon.style.color = 'black';
+    }
       document.body.classList.add("light-mode");
     const classtogglename=document.getElementById("toggle-icon");
     classtogglename.classList.remove('fa-moon-o');
