@@ -396,7 +396,8 @@ footer a{
     padding-top:15px;
     padding-bottom: 17px;
     color: white;
-    font-size:larger
+    font-size:larger;
+    cursor: pointer;
   }
   
 
