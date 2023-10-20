@@ -393,10 +393,10 @@ document.getElementById('social-sharing-icon').classList.remove('hide-the-icon')
         map.invalidateSize();
 }
 
-// Add an EventListener on shareBtn element 
+// Add an EventListener on whatsappShareIcon element 
 // It triggers when 'click' event occurs
 
-shareIcon.addEventListener('click' , (e) => {
+whatsappShareIcon.addEventListener('click' , (e) => {
 
   let location = `Fuel price in ${selectedCity} city, ${selectedState}`;
 
