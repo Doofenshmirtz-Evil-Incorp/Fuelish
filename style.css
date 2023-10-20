@@ -486,14 +486,14 @@ button {
     background: #2a2a2a;
     padding: 25px;
     border-radius: 10px;
-    top: 150%;
+    top: 174%;
     max-width: 297px;
     width: 100%;
     opacity: 0;
     pointer-events: none;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
-    transform: translate(-56.7%, 118%) scale(1.0);
-    transition: all 0.5s ease-in-out 0s;
+    transform: translate(-56.7%, 136%) scale(1.0);
+    transition: all 0.3s ease-out 0s;
 }
 
 .popup.show {
@@ -501,7 +501,7 @@ button {
     opacity: 1;
     pointer-events: auto;
     transform: translate(-56.7%, 104%) scale(1);
-    transition: all 0.5s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
 }
 
 .popup :is(header, .icons, .field) {
