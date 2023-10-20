@@ -536,7 +536,7 @@ modeToggle.addEventListener("change", () => {
 
     // add a check to make the whatsapp icon visible in light mode
     if( pageContainer.classList.contains('light-mode')){
-      shareIcon.style.color = 'black';
+      shareBtn.style.color = 'black';
     }
       document.body.classList.add("light-mode");
     const classtogglename=document.getElementById("toggle-icon");
@@ -551,7 +551,7 @@ modeToggle.addEventListener("change", () => {
 
     //add a check to make the whatsapp icon visible in the dark mode
     if( !pageContainer.classList.contains('light-mode')){
-      shareIcon.style.color = 'white';
+      shareBtn.style.color = 'white';
     }
     document.body.classList.remove("light-mode");
     mapContainer.classList.remove("light-mode");
