@@ -445,7 +445,6 @@ footer a{
 /* WhatsApp Icon Style */
 .fa-whatsapp {
     font-size: 22px;
-    color: #fff; 
     background:transparent;
     transition: all 0.3s ease;
 }
