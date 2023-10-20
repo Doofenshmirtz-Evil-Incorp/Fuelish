@@ -12,7 +12,6 @@ const shareBtn = document.getElementById('share-icon');
 const whatsappShareIcon = document.getElementById('Whatsapp-link');
 const telegramShareIcon = document.getElementById('telegram-link');
 const twitterShareIcon = document.getElementById('twitter-link');
-const facebookShareIcon = document.getElementById('facebook-link');
 const viewBtn = document.querySelector(".view-modal");
 const popup = document.querySelector(".popup");
 const close = popup.querySelector(".close");
@@ -441,24 +440,6 @@ twitterShareIcon.addEventListener('click' , (e) => {
   let text = "Check out the latest fuel prices on Fuelish!\n";
 
   window.open(`https://twitter.com/intent/tweet?url=\n${url}&text=${text}&hashtags=${hash_tags}` + encodeURIComponent(`\n\n${location} :\n\n${fuelInfo}`), '_blank');
-
-});
-
-
-// Add an EventListener on facebookShareIcon element 
-// It triggers when 'click' event occurs
-
-facebookShareIcon.addEventListener('click' , (e) => {
-
-  let location = `Fuel price in ${selectedCity} city, ${selectedState}`;
-
-  let fuelInfo = `Petrol price : ${petrolPrice}\nChange in petrol : ${petrolChange}\n\nDiesel price : ${dieselPrice}\nChange in diesel : ${dieselChange}`;
-
-  let url = fixedEncodedURIComponent("Here is the website link -> https://fuelish.vercel.app/");
-  
-  let text = "Check out the latest fuel prices on Fuelish!";
-
-  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}` + encodeURIComponent(`${text}\n\n${location} :\n\n${fuelInfo}`), '_blank');
 
 });
 
