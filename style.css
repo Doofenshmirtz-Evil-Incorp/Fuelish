@@ -600,14 +600,6 @@ header .close:hover {
     background: #fff;
 }
 
-.icons a:nth-child(5) {
-    color: #fff;
-}
-
-.icons a:nth-child(5):hover {
-    background: #fff;
-}
-
 .icons a:hover {
     color: #000;
     border-color: transparent;
