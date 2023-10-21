@@ -7,6 +7,9 @@
     
     <!-- Importing Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+     <!-- Importing unicons stylesheet -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
     
     <!-- Importing external stylesheet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
@@ -27,9 +30,31 @@
             <i class="icontoggle fa fa-moon-o" id="toggle-icon" aria-hidden="true"></i>
       </label>
       <!-- Whatsapp sharing icon section -->
-      <label id="social-sharing-icon" class="hide-the-icon">
-        <a href="#" class="fa fa-whatsapp" id="Whatsapp-link" ></a>
-      </label>
+    <label id="social-sharing-icon" class="hide-the-icon dropdown">
+        
+        <a href="#" class="fa fa-share view-modal" id="share-icon"></a>
+    <div class="popup">
+    <header>
+    <span>Fuelish</span>
+    <div class="close"><i class="uil uil-times"></i></div>
+    </header>
+    <div class="content">
+    <p>Share the data via</p>
+    <ul class="icons">
+        <a href="#" id="twitter-link"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" id="reddit-link"><i class="fab fa-reddit"></i></a>
+        <a href="#" id="Whatsapp-link"><i class="fab fa-whatsapp" ></i></a>
+        <a href="#" id="telegram-link"><i class="fab fa-telegram-plane" ></i></a>
+    </ul>
+    <p>Or copy link</p>
+    <div class="field">
+        <i class="url-icon uil uil-link"></i>
+        <input type="text" readonly value="https://fuelish.vercel.app/">
+        <button>Copy</button>
+    </div>
+    </div>
+</div>
+    </label>
     </div>
     <!-- Search box section -->
     <div class="container">

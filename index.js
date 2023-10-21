@@ -8,7 +8,45 @@ const near = document.getElementById('nearby');
 const modeToggle = document.getElementById("mode-toggle");
 const pageContainer = document.getElementById("page-container");
 const mapContainer = document.getElementById("map");
-const shareIcon = document.getElementById('Whatsapp-link');
+const shareBtn = document.getElementById('share-icon');
+const whatsappShareIcon = document.getElementById('Whatsapp-link');
+const telegramShareIcon = document.getElementById('telegram-link');
+const twitterShareIcon = document.getElementById('twitter-link');
+const redditShareIcon = document.getElementById('reddit-link');
+const viewBtn = document.querySelector(".view-modal");
+const popup = document.querySelector(".popup");
+const close = popup.querySelector(".close");
+const field = popup.querySelector(".field");
+const input = field.querySelector("input");
+const copy = field.querySelector("button");
+
+    viewBtn.addEventListener('click' , ()=>{
+      document.getElementById('state').disabled=true;
+      document.getElementById("city").disabled=true;
+      mapContainer.style.display= 'none';
+      popup.classList.add("show");
+    });
+
+    close.addEventListener('click' , ()=>{
+      mapContainer.style.display= 'block';
+      document.getElementById('state').disabled=false;
+      document.getElementById("city").disabled=false;
+      popup.classList.remove("show");
+    });
+
+    copy.addEventListener('click' , ()=>{
+      input.select(); 
+      if(document.execCommand("copy")){ 
+        field.classList.add("active");
+        copy.innerText = "Copied";
+        setTimeout(()=>{
+          window.getSelection().removeAllRanges();
+          field.classList.remove("active");
+          copy.innerText = "Copy";
+        }, 1000);
+      }
+    });
+
 
 // Create variables to get the fuel prices and their changes 
 let petrolPrice , dieselPrice , petrolChange , dieselChange;
@@ -355,10 +393,10 @@ document.getElementById('social-sharing-icon').classList.remove('hide-the-icon')
         map.invalidateSize();
 }
 
-// Add an EventListener on shareBtn element 
+// Add an EventListener on whatsappShareIcon element 
 // It triggers when 'click' event occurs
 
-shareIcon.addEventListener('click' , (e) => {
+whatsappShareIcon.addEventListener('click' , (e) => {
 
   let location = `Fuel price in ${selectedCity} city, ${selectedState}`;
 
@@ -369,6 +407,56 @@ shareIcon.addEventListener('click' , (e) => {
   let text = "Check out the latest fuel prices on Fuelish!";
 
   window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(`${text}\n${url}\n\n${location} :\n\n${fuelInfo}`), '_blank');
+
+});
+
+// Add an EventListener on telegramShareIcon element 
+// It triggers when 'click' event occurs
+
+telegramShareIcon.addEventListener('click' , (e) => {
+
+  let location = `Fuel price in ${selectedCity} city, ${selectedState}`;
+
+  let fuelInfo = `Petrol price : ${petrolPrice}\nChange in petrol : ${petrolChange}\n\nDiesel price : ${dieselPrice}\nChange in diesel : ${dieselChange}`;
+
+  let url = "Here is the website link -> https://fuelish.vercel.app/";
+  
+  let text = "Check out the latest fuel prices on Fuelish!";
+
+  window.open(`https://telegram.me/share/url?url=${url}&text=` + encodeURIComponent(`${text}\n\n${location} :\n\n${fuelInfo}`), '_blank');
+
+});
+
+// Add an EventListener on twitterShareIcon element 
+// It triggers when 'click' event occurs
+
+twitterShareIcon.addEventListener('click' , (e) => {
+
+  let location = `Fuel price at ${selectedCity} city in ${selectedState}`;
+  let hash_tags = 'Fuelish';
+  let fuelInfo = `Petrol price : ${petrolPrice}\nChange in petrol : ${petrolChange}\n\nDiesel price : ${dieselPrice}\nChange in diesel : ${dieselChange}`;
+
+  let url = "\nhttps://fuelish.vercel.app/";
+  
+  let text = "Check out the latest fuel prices on Fuelish!\n";
+
+  window.open(`https://twitter.com/intent/tweet?url=\n${url}&text=${text}&hashtags=${hash_tags}` + encodeURIComponent(`\n\n${location} :\n\n${fuelInfo}`), '_blank');
+
+});
+
+// Add an EventListener on redditShareIcon element 
+// It triggers when 'click' event occurs
+
+redditShareIcon.addEventListener('click' , (e) => {
+
+  let location = `Fuel price in ${selectedCity} city, ${selectedState}`;
+  let fuelInfo = `Petrol price : ${petrolPrice}\nChange in petrol : ${petrolChange}\n\nDiesel price : ${dieselPrice}\nChange in diesel : ${dieselChange}`;
+
+  let url = "https://fuelish.vercel.app/";
+  
+  let text = "Check out the latest fuel prices on Fuelish!";
+
+  window.open(`https://reddit.com/submit?url=${url}&title=${text}` + encodeURIComponent(`\n\n${location} :\n\n${fuelInfo}`), '_blank');
 
 });
 
@@ -446,7 +534,7 @@ modeToggle.addEventListener("change", () => {
 
     // add a check to make the whatsapp icon visible in light mode
     if( pageContainer.classList.contains('light-mode')){
-      shareIcon.style.color = 'black';
+      shareBtn.style.color = 'black';
     }
       document.body.classList.add("light-mode");
     const classtogglename=document.getElementById("toggle-icon");
@@ -461,7 +549,7 @@ modeToggle.addEventListener("change", () => {
 
     //add a check to make the whatsapp icon visible in the dark mode
     if( !pageContainer.classList.contains('light-mode')){
-      shareIcon.style.color = 'white';
+      shareBtn.style.color = 'white';
     }
     document.body.classList.remove("light-mode");
     mapContainer.classList.remove("light-mode");
