@@ -486,7 +486,7 @@ button {
     padding: 25px;
     border-radius: 10px;
     top: 174%;
-    max-width: 297px;
+    max-width: 300px;
     width: 100%;
     opacity: 0;
     pointer-events: none;
@@ -499,7 +499,7 @@ button {
     top: 50%;
     opacity: 1;
     pointer-events: auto;
-    transform: translate(-50%, 104%) scale(1);
+    transform: translate(-50%, 105%) scale(1);
     transition: all 0.3s ease-in-out 0s;
 }
 
