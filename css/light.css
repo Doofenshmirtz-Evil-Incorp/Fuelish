@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+    color: #000000;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+
+.light-mode {
+    background: white;
+}
+
+.light-mode .logo-image {
+    content: url('../images/logo2.png');
+}
+
+.light-mode .name1, .light-mode .name2 {
+    color: rgb(255, 255, 255);
+}
+
+.light-mode .leaflet-layer,
+.light-mode .leaflet-control-zoom-in,
+.light-mode .leaflet-control-zoom-out,
+.light-mode .leaflet-control-attribution {
+    filter: invert(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+.light-mode .price-box,
+.light-mode .price-petrol,
+.light-mode .price-diesel,
+.light-mode .change p {
+    color: rgb(0, 0, 0);
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: #06283D;
+    color: #000000;
+    /* box-shadow: 0 3px 14px rgba(207, 16, 16, 0.4); */
+}
+
+.light-mode footer {
+    color: rgb(0, 0, 0);
+}
+
+Light Mode Switch Background */ .light-mode .switch input:checked {
+    background-color: black
+        /* Your desired background color for light mode */
+    ;
+}
+
+.light-mode .leaflet-container {
+    background-color: #121212;
+}
+
+.light-mode .leaflet-popup-content-wrapper,
+.light-mode .leaflet-popup-tip {
+    background: rgb(0, 0, 0);
+    color: black;
+}
+.text p
+{
+    color: #fff;
+}
