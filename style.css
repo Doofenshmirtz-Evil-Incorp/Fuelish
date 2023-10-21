@@ -473,8 +473,8 @@ button {
     top: 50%;
     color: #fff;
     font-size: 18px;
-    padding: 10px 25px;
-    margin-left: 119px;
+    padding: 10px 0px;
+    margin-left: 118px;
     transform: translate(-50%, -50%);
     position: relative;
     left: 19px;
