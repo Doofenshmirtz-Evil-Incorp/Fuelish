@@ -52,7 +52,7 @@ When submitting issues and pull requests, please adhere to the following guideli
 
 ## License
 
-By contributing to [Your Project Name], you agree that your contributions will be licensed under our [License](LICENSE.md).
+By contributing to Fuelish, you agree that your contributions will be licensed under our [License](LICENSE.md).
 
 Thank you for your interest in contributing to our project. Your help is greatly appreciated!
 
