@@ -9,19 +9,21 @@ Fuelish is a simple web application that helps you to check the fuel prices of y
   - [Features](#features)
   - [Screenshots](#screenshots)
   - [Technologies Used](#technologies-used)
-  - [Installation](#installation)
   - [Usage](#usage)
+  - [Installation](#installation)
   - [Contributing](#contributing)
   - [Author](#author)
+  - [Contributors](#contributors)
   - [License](#license)
 
 ## Features
 
-- Displays the latest fuel prices of your state
-- Displays the petrol and diesel price and the daily changes so you can avoid overpaying for gas.
+- Displays the latest fuel prices of your state.
+- Displays the petrol and diesel price and the daily changes so you can avoid overpaying for fuel.
 - Finds out the lowest price within 50-kms radius.
 - Directs you to the nearest petrol pump.
 - Live Location! (Don't need to explain)
+
 ## Screenshots
 ![Screenshot of the website](images/screenshots/1.jpg "a title")
 
@@ -39,6 +41,13 @@ Fuelish is built with the following technologies:
 - OpenMaps API, because we want to show you your location.
 - Vercel for deployment.
 
+## Usage
+
+To use Fuelish, follow these steps:
+
+1. Open the dropdown menu, and select your state and district.
+2. Fuelish will display the petrol and diesel prices of your location.
+
 ## Installation
 
 To install Fuelish, follow these steps:
@@ -46,13 +55,6 @@ To install Fuelish, follow these steps:
 1. Clone the repository: git clone https://github.com/Doofenshmirtz-Evil-Incorp/Fuelish
 2. Navigate to the project directory: cd Fuelish
 3. Open index.html in your web browser.
-
-## Usage
-
-To use Fuelish, follow these steps:
-
-1. Enter your location in the search bar.
-2. Fuelish will display the petrol and diesel prices of your location.
 
 ## Contributing
 
@@ -68,7 +70,15 @@ We welcome contributions from the community, especially if you're willing to bri
 
 ## Author
 
-Fuelish was created by [Aryaman Srivastava](https://github.com/actuallyaryaman) and [Asvin Jain](https://github.com/asvin1), two fuel-saving ninjas who believe that the only thing better than a full tank of gas is a full tank of gas that didn't break the bank. If you have any questions or feedback, you can reach out to us at  We promise to respond faster than a V8 engine revving up!
+Fuelish was created by [Aryaman Srivastava](https://github.com/actuallyaryaman) and joined by [Asvin Jain](https://github.com/asvin1), two fuel-saving ninjas who believe that the only thing better than a full tank of gas is a full tank of gas that didn't break the bank. If you have any questions or feedback, you can reach out to us at  We promise to respond faster than a V8 engine revving up!
+
+## Contributors
+
+The current awesome state of Fuelish is a result of combine efforts from some of the few awesome people
+
+<a href="https://github.com/Doofenshmirtz-Evil-Incorp/Fuelish/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Doofenshmirtz-Evil-Incorp/Fuelish" />
+</a>
 
 ## License
 
