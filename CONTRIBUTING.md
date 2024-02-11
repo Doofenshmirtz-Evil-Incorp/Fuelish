@@ -23,8 +23,6 @@ There are several ways you can contribute to our project:
     4. Push to the branch: git push origin my-feature-branch
     5. Submit a pull request, and we'll consider it (as long as it's not just a request to add a feature that tells jokes).
 
-
-
 4. **Documentation:** Contributions to project documentation are also highly valuable. If you spot any inaccuracies, typos, or gaps in our documentation, please feel free to submit changes or improvements.
 
 ## Getting Started
@@ -36,8 +34,6 @@ Before you start contributing, please follow these steps:
 2. Familiarize yourself with our [License](LICENSE.md). By contributing to this project, you agree to license your contributions under the terms of this license.
 
 3. If you're planning to submit code changes, make sure you have Git installed and a GitHub account.
-
-
 
 ## Issues and Pull Requests
 
