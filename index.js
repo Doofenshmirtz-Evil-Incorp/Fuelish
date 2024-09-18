@@ -450,8 +450,8 @@ modeToggle.addEventListener("change", () => {
     }
       document.body.classList.add("light-mode");
     const classtogglename=document.getElementById("toggle-icon");
-    classtogglename.classList.remove('fa-moon-o');
-    classtogglename.classList.add('fa-sun-o');
+    classtogglename.classList.remove('ri-moon-line');
+    classtogglename.classList.add('ri-sun-line');
     classtogglename.style.color="black"
     mapContainer.classList.add("light-mode");
   } else {
@@ -467,8 +467,8 @@ modeToggle.addEventListener("change", () => {
     mapContainer.classList.remove("light-mode");
    document.body.classList.remove("light-mode");
    const classtogglename=document.getElementById("toggle-icon");
-   classtogglename.classList.remove('fa-sun-o');
-   classtogglename.classList.add('fa-moon-o');
+   classtogglename.classList.remove("ri-sun-line");
+   classtogglename.classList.add('ri-moon-line');
    classtogglename.style.color="white"
   }
 });

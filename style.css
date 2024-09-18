@@ -21,6 +21,7 @@ body{
     background:white;
 }
 
+
 .light-mode .logo-image {
     content: url('images/logo2.png');
 }
