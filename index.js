@@ -5,10 +5,9 @@ const change = document.querySelector('.change');
 const st = document.getElementById("map");
 const getLoc = document.getElementById("getlocation");
 const near = document.getElementById('nearby');
-const modeToggle = document.getElementById("mode-toggle");
 const pageContainer = document.getElementById("page-container");
 const mapContainer = document.getElementById("map");
-const shareIcon = document.getElementById('Whatsapp-link');
+const shareWeb = document.getElementById('Web-share');
 
 // Create variables to get the fuel prices and their changes 
 let petrolPrice , dieselPrice , petrolChange , dieselChange;
@@ -199,7 +198,7 @@ getdata(ar[0],ar[1]).then(data=>{
 }
 
 getLoc.addEventListener('click',  event => {
-  document.getElementById("getlocation").className="fa-solid fa-spinner fa-spin-pulse";
+  document.getElementById("getlocation");
   let gcity,gstate;
     if ('geolocation' in navigator) {
       near.classList.remove('fadeIn');
@@ -218,11 +217,11 @@ getLoc.addEventListener('click',  event => {
                 genmark(gstate,gcity,latitude,longitude,out);
             });
         }, error => {
-          document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
+          document.getElementById("getlocation");
             console.log("Geolocation request denied by user", error.code);
         });
     } else {
-      document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
+      document.getElementById("getlocation");
         console.log("Geolocation is not supported.");
     }
 });
@@ -336,7 +335,7 @@ document.getElementById('social-sharing-icon').classList.remove('hide-the-icon')
                 ele4.innerText=datac[i]["Change(D)"];
                 dieselChange = ele4.innerText;
                 found=1;
-                document.getElementById("getlocation").className="fa-solid fa-location-crosshairs";
+                document.getElementById("getlocation");
                 if(mode==0)
                 {
                   for(let j=0;j<corlent;j++)
@@ -355,22 +354,24 @@ document.getElementById('social-sharing-icon').classList.remove('hide-the-icon')
         map.invalidateSize();
 }
 
-// Add an EventListener on shareBtn element 
-// It triggers when 'click' event occurs
-
-shareIcon.addEventListener('click' , (e) => {
-
+// Share button using WebShare API
+shareWeb.addEventListener("click", async () => {
   let location = `Fuel price in ${selectedCity} city, ${selectedState}`;
-
   let fuelInfo = `Petrol price : ${petrolPrice}\nChange in petrol : ${petrolChange}\n\nDiesel price : ${dieselPrice}\nChange in diesel : ${dieselChange}`;
-
-  let url = "Here is the website link -> https://fuelish.vercel.app/";
+  const shareData = {
+    title: "Fuelish",
+    text: `Check your fuel prices on Fuelish!\n${location}\n${fuelInfo}\n`,
+    url: "https://fuelish.dtho.xyz",
+  };
   
-  let text = "Check out the latest fuel prices on Fuelish!";
-
-  window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(`${text}\n${url}\n\n${location} :\n\n${fuelInfo}`), '_blank');
-
+  try {
+    await navigator.share(shareData);
+    console.log("Data was shared successfully");
+  } catch (err) {
+    console.error("Share failed:", err.message);
+  }
 });
+
 
 async function func(mode=0,gcity)
 {
@@ -421,56 +422,6 @@ priceBox.addEventListener("animationend", function() {
     [b1, b2],
     [b0, b3]
 ]);
-});
-
-
-modeToggle.addEventListener("change", () => {
-  // if (modeToggle.checked) {
-  //   //light mode
- 
-  //   map.removeLayer(tiles); 
-  //   map.addLayer(darkModeTileLayer); 
-  // } else {
-  //   //dark mode
-  //    pageContainer.classList.add("light-mode");
-  //   document.body.classList.add("light-mode");
-  //   document.querySelector(".mode-label").textContent = "Dark Mode";
-  //   mapContainer.classList.add("light-mode");
-  //   map.removeLayer(darkModeTileLayer); 
-  //   map.addLayer(tiles); 
-  // }
-
-  if (modeToggle.checked) {
-    document.body.classList.add("light-mode");
-    pageContainer.classList.add("light-mode");
-
-    // add a check to make the whatsapp icon visible in light mode
-    if( pageContainer.classList.contains('light-mode')){
-      shareIcon.style.color = 'black';
-    }
-      document.body.classList.add("light-mode");
-    const classtogglename=document.getElementById("toggle-icon");
-    classtogglename.classList.remove('fa-moon-o');
-    classtogglename.classList.add('fa-sun-o');
-    classtogglename.style.color="black"
-    mapContainer.classList.add("light-mode");
-  } else {
-
-
-    pageContainer.classList.remove("light-mode");
-
-    //add a check to make the whatsapp icon visible in the dark mode
-    if( !pageContainer.classList.contains('light-mode')){
-      shareIcon.style.color = 'white';
-    }
-    document.body.classList.remove("light-mode");
-    mapContainer.classList.remove("light-mode");
-   document.body.classList.remove("light-mode");
-   const classtogglename=document.getElementById("toggle-icon");
-   classtogglename.classList.remove('fa-sun-o');
-   classtogglename.classList.add('fa-moon-o');
-   classtogglename.style.color="white"
-  }
 });
 
 

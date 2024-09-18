@@ -358,72 +358,6 @@ footer a{
     color:white;
      }
 /* } */
-/* Styles for the toggle button container */
-
-/* @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #121212;
-      color: #fff;
-    }
-  } */
-  
-  /* Styles for the toggle switch */
-  .switch {
-    position: absolute;
-    top: 18px; /* Adjusted value for alignment */
-    left: 286px; /* Adjusted value for alignment */
-    padding: 0;
-    width: 20px;
-    height: 10px;
-    z-index: 2;
-    
-}
-
-.switch input:checked {
-    background-color: #2196F3;
-}
-
-
- Light Mode Switch Background */
- .light-mode .switch input:checked {
-    background-color: black /* Your desired background color for light mode */;
- }
-
- .switch input:checked {
-    transform: translateX(26px);
-}
-  #toggle-icon{
-    padding-top:15px;
-    padding-bottom: 17px;
-    color: white;
-    font-size:larger;
-    cursor: pointer;
-  }
-  
-
-  #mode-toggle{
-    right:-21px;
-    position: fixed;
-  }
-  
-  input:checked  {
-    background-color: #2196F3;
-  }
-  
-  input:checked {
-    transform: translateX(26px);
-  }
-  
-
-  .light-mode .leaflet-container {
-    background-color: #121212;
-  }
-  
-  .light-mode .leaflet-popup-content-wrapper,
-  .light-mode .leaflet-popup-tip {
-    background: white; 
-    color:black; 
-  }
 
 /* Div Tag Styles */
 #social-sharing-icon {
@@ -431,20 +365,16 @@ footer a{
     margin: 8px;
 }
 
-/* To Hide The Whatsapp Icon Initially Styles */
+/* To Hide The Share Icon Initially Styles */
 .hide-the-icon{
     display: none;
 }
 
-/* Whatsapp Icon Styles */
-.fa {
+/* Share Icon Style */
+.m3-share {
     text-align: center;
     text-decoration: none;
     border-radius: 100%;
-}
-
-/* WhatsApp Icon Style */
-.fa-whatsapp {
     font-size: 22px;
     color: #fff; 
     background:transparent;

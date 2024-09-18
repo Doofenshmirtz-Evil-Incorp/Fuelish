@@ -2,6 +2,16 @@
 
 Fuelish is a simple web application that helps you to check the fuel prices of your state. With Fuelish, you can easily compare the fuel prices of different states and save money on fuel expenses.
 
+## Star History
+
+<a href="https://star-history.com/#Doofenshmirtz-Evil-Incorp/Fuelish&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" />
+ </picture>
+</a>
+
 ## Table of Contents
 
 - [Fuelish](#fuelish)
