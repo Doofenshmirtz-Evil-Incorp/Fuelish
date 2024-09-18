@@ -368,7 +368,7 @@ shareWeb.addEventListener("click", async () => {
   const shareData = {
     // document.getElementById("Web-Share-Link"),
     title: "Fuelish",
-    text: "Check your fuel prices on Fuelish!\n${location}\n${fuelInfo}",
+    text: `Check your fuel prices on Fuelish!\n${location}\n${fuelInfo}`,
     url: "https://fuelish.dtho.xyz",
   };
   
