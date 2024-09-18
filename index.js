@@ -8,7 +8,7 @@ const near = document.getElementById('nearby');
 const modeToggle = document.getElementById("mode-toggle");
 const pageContainer = document.getElementById("page-container");
 const mapContainer = document.getElementById("map");
-const shareIcon = document.getElementById('Whatsapp-link');
+const shareWeb = document.getElementById('Whatsapp-link');
 
 // Create variables to get the fuel prices and their changes 
 let petrolPrice , dieselPrice , petrolChange , dieselChange;
@@ -358,19 +358,43 @@ document.getElementById('social-sharing-icon').classList.remove('hide-the-icon')
 // Add an EventListener on shareBtn element 
 // It triggers when 'click' event occurs
 
-shareIcon.addEventListener('click' , (e) => {
+// const btn = document.querySelector("button");
+// const resultPara = document.querySelector(".result");
 
+// Share must be triggered by "user activation"
+shareWeb.addEventListener("click", async () => {
   let location = `Fuel price in ${selectedCity} city, ${selectedState}`;
-
   let fuelInfo = `Petrol price : ${petrolPrice}\nChange in petrol : ${petrolChange}\n\nDiesel price : ${dieselPrice}\nChange in diesel : ${dieselChange}`;
-
-  let url = "Here is the website link -> https://fuelish.vercel.app/";
+  const shareData = {
+    // document.getElementById("Web-Share-Link"),
+    title: "Fuelish",
+    text: "Check your fuel before you wreck your wallet with Fuelish!",
+    url: "https://fuelish.dtho.xyz",
+  };
   
-  let text = "Check out the latest fuel prices on Fuelish!";
-
-  window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(`${text}\n${url}\n\n${location} :\n\n${fuelInfo}`), '_blank');
-
+  try {
+    await navigator.share(shareData);
+    console.log("Data was shared successfully");
+    // resultPara.textContent = "MDN shared successfully";
+  } catch (err) {
+    console.error("Share failed:", err.message);
+    // resultPara.textContent = `Error: ${err}`;
+  }
 });
+
+// shareIcon.addEventListener('click' , (e) => {
+
+//   let location = `Fuel price in ${selectedCity} city, ${selectedState}`;
+
+//   let fuelInfo = `Petrol price : ${petrolPrice}\nChange in petrol : ${petrolChange}\n\nDiesel price : ${dieselPrice}\nChange in diesel : ${dieselChange}`;
+
+//   let url = "Here is the website link -> https://fuelish.vercel.app/";
+  
+//   let text = "Check out the latest fuel prices on Fuelish!";
+
+//   window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(`${text}\n${url}\n\n${location} :\n\n${fuelInfo}`), '_blank');
+
+// });
 
 async function func(mode=0,gcity)
 {
