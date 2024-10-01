@@ -137,6 +137,13 @@ select option:disabled {
     color: black;
 }
 
+/* .search-box-first-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 5px;
+} */
+
 .search-box button{
     z-index: 2;
     cursor: pointer;
@@ -381,4 +388,48 @@ footer a{
     margin-left: 119px;
     padding-bottom: 12px;
     transition: all 0.3s ease;
+}
+
+@media (max-width: 640px){
+
+    body{
+        height: 100%;
+        width: 100%;
+    }
+
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .m3-share{
+        padding-top: 15px;
+    }
+
+    .search-box{
+        /* margin-top: 40px; */
+        margin-bottom: 40px;
+    }
+
+    .container{
+        height: 100vh;
+        width: 100vw;
+        padding: 30px 20px;
+        border-radius: 0px;
+    }
+
+    footer{
+        height: 30px;
+    }
+
+    footer img{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    footer p{
+        padding: 10px 0;
+    }
+
 }
