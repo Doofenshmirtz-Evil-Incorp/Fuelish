@@ -15,14 +15,14 @@ let petrolPrice , dieselPrice , petrolChange , dieselChange;
 // Create variable to get the selected State and City name
 let selectedState , selectedCity;
 
-var cords=[];
-var rslt=[];//state data
-var datac=[];//city data of select state
-var slent;
-var clent;
-var corlent;
-var b0,b1,b2,b3;
-var markers=L.layerGroup();
+let cords=[];
+let rslt=[];//state data
+let datac=[];//city data of select state
+let slent;
+let clent;
+let corlent;
+let b0,b1,b2,b3;
+let markers=L.layerGroup();
 const map = L.map('map').setView([25, 75], 3);
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 maxZoom: 19,
@@ -36,10 +36,10 @@ async function getcsv(url,splitter='\r\n')
   return await fetch(url)
   .then(response => response.text())
   .then( data => {
-    var loc=[];
+    let loc=[];
     const rows = data.split(splitter);
     const headers = rows[0].split(',');
-    var len=rows.length;
+    let len=rows.length;
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i].split(',');
       if (row.length === headers.length) {
@@ -60,8 +60,8 @@ async function bharat()
   container.style.marginTop = '1px';
   st.style.display='block';
   map.invalidateSize();
-  markers=L.layerGroup();var mar;
-  var order=Closest (cords,[8.058382,77.544730],"Tamil Nadu",markers);
+  markers=L.layerGroup();let mar;
+  let order=Closest (cords,[8.058382,77.544730],"Tamil Nadu",markers);
   for(let i=0;i<707;i++)
   { map.invalidateSize();
     if(parseFloat(order[1][i]["circ"])<300)    
@@ -123,19 +123,19 @@ async function getdata(st,ct)
 
 async function genmark(gs,gc,lat,lon,out)
 {
-  markers=L.layerGroup();var mar;
+  markers=L.layerGroup();let mar;
   mar=L.circleMarker([lat,lon],{
     radius:5,
     color: 'cyan',
     fillColor: 'cyan'
   }).bindPopup("Idhar hain aap").openPopup();
   markers.addLayer(mar);
-  var pp,dp;
+  let pp,dp;
   getdata(gs,gc).then(data=>{
     pp=parseFloat(data["Price(P)"]).toFixed(2);
     dp=parseFloat(data["Price(D)"]).toFixed(2);
   });
-  var pp1,dp1;
+  let pp1,dp1;
   for(let i=0;i<8;i++)
   {   await getdata(out[1][i]["State"],out[1][i]["City"]).then(data=>{
       pp1=parseFloat(data["Price(P)"]).toFixed(2);
@@ -182,10 +182,10 @@ const npr = document.getElementById('npr');
 getdata(ar[0],ar[1]).then(data=>{
   npr.innerHTML="";
   npr.innerText=data["City"];
-  var pp=parseFloat(document.getElementById("pp").innerText).toFixed(2);
-  var dp=parseFloat(document.getElementById("dp").innerText).toFixed(2);
-  var pp1=parseFloat(data["Price(P)"]).toFixed(2);
-  var dp1=parseFloat(data["Price(D)"]).toFixed(2);
+  let pp=parseFloat(document.getElementById("pp").innerText).toFixed(2);
+  let dp=parseFloat(document.getElementById("dp").innerText).toFixed(2);
+  let pp1=parseFloat(data["Price(P)"]).toFixed(2);
+  let dp1=parseFloat(data["Price(D)"]).toFixed(2);
   if((pp-pp1)>=0)
     npr.innerHTML+="<p style='color: #72ff72'>"+"Petrol : "+data["Price(P)"]+"("+(pp1-pp).toFixed(2)+")"+"</p>";
   else
@@ -209,7 +209,7 @@ getLoc.addEventListener('click',  event => {
             fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+latitude+'&lon='+longitude)
             .then(response => response.json())
             .then(async data => {
-                var out=Closest(cords,[latitude,longitude],data["address"]["state"],markers);
+                let out=Closest(cords,[latitude,longitude],data["address"]["state"],markers);
                 [gcity,gstate]=out[0];
                 document.getElementById("state").value=gstate;
                 console.log(document.getElementById("state").value);
@@ -226,7 +226,7 @@ getLoc.addEventListener('click',  event => {
     }
 });
 window.onload=async ()=>{
-  var status=0;
+  let status=0;
     while(status!=2){
      await getcsv('https://rapid-wave-c8e3.redfor14314.workers.dev/https://raw.githubusercontent.com/Fuelish/FuelishCLI/main/State.csv')
      .then(data =>{
@@ -245,7 +245,7 @@ window.onload=async ()=>{
 }
 
 async function getcord(city)
-{ var arr=[];var i,bl,bound=[];
+{ let arr=[];let i,bl,bound=[];
       arr=await fetch('https://nominatim.openstreetmap.org/search.php?q='+city.replace(/ /g, '+')+'&format=jsonv2')
       .then(response => response.json())
       .then(data => {
@@ -342,7 +342,7 @@ document.getElementById('social-sharing-icon').classList.remove('hide-the-icon')
                   {
                     if(cords[j]["City"]==city.value)
                     {
-                      var out=Closest(cords,[cords[j]["lat"],cords[j]["long"]],state.value,markers);
+                      let out=Closest(cords,[cords[j]["lat"],cords[j]["long"]],state.value,markers);
                       genmark(state.value,city.value,cords[j]["lat"],cords[j]["long"],out);
                       break;
                     }
