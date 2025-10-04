@@ -47,9 +47,9 @@ Fuelish is built with the following technologies:
 
 - HTML, because it's the foundation of the web.
 - CSS, because we don't want our app to look like it's from the 90s.
-- JavaScript, because we want to make our app interactive.
-- Leaflet(Openstreetmaps), because we want to show you your location.
-- Vercel for deployment.
+- JavaScript, to make our app interactive.
+- Leaflet(Openstreetmaps), to show you your location.
+- Github Pages for deployment
 
 ## Usage
 
