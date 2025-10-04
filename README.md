@@ -93,7 +93,3 @@ The current awesome state of Fuelish is a result of combine efforts from some of
 ## License
 
 Fuelish is licensed under the GNU V3 License. See the [LICENSE](LICENSE.md) file for details. This license ensures that if you become a millionaire because of the money you saved using Fuelish, you'll still have to give us credit for it.
-
-##
-
-![Powered by vercel](images/misc/powered-by-vercel.svg)
