@@ -2,16 +2,6 @@
 
 Fuelish is a simple web application that helps you to check the fuel prices of your state. With Fuelish, you can easily compare the fuel prices of different states and save money on fuel expenses.
 
-## Star History
-
-<a href="https://star-history.com/#Doofenshmirtz-Evil-Incorp/Fuelish&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" />
- </picture>
-</a>
-
 ## Table of Contents
 
 - [Fuelish](#fuelish)
@@ -22,7 +12,7 @@ Fuelish is a simple web application that helps you to check the fuel prices of y
   - [Usage](#usage)
   - [Installation](#installation)
   - [Contributing](#contributing)
-  - [Author](#author)
+  - [Created by](#created-by)
   - [Contributors](#contributors)
   - [License](#license)
 
@@ -78,9 +68,9 @@ We welcome contributions from the community, especially if you're willing to bri
 
 **Important**: Please do not ask for assignment before creating a pull request. We encourage you to directly create a pull request for your contributions.
 
-## Author
+## Created by 
 
-Fuelish was created by [Aryaman Srivastava](https://github.com/actuallyaryaman) and joined by [Asvin Jain](https://github.com/asvin1), two fuel-saving ninjas who believe that the only thing better than a full tank of gas is a full tank of gas that didn't break the bank. If you have any questions or feedback, you can reach out to us at  We promise to respond faster than a V8 engine revving up!
+[Aryaman Srivastava](https://github.com/actuallyaryaman) and joined by [Asvin Jain](https://github.com/asvin1). If you have any questions or feedback, you can reach out to us through the issues.
 
 ## Contributors
 
@@ -88,6 +78,16 @@ The current awesome state of Fuelish is a result of combine efforts from some of
 
 <a href="https://github.com/Doofenshmirtz-Evil-Incorp/Fuelish/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Doofenshmirtz-Evil-Incorp/Fuelish" />
+</a>
+
+## Star History
+
+<a href="https://star-history.com/#Doofenshmirtz-Evil-Incorp/Fuelish&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" />
+ </picture>
 </a>
 
 ## License
