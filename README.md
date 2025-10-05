@@ -2,29 +2,8 @@
 
 Fuelish is a simple web application that helps you to check the fuel prices of your state. With Fuelish, you can easily compare the fuel prices of different states and save money on fuel expenses.
 
-## Star History
-
-<a href="https://star-history.com/#Doofenshmirtz-Evil-Incorp/Fuelish&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" />
- </picture>
-</a>
-
-## Table of Contents
-
-- [Fuelish](#fuelish)
-  - [Table of Contents](#table-of-contents)
-  - [Features](#features)
-  - [Screenshots](#screenshots)
-  - [Technologies Used](#technologies-used)
-  - [Usage](#usage)
-  - [Installation](#installation)
-  - [Contributing](#contributing)
-  - [Author](#author)
-  - [Contributors](#contributors)
-  - [License](#license)
+## Status
+[![Generate csv](https://github.com/Doofenshmirtz-Evil-Incorp/FuelishCLI/actions/workflows/csv.yml/badge.svg)](https://github.com/Doofenshmirtz-Evil-Incorp/FuelishCLI)
 
 ## Features
 
@@ -35,11 +14,13 @@ Fuelish is a simple web application that helps you to check the fuel prices of y
 - Live Location! (Don't need to explain)
 
 ## Screenshots
-![Screenshot of the website](images/screenshots/1.jpg "a title")
+<div style="display: flex;">
+  <img src="images/screenshots/1.jpg" alt="screenshot1" width="300" style="margin-right: 10px;"/>
+  <img src="images/screenshots/2.jpg" alt="screenshot2" width="300" style="margin-right: 10px;"/>
+  <img src="images/screenshots/3.jpg" alt="screenshot3" width="300"/>
+</div>
 
-![Screenshot of the website](images/screenshots/2.jpg "a title")
 
-![Screenshot of the website](images/screenshots/3.jpg "a title")
 
 ## Technologies Used
 
@@ -47,9 +28,9 @@ Fuelish is built with the following technologies:
 
 - HTML, because it's the foundation of the web.
 - CSS, because we don't want our app to look like it's from the 90s.
-- JavaScript, because we want to make our app interactive.
-- Leaflet(Openstreetmaps), because we want to show you your location.
-- Vercel for deployment.
+- JavaScript, to make our app interactive.
+- Leaflet (Openstreetmaps), to show you your location.
+- Github Pages for deployment
 
 ## Usage
 
@@ -78,9 +59,9 @@ We welcome contributions from the community, especially if you're willing to bri
 
 **Important**: Please do not ask for assignment before creating a pull request. We encourage you to directly create a pull request for your contributions.
 
-## Author
+## Created by 
 
-Fuelish was created by [Aryaman Srivastava](https://github.com/actuallyaryaman) and joined by [Asvin Jain](https://github.com/asvin1), two fuel-saving ninjas who believe that the only thing better than a full tank of gas is a full tank of gas that didn't break the bank. If you have any questions or feedback, you can reach out to us at  We promise to respond faster than a V8 engine revving up!
+[Aryaman](https://github.com/actuallyaryaman) and [Asvin](https://github.com/asvin1). If you have any questions or feedback, you can reach out to us through the issues.
 
 ## Contributors
 
@@ -88,6 +69,16 @@ The current awesome state of Fuelish is a result of combine efforts from some of
 
 <a href="https://github.com/Doofenshmirtz-Evil-Incorp/Fuelish/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Doofenshmirtz-Evil-Incorp/Fuelish" />
+</a>
+
+## Star History
+
+<a href="https://star-history.com/#Doofenshmirtz-Evil-Incorp/Fuelish&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" width="500" />
+ </picture>
 </a>
 
 ## License
