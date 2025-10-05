@@ -2,19 +2,8 @@
 
 Fuelish is a simple web application that helps you to check the fuel prices of your state. With Fuelish, you can easily compare the fuel prices of different states and save money on fuel expenses.
 
-## Table of Contents
-
-- [Fuelish](#fuelish)
-  - [Table of Contents](#table-of-contents)
-  - [Features](#features)
-  - [Screenshots](#screenshots)
-  - [Technologies Used](#technologies-used)
-  - [Usage](#usage)
-  - [Installation](#installation)
-  - [Contributing](#contributing)
-  - [Created by](#created-by)
-  - [Contributors](#contributors)
-  - [License](#license)
+## Status
+[![Generate csv](https://github.com/Doofenshmirtz-Evil-Incorp/FuelishCLI/actions/workflows/csv.yml/badge.svg)](https://github.com/Doofenshmirtz-Evil-Incorp/FuelishCLI)
 
 ## Features
 
@@ -40,7 +29,7 @@ Fuelish is built with the following technologies:
 - HTML, because it's the foundation of the web.
 - CSS, because we don't want our app to look like it's from the 90s.
 - JavaScript, to make our app interactive.
-- Leaflet(Openstreetmaps), to show you your location.
+- Leaflet (Openstreetmaps), to show you your location.
 - Github Pages for deployment
 
 ## Usage
@@ -72,7 +61,7 @@ We welcome contributions from the community, especially if you're willing to bri
 
 ## Created by 
 
-[Aryaman Srivastava](https://github.com/actuallyaryaman) and joined by [Asvin Jain](https://github.com/asvin1). If you have any questions or feedback, you can reach out to us through the issues.
+[Aryaman](https://github.com/actuallyaryaman) and [Asvin](https://github.com/asvin1). If you have any questions or feedback, you can reach out to us through the issues.
 
 ## Contributors
 
@@ -88,7 +77,7 @@ The current awesome state of Fuelish is a result of combine efforts from some of
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date&theme=dark" />
    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Doofenshmirtz-Evil-Incorp/Fuelish&type=Date" width="500" />
  </picture>
 </a>
 
