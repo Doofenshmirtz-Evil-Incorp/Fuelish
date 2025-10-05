@@ -25,11 +25,13 @@ Fuelish is a simple web application that helps you to check the fuel prices of y
 - Live Location! (Don't need to explain)
 
 ## Screenshots
-![Screenshot of the website](images/screenshots/1.jpg "a title")
+<div style="display: flex;">
+  <img src="images/screenshots/1.jpg" alt="screenshot1" width="300" style="margin-right: 10px;"/>
+  <img src="images/screenshots/2.jpg" alt="screenshot2" width="300" style="margin-right: 10px;"/>
+  <img src="images/screenshots/3.jpg" alt="screenshot3" width="300"/>
+</div>
 
-![Screenshot of the website](images/screenshots/2.jpg "a title")
 
-![Screenshot of the website](images/screenshots/3.jpg "a title")
 
 ## Technologies Used
 
